@@ -33,6 +33,17 @@
             display: none !important;
         }
     }
+
+    .dnalc-btn {
+        background-color: #0EBD66 !important;
+        color: #FFFFFF !important;
+        padding: 10px 20px;
+    }
+
+    .dnalc-btn:hover {
+        background-color: #0C4960 !important;
+        color: #FFFFFF !important;
+    }
 </style>
 <section class="about-two">
     <div class="container">
@@ -91,7 +102,7 @@
                         <li class="about-two__list__item"><i class="fas fa-check-circle"></i> Many variations of passages of lorem</li>
                         <li class="about-two__list__item"><i class="fas fa-check-circle"></i> Expert many variations teacher </li>
                     </ul> --}}
-                    <div class="main-slider-two__btn">
+                    <div class="about-two__link">
                         <a href="#" class="about-two__link__btn dnalc-btn">Discover More</a>
                     </div>
                 </div>
