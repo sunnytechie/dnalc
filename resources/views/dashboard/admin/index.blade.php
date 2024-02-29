@@ -19,13 +19,13 @@
 
         <div class="row">
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('slider.index') }}">Home Slider</a></div>
-            <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('sponsor.index') }}">Sponsors</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('about.index') }}">About Us</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('team.index') }}">Leaders/Teams</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('post.index') }}">Blog Post/Articles</a></div>
-            <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('faq.index') }}">FAQs</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('webinar.index') }}">Webinar</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('dnaresource.index') }}">Resources</a></div>
+            <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('faq.index') }}">FAQs</a></div>
+            <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('sponsor.index') }}">Sponsors</a></div>
             {{-- <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Testimonials</a></div> --}}
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Subscribers</a></div>
             {{-- <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Why Choose Us</a></div> --}}

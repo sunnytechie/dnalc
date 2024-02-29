@@ -90,7 +90,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group mb-2">
+                                {{-- <div class="form-group mb-2">
                                     <label for="list_1">First List (Optional)</label>
                                     <input type="text" class="form-control" id="list_1" name="list_1" value="{{ old('list_1') ?? $about->list_1 }}" placeholder="Enter list_1">
 
@@ -115,7 +115,7 @@
                                     @error('list_3')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group row mb-2">
                                     <div class="col-md-6">

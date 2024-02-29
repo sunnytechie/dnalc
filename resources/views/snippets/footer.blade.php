@@ -24,13 +24,12 @@
 
                 <div class="col-md-6 col-xl-2">
                     <div class="footer-widget footer-widget--link">
-                        <h4 class="footer-widget__title">Links</h4>
+                        <h4 class="footer-widget__title">Useful links</h4>
                         <ul class="list-unstyled footer-widget__links">
-                            <li class="footer-widget__links__item"><a href="about.html">About Us</a></li>
-                            <li class="footer-widget__links__item"><a href="contact.html">FAQs </a></li>
-                            <li class="footer-widget__links__item"><a href="services.html">Service</a></li>
-                            <li class="footer-widget__links__item"><a href="blog-list.html">Latest News</a></li>
-                            <li class="footer-widget__links__item"><a href="packages.html">Privacy Policy</a></li>
+                            {{-- <li class="footer-widget__links__item"><a href="#">About Us</a></li> --}}
+                            <li class="footer-widget__links__item"><a href="#">FAQs </a></li>
+                            <li class="footer-widget__links__item"><a href="#">Latest News</a></li>
+                            <li class="footer-widget__links__item"><a href="#">Privacy Policy</a></li>
                         </ul><!-- /.list-unstyled footer-widget__links -->
                     </div><!-- /.footer-widget -->
                 </div><!-- /.col-md-6 -->

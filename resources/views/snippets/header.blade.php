@@ -97,8 +97,10 @@
                     <li class="dropdown">
                         <a href="#">More</a>
                         <ul>
-                            <li><a href="#">Membership & Partnership Program</a></li>
-                            <li><a href="#">Collaborations & Partnerships</a></li>
+                            {{-- <li><a href="#">Membership & Partnership Program</a></li> --}}
+                            {{-- <li><a href="#">Collaborations & Partnerships</a></li> --}}
+                            <li><a href="#">Employment</a></li>
+                            <li><a href="#">Faqs</a></li>
                             <li><a href="#">Contact us</a></li>
                         </ul>
                     </li>

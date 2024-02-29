@@ -83,7 +83,7 @@
                             <span class="count-text" data-stop="360" data-speed="1500"></span>
                             <span>+</span>
                         </h3>
-                        <p class="funfact-one__text">Completed<br>Research</p>
+                        <p class="funfact-one__text">Completed <br>Research</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -95,7 +95,7 @@
                             <span class="count-text" data-stop="560" data-speed="1500"></span>
                             <span>+</span>
                         </h3>
-                        <p class="funfact-one__text">Our<br>equipment</p>
+                        <p class="funfact-one__text">Our <br>Equipment</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -107,7 +107,7 @@
                             <span class="count-text" data-stop="100" data-speed="1500"></span>
                             <span>+</span>
                         </h3>
-                        <p class="funfact-one__text">Awards<br>winning</p>
+                        <p class="funfact-one__text">Awards <br>winning</p>
                     </div>
                 </div>
             </div>

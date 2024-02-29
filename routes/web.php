@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Dashboard\SponsorController;
 use App\Http\Controllers\Dashboard\WebinarController;
 use App\Http\Controllers\Dashboard\DnaResourceController;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,50 @@ use App\Http\Controllers\Dashboard\DnaResourceController;
 Route::get('/', [WelcomeController::class, 'index'])->name('index.welcome');
 //store contact
 Route::post('/store', [ContactController::class, 'store'])->name('contact.store');
+//dashboard
 Route::get('/dashboard', [AdminController::class, 'control'])->name('control.dashboard')->middleware('auth', 'admin');
+
+Route::prefix('pages')->group(function () {
+    //about us
+    Route::get('/history/cshl', [PagesController::class, 'historycshl'])->name('historycshl');
+    Route::get('/parent/center', [PagesController::class, 'parentcenter'])->name('parentcenter');
+    Route::get('/mission/gou', [PagesController::class, 'missiongou'])->name('missiongou');
+    Route::get('/vision/gou', [PagesController::class, 'visiongou'])->name('visiongou');
+    Route::get('/philosoph/ygou', [PagesController::class, 'philosophygou'])->name('philosophygou');
+    Route::get('/about/dnalc', [PagesController::class, 'aboutdnalc'])->name('aboutdnalc');
+    Route::get('/history/story', [PagesController::class, 'historystory'])->name('historystory');
+    Route::get('/mission/vision', [PagesController::class, 'missionvision'])->name('missionvision');
+    Route::get('/board/directors', [PagesController::class, 'boarddirectors'])->name('boarddirectors');
+    Route::get('/admin/staff', [PagesController::class, 'adminstaff'])->name('adminstaff');
+    Route::get('/teaching/staff', [PagesController::class, 'teachingstaff'])->name('teachingstaff');
+    Route::get('/media/center', [PagesController::class, 'mediacenter'])->name('mediacenter');
+    //trainings
+    Route::get('/signature/course', [PagesController::class, 'signaturecourse'])->name('signaturecourse');
+    Route::get('/dna/facility', [PagesController::class, 'dnafacility'])->name('dnafacility');
+    Route::get('/saturday/dna', [PagesController::class, 'saturdaydna'])->name('saturdaydna');
+    //research
+    Route::get('/sss/internship', [PagesController::class, 'sssinternship'])->name('sssinternship');
+    Route::get('/urex', [PagesController::class, 'urex'])->name('urex');
+    Route::get('/post/graduate', [PagesController::class, 'postgraduate'])->name('postgraduate');
+    Route::get('/drde', [PagesController::class, 'drde'])->name('drde');
+    Route::get('/pdrp', [PagesController::class, 'pdrp'])->name('pdrp');
+    //multimedia
+    Route::get('/workshop', [PagesController::class, 'workshop'])->name('workshop');
+    Route::get('/gallery', [PagesController::class, 'gallery'])->name('gallery');
+    Route::get('/conference', [PagesController::class, 'conference'])->name('conference');
+    Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
+    //more
+    Route::get('/employment', [PagesController::class, 'employment'])->name('employment');
+    Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
+    //contact
+    Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+    //in page link
+    Route::get('/world/dna', [PagesController::class, 'worlddna'])->name('worlddna');
+    Route::get('/dna/science', [PagesController::class, 'dnascience'])->name('dnascience');
+    Route::get('/genome/science', [PagesController::class, 'genomescience'])->name('genomescience');
+    Route::get('/dna/barcoding', [PagesController::class, 'dnabarcoding'])->name('dnabarcoding');
+    Route::get('/dna/metabarcoding', [PagesController::class, 'dnametabarcoding'])->name('dnametabarcoding');
+});
 
 //group admin and prefix admin and middleware auth
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
