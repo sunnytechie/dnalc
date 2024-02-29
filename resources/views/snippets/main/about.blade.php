@@ -91,8 +91,8 @@
                         <li class="about-two__list__item"><i class="fas fa-check-circle"></i> Many variations of passages of lorem</li>
                         <li class="about-two__list__item"><i class="fas fa-check-circle"></i> Expert many variations teacher </li>
                     </ul> --}}
-                    <div class="about-two__link">
-                        <a href="about.html" class="about-two__link__btn dnalc-btn">Discover More</a>
+                    <div class="main-slider-two__btn">
+                        <a href="#" class="about-two__link__btn dnalc-btn">Discover More</a>
                     </div>
                 </div>
             </div>
