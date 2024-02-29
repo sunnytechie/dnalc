@@ -1,4 +1,39 @@
 <!-- About Two section start -->
+<style>
+    .img-resize {
+        width: 570px !important;
+        height: 531px !important;
+        object-fit: cover !important;
+    }
+
+    .img2-resize {
+        width: 470px !important;
+        height: 385px !important;
+        object-fit: cover !important;
+    }
+
+    @media (max-width: 768px) {
+        .img-resize {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        .img2-resize {
+            width: 100% !important;
+            height: auto !important;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .img-resize {
+            display: none !important;
+        }
+
+        .img2-resize {
+            display: none !important;
+        }
+    }
+</style>
 <section class="about-two">
     <div class="container">
         <div class="row">
@@ -6,10 +41,10 @@
                 <div class="about-two__left wow fadeInLeft" data-wow-duration="700ms" data-wow-delay="500ms">
                     <div class="about-two__thumb">
                         <div class="about-two__thumb__item">
-                            <img src="{{ asset('storage/' . $about->thumbnail) }}" alt="dnalc">
+                            <img src="{{ asset('storage/' . $about->thumbnail) }}" alt="dnalc" class="img-resize">
                         </div>
                         <div class="about-two__thumb__item about-two__thumb__item--two">
-                            <img src="{{ asset('storage/ . $about->thumbnail_2') }}" alt="dnalc">
+                            <img src="{{ asset('storage/' . $about->thumbnail_2) }}" alt="dnalc" class="img2_resize">
                             <div class="about-two__items">
                                 <div class="about-two__box">
                                     <div class="about-two__box__icon">
