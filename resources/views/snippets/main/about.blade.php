@@ -6,7 +6,7 @@
         object-fit: cover !important;
     }
 
-    .img2-resize {
+    .img2_resize {
         width: 470px !important;
         height: 385px !important;
         object-fit: cover !important;
@@ -18,7 +18,7 @@
             height: auto !important;
         }
 
-        .img2-resize {
+        .img2_resize {
             width: 100% !important;
             height: auto !important;
         }
@@ -29,7 +29,7 @@
             display: none !important;
         }
 
-        .img2-resize {
+        .img2_resize {
             display: none !important;
         }
     }
