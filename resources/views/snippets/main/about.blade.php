@@ -37,7 +37,7 @@
     .dnalc-btn {
         background-color: #0EBD66 !important;
         color: #FFFFFF !important;
-        padding: 10px 20px;
+        padding: 20px 30px;
     }
 
     .dnalc-btn:hover {
