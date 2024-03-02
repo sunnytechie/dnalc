@@ -173,5 +173,13 @@
             height: 35px;
             object-fit: cover;
         }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+            background: #fff !important;
+            padding: 20px;
+        }
     </style>
 </head>

@@ -26,7 +26,8 @@
                     <div class="footer-widget footer-widget--link">
                         <h4 class="footer-widget__title">Useful links</h4>
                         <ul class="list-unstyled footer-widget__links">
-                            {{-- <li class="footer-widget__links__item"><a href="#">About Us</a></li> --}}
+                            <li class="footer-widget__links__item"><a href="#">About Us</a></li>
+                            <li class="footer-widget__links__item"><a href="#">Contact Us</a></li>
                             <li class="footer-widget__links__item"><a href="#">FAQs </a></li>
                             <li class="footer-widget__links__item"><a href="#">Latest News</a></li>
                             <li class="footer-widget__links__item"><a href="#">Privacy Policy</a></li>

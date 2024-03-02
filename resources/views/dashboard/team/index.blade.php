@@ -166,6 +166,7 @@
 
         <div class="row">
             <div class="col-md-12">
+                <div class="card">
                     <table id="dnaDataTable" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr>
@@ -180,7 +181,7 @@
                             @foreach ($teams as $team)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td><img class="thumbnail-fit" src="/{{ $team->thumbnail }}" alt=""></td>
+                                    <td><img class="thumbnail-fit" src="{{ asset('storage/' . $team->thumbnail) }}" alt=""></td>
                                     <td>{!! $team->name !!}</td>
                                     <td>{{ $team->phone }}</td>
                                     <td>
@@ -198,6 +199,7 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
 
             </div>
         </div>

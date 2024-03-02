@@ -52,7 +52,16 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="thumbnail">Thumbnail</label>
+                                    <label for="flyer">Flyer (Appropriate size: 590x682)</label>
+                                    <input type="file" id="flyer" accept=".png, .jpg, .jpeg" name="flyer" required>
+
+                                    @if ($errors->has('flyer'))
+                                        <span class="text-danger">{{ $errors->first('flyer') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="thumbnail">Background Image</label>
                                     <input type="file" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" required>
 
                                     @if ($errors->has('thumbnail'))
@@ -80,10 +89,12 @@
 
         <div class="row">
             <div class="col-md-12">
+                <div class="card">
                     <table id="dnaDataTable" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Flyer</th>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Link</th>
@@ -94,6 +105,7 @@
                             @foreach ($sliders as $slider)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td><img height="50px" width="50px" src="{{ asset('storage/' . $slider->flyer) }}" alt=""></td>
                                     <td>{{ $slider->title }}</td>
                                     <td>{!! \Illuminate\Support\Str::limit($slider->description, 10) !!}</td>
                                     <td>{{ $slider->link }}</td>
@@ -111,6 +123,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
                 </div>
 
             </div>

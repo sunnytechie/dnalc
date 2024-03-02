@@ -7,8 +7,8 @@
     }
 
     .img2_resize {
-        width: 470px !important;
-        height: 385px !important;
+        width: 420px !important;
+        height: 325px !important;
         object-fit: cover !important;
     }
 
@@ -19,8 +19,7 @@
         }
 
         .img2_resize {
-            width: 100% !important;
-            height: auto !important;
+            display: none !important;
         }
     }
 
@@ -58,13 +57,15 @@
                             <img src="{{ asset('storage/' . $about->thumbnail_2) }}" alt="dnalc" class="img2_resize">
                             <div class="about-two__items">
                                 <div class="about-two__box">
+                                    {{--
                                     <div class="about-two__box__icon">
                                         <i class="icon-chatting"></i>
                                     </div>
-                                    <div class="about-two__box__content">
+                                     <div class="about-two__box__content">
                                         <span class="about-two__box__subtitle">Call to anytime</span>
                                         <a href="tel:{{ $aboutInfo['phone'] }}" class="about-two__box__text">{{ $aboutInfo['phone'] }}</a>
                                     </div>
+                                    --}}
                                 </div>
                             </div>
                         </div>
@@ -76,7 +77,7 @@
                     <div class="about-two__top">
                         <div class="sec-title text-start wow fadeInUp" data-wow-duration='1500ms'>
                             <h6 class="sec-title__tagline"><img src="assets/images/shapes/sec-title-s-1.png" alt="About Us" class="sec-title__img">About Us</h6><!-- /.sec-title__tagline -->
-                            <h4 class="sec-title__title">{{ \Illuminate\Support\Str::limit($aboutInfo['title'], 50) }}</h3><!-- /.sec-title__title -->
+                            <h5 class="sec-title__title" style="font-size: 20px">{{ $aboutInfo['title'] }}</h3><!-- /.sec-title__title -->
                         </div><!-- /.sec-title -->
                         <div class="about-two__top__text">{!! \Illuminate\Support\Str::limit($aboutInfo['description'], 500) !!}</div>
                     </div>

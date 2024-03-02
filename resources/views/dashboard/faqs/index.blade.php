@@ -62,6 +62,7 @@
 
         <div class="row">
             <div class="col-md-12">
+                <div class="card">
                     <table id="dnaDataTable" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr>
@@ -94,6 +95,7 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
 
             </div>
         </div>

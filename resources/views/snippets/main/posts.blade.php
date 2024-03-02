@@ -5,8 +5,8 @@
             <div class="col-12">
                 <div class="sec-title text-center wow fadeInUp" data-wow-duration='1500ms'>
                     <h6 class="sec-title__tagline"><img src="assets/images/shapes/sec-title-s-1.png" alt="Article" class="sec-title__img">OUR NEWS & BLOG</h6><!-- /.sec-title__tagline -->
-                    <h3 class="sec-title__title">Publish what you think</h3><!-- /.sec-title__title -->
-                    <p>Read & get educated on our current happenings here at DNALC Nigeria.</p>
+                    <h3 class="sec-title__title">Read & get educated on our current happenings here at DNALC Nigeria.</h3><!-- /.sec-title__title -->
+                    {{-- <p>Read & get educated on our current happenings here at DNALC Nigeria.</p> --}}
                 </div><!-- /.sec-title -->
             </div>
         </div>
@@ -17,7 +17,7 @@
                 <div class="blog-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
                     <div class="blog-card__image">
                         <div class="blog-card__image__item">
-                            <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="Lab safety is everyone’s responsivity">
+                            <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}">
                             <a href="#" class="blog-card__image__link"></a>
                         </div>
                         <div class="blog-card__date"> <span class="blog-card__date__day">{{ $post->created_at->day }}</span>{{ $post->created_at->format('M') }}</div><!-- /.blog-card__date -->

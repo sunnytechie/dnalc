@@ -36,16 +36,16 @@ class SliderController extends Controller
         //validate the request
         $request->validate([
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'flyer' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'required|string|max:255',
-            ////'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'nullable|string|max:255',
             'link' => 'nullable|string|max:255',
         ]);
 
-        if ($request->hasFile('thumbnail')) {
-            //Manager driver for image Processing
+        //Manager driver for image Processing
         $manager = new ImageManager(new Driver());
 
+        if ($request->hasFile('thumbnail')) {
             //save the thumbnail
             $thumbnail = $manager->read($request->file('thumbnail')->getRealPath());
             $thumbnail->scaleDown(1920, 1080);
@@ -55,25 +55,16 @@ class SliderController extends Controller
             $file = $request->file('thumbnail')->storeAs('uploads/slider', $thumbnailName, 'public');
         }
 
-        ////if has logo
-        ////if ($request->hasFile('logo')) {
-        ////    //save the thumbnail
-            ////$thumbnail = $manager->read($request->file('thumbnail'));
-        ////    $logo = $manager->read($request->file('logo')->getRealPath());
+        //if has flyer
+        if ($request->hasFile('flyer')) {
+            //save the flyer
+            $flyer = $manager->read($request->file('flyer')->getRealPath());
+            $flyer->scaleDown(1920, 1080);
 
-        ////    $logo->scaleDown(219, 251, function ($constraint) {
-        ////        $constraint->aspectRatio();
-        ////        $constraint->upsize();
-        ////    });
-
-        ////    $directory = public_path('uploads/slider/');
-        ////    if (!File::exists($directory)) {
-        ////        File::makeDirectory($directory, 0777, true, true);
-        ////          }
-
-        ////    $logoName = $request->file('logo')->hashName();
-        ////    $logoPath = $logo->save($directory . $logoName);
-        ////}
+            $flyerName = $request->file('flyer')->hashName();
+            //storeAs
+            $file = $request->file('flyer')->storeAs('uploads/slider', $flyerName, 'public');
+        }
 
         //new slider
         $slider = new Slider();
@@ -83,9 +74,9 @@ class SliderController extends Controller
         if ($request->hasFile('thumbnail')) {
         $slider->thumbnail = "uploads/slider/$thumbnailName";
         }
-        ////if ($request->hasFile('logo')) {
-        ////$slider->logo = "/uploads/slider/$logoName";
-        ////}
+        if ($request->hasFile('flyer')) {
+        $slider->flyer = "uploads/slider/$flyerName";
+        }
         $slider->save();
 
         return redirect()->back()->with('success', 'Published');
