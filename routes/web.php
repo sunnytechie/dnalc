@@ -72,6 +72,8 @@ Route::prefix('pages')->group(function () {
     Route::get('/genome/science', [PagesController::class, 'genomescience'])->name('genomescience');
     Route::get('/dna/barcoding', [PagesController::class, 'dnabarcoding'])->name('dnabarcoding');
     Route::get('/dna/metabarcoding', [PagesController::class, 'dnametabarcoding'])->name('dnametabarcoding');
+    //privacy
+    Route::get('/privacy/policy', [PagesController::class, 'privacy'])->name('privacy');
 });
 
 //group admin and prefix admin and middleware auth

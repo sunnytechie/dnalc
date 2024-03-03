@@ -181,5 +181,15 @@
             background: #fff !important;
             padding: 20px;
         }
+
+        .page-header__title {
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .nionx-breadcrumb {
+            justify-content: left !important;
+        }
+
     </style>
 </head>
