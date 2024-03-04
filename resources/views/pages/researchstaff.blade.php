@@ -50,7 +50,6 @@
     </div><!-- /.container -->
 </section><!-- /.page-header -->
 
-
 <section class="about-two">
     <div class="container">
         <div class="row">
@@ -101,50 +100,14 @@
                     <div class="about-two__top">
                         <div class="sec-title text-start wow fadeInUp" data-wow-duration='1500ms'>
                             <h6 class="sec-title__tagline"><img src="{{ asset('assets/images/shapes/sec-title-s-1.png') }}" alt="About Us" class="sec-title__img">About Us</h6><!-- /.sec-title__tagline -->
-                            <h3 class="sec-title__title">The Board of Directors
+                            <h3 class="sec-title__title">Research Staff
                             </h3><!-- /.sec-title__title -->
                         </div><!-- /.sec-title -->
-                        <p class="about-text">The Governing Board of the DNA Learning Center Nigeria will be known as the Board of Directors or the DNALC Board. The role of the Board is to ensure the Center’s long term sustainable development and growth, contributing value-adding initiatives to the science research and educational sectors, all stakeholders within an appropriate framework of governance, accounting, finance and further effective controls and policies.</p>
-
-                        <div>
-                            <h4>The Board of Directors are collectively responsible and accountable for:</h4>
-                            <ol>
-                                <li>Strategic direction and policies that take business risks, resources and opportunities into account
-                                </li>
-                                <li>The framework of control and accountability systems and reporting thereon
-                                </li>
-                                <li>The framework for risk assessment and management
-                                </li>
-                                <li>The proper management of company resources to achieve corporate and business goals and objectives
-                                </li>
-                                <li>The financing needs of the Center
-                                </li>
-                                <li>Financial control, use of financial resources, acquisitions and divestures and the monitoring and reporting thereon
-                                </li>
-                                <li>Governance structures, policies and procedures
-                                </li>
-                                <li>Value creation and alignment of Stakeholder relationships
-                                </li>
-                            </ol>
+                        <p class="about-text">As a center dedicated solely to capacity building and research, we pride ourselves with having an elite set of highly qualified teaching staff and research scientist.</p>
+                        <div class="profile-image">
+                            {{-- Content --}}
                         </div>
 
-                        <div>
-                            <h4>The Statutory Membership of the DNALC Board is as follows and Led by:
-                            </h4>
-                            <ol>
-                                <li>Prof. George Ude - CHAIRMAN</li>
-                                <li>Representative of GOU BOT Chair - MEMBER</li>
-                                <li>Representative of GOU VC - MEMBER</li>
-                                <li>Representative of The Federal Ministry of Education - MEMBER</li>
-                                <li>Representative of The State Ministry of Education - MEMBER</li>
-                                <li>Representative of DNALC, New York - MEMBER</li>
-                                <li>Representative of IITA, Nigeria - MEMBER</li>
-                                <li>Representative of NABDA, Nigeria - MEMBER</li>
-                                <li>Representative of a youth NGO - MEMBER</li>
-                                <li>Legal Adviser, DNALC Nigeria - MEMBER</li>
-                                <li>Ass. Director, DNALC Nigeria  - SECRETARY</li>
-                            </ol>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -154,6 +117,5 @@
         <img src="{{ asset('assets/images/shapes/about-shape-2-1.png') }}" alt>
     </div>
 </section>
-
 
 @endsection

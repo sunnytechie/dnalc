@@ -191,5 +191,10 @@
             justify-content: left !important;
         }
 
+        .about-text {
+            text-align: justify;
+            line-height: 2.2;
+        }
+
     </style>
 </head>

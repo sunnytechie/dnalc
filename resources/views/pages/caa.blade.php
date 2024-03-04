@@ -33,8 +33,8 @@
                         </div>
 
                         <div style="background: #0C4960; padding: 20px; width: 100%;">
-                            <div class="text-white">Founded - 2020</div>
-                            <div class="text-white">The Narrative of Our Growth</div>
+                            <div class="text-white">DNALC Nigeria</div>
+                            <div class="text-white">Field Trips</div>
                         </div>
 
                     </div>
@@ -45,13 +45,18 @@
                     <div class="about-two__top">
                         <div class="sec-title text-start wow fadeInUp" data-wow-duration='1500ms'>
                             <h6 class="sec-title__tagline"><img src="{{ asset('assets/images/shapes/sec-title-s-1.png') }}" alt="About Us" class="sec-title__img">About Us</h6><!-- /.sec-title__tagline -->
-                            <h3 class="sec-title__title">The DNA Learning Center, Nigeria
+                            <h3 class="sec-title__title">The Center's Attraction
                             </h3><!-- /.sec-title__title -->
                         </div><!-- /.sec-title -->
-                        <p class="about-text">The DNA Learning Center Nigeria (DNALC Nigeria) is a collaboration between three institutions that have collaborated in various ways since 2011 to enhance bioscience education in Nigeria. The DNA Learning Center CSHL, New York and Bowie State University, Maryland, in partnership with Godfrey Okoye University, are saddled with the task of enhancing the capacity of Nigerian high schools and universities to build student interest in science by promoting inquiry-based learning and hands-on laboratory experiences.
+                        <p class="about-text">We pioneer a paradigm shift from theoretical instruction of modern biology to hands-on and inquiry based learning by providing world class training and workshop opportunities for biological scientists, faculty, undergraduates, post graduates, high school teachers and secondary school students.
                         </p>
-                        <p class="about-text">The overarching goal of the Center is capacity building that prepares teachers, students and families to benefit from modern genomics and biotechnology innovations in agricultural and medical research. DNALC Nigeria will additionally contribute to poverty and disease alleviation in Nigeria by preparing a new generation of highly skilled scientists and workforce to support agricultural and medical advancement.
-                        </p>
+
+                        <div>
+                            <h4>Accessibility</h4>
+                            <p class="about-text">
+                                DNALC Nigeria is strategically sited in Ugwuomu Nike, a developing town that is a regular 20 minutes' drive from the international airport and 25 minutes from the 1st & 2nd campuses of Godfrey Okoye University. To ensure punctuality and ease of reach, we make arrangements where necessary for shuttles that will convey visitors and students to and fro the designated bus stops and the Center. We also provide security vehicles to ensure that visitors travel safely to and from the Center.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

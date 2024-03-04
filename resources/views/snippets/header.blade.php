@@ -23,9 +23,9 @@
                             <li><a href="{{ route('parentcenter') }}">Including the parent Center-DNALC New York, USA</a></li>
                             <li class="sub-menu"><a href="#">The Host Institution-Godfrey Okoye University, Enugu</a>
                                 <ul class="dropdown">
-                                    <li><a href="{{ route('missiongou') }}">Mission of GOU</a></li>
-                                    <li><a href="{{ route('visiongou') }}">Vision of GOU</a></li>
-                                    <li><a href="{{ route('philosophygou') }}">Philosophy of GOU</a></li>
+                                    <li><a href="{{ route('about.us') }}">Mission of GOU</a></li>
+                                    <li><a href="{{ route('about.us') }}">Vision of GOU</a></li>
+                                    <li><a href="{{ route('about.us') }}">Philosophy of GOU</a></li>
                                 </ul>
                             </li>
                             <li class="sub-menu"><a href="#">DNA-Learning Center Nigeria</a>
@@ -33,6 +33,9 @@
                                     <li><a href="{{ route('aboutdnalc') }}">About DNALC Nigeria</a></li>
                                     <li><a href="{{ route('historystory') }}">History-Our story</a></li>
                                     <li><a href="{{ route('missionvision') }}">Our Mission & Vision</a></li>
+                                    <li><a href="{{ route('centerAA') }}">Center Attraction</a></li>
+                                    <li><a href="{{ route('qualityNP') }}">Quality and novel of program</a></li>
+                                    <li><a href="{{ route('oTF') }}">Owing the future</a></li>
                                 </ul>
                             </li>
                             <li class="sub-menu"><a href="#">Leadership</a>
@@ -40,6 +43,7 @@
                                         <li><a href="{{ route('boarddirectors') }}">Board of Directors</a></li>
                                         <li><a href="{{ route('adminstaff') }}">Administrative staff</a></li>
                                         <li><a href="{{ route('teachingstaff') }}">Teaching Staff</a></li>
+                                        <li><a href="{{ route('researchstaff') }}">Research Staff</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ route('mediacenter') }}">Our Media Center</a></li>

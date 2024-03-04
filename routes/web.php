@@ -36,15 +36,20 @@ Route::prefix('pages')->group(function () {
     //about us
     Route::get('/history/cshl', [PagesController::class, 'historycshl'])->name('historycshl');
     Route::get('/parent/center', [PagesController::class, 'parentcenter'])->name('parentcenter');
-    Route::get('/mission/gou', [PagesController::class, 'missiongou'])->name('missiongou');
-    Route::get('/vision/gou', [PagesController::class, 'visiongou'])->name('visiongou');
-    Route::get('/philosoph/ygou', [PagesController::class, 'philosophygou'])->name('philosophygou');
+    Route::get('/host/institute/mision/vision/philosophy', [PagesController::class, 'aboutUs'])->name('about.us');
+    //Route::get('/host/institute/mision/vision/philosophy', [PagesController::class, 'visiongou'])->name('visiongou');
+    //Route::get('/host/institute/mision/vision/philosophy', [PagesController::class, 'philosophygou'])->name('philosophygou');
     Route::get('/about/dnalc', [PagesController::class, 'aboutdnalc'])->name('aboutdnalc');
     Route::get('/history/story', [PagesController::class, 'historystory'])->name('historystory');
     Route::get('/mission/vision', [PagesController::class, 'missionvision'])->name('missionvision');
+    Route::get('/center/attraction', [PagesController::class, 'centerAA'])->name('centerAA');
+    Route::get('/qlty/novelty/program', [PagesController::class, 'qualityNP'])->name('qualityNP');
+    Route::get('/owing/future', [PagesController::class, 'oTF'])->name('oTF');
+
     Route::get('/board/directors', [PagesController::class, 'boarddirectors'])->name('boarddirectors');
     Route::get('/admin/staff', [PagesController::class, 'adminstaff'])->name('adminstaff');
     Route::get('/teaching/staff', [PagesController::class, 'teachingstaff'])->name('teachingstaff');
+    Route::get('/research/staff', [PagesController::class, 'researchstaff'])->name('researchstaff');
     Route::get('/media/center', [PagesController::class, 'mediacenter'])->name('mediacenter');
     //trainings
     Route::get('/signature/course', [PagesController::class, 'signaturecourse'])->name('signaturecourse');
