@@ -22,4 +22,35 @@
 </section><!-- /.page-header -->
 
 
+<section class="gallery-one gallery-one--page">
+    <div class="container">
+        <div class="text-center">
+            <ul class="list-unstyled post-filter gallery-one__filter__list">
+                <li class="active" data-filter=".filter-item"><span>All</span></li>
+                <li data-filter=".workshop"><span>Workshop</span></li>
+                <li data-filter=".angioplasty"><span>Summer Camps</span></li>
+                <li data-filter=".outreach"><span>Science Outreach</span></li>
+                <li data-filter=".trip"><span>Field Trips</span></li>
+                <li data-filter=".dna"><span>DNA Classes</span></li>
+            </ul><!-- /.list-unstyledf -->
+        </div><!-- /.text-center -->
+
+        <div class="row masonry-layout filter-layout">
+            <div class="col-md-6 col-lg-4 filter-item workshop">
+                <div class="gallery-one__card">
+                    <img src="{{ asset('assets/images/gallery/gallery-1-1.jpg') }}" alt="laboix">
+                    <div class="gallery-one__card__hover">
+                        <a href="{{ asset('assets/images/gallery/gallery-1-1.jpg') }}" class="img-popup">
+                            <div class="gallery-one__card__icon">
+                                <span class="gallery-one__card__icon__item"></span>
+                            </div>
+                        </a>
+                    </div><!-- /.gallery-one__card__hover -->
+                </div><!-- /.gallery-one__card -->
+            </div><!-- /.col-md-6 col-lg-4 -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section><!-- /.gallery-one -->
+
+
 @endsection

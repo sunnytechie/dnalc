@@ -48,6 +48,18 @@
                                 </div>
 
                                 <div class="form-group mb-3">
+                                    <label for="category">Category</label>
+                                    <select name="category" id="category" class="form-control">
+                                        <option value="administrative">Administrative</option>
+                                        <option value="teaching">Teaching</option>
+                                        <option value="research">Research</option>
+                                    </select>
+                                    @if ($errors->has('category'))
+                                        <span class="text-danger">{{ $errors->first('category') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group mb-3">
                                     <label for="thumbnail">Thumbnail</label>
                                     <input type="file" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" required>
 
@@ -172,6 +184,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Thumbnail</th>
+                                <th>Category</th>
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Actions</th>
@@ -182,7 +195,8 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td><img class="thumbnail-fit" src="{{ asset('storage/' . $team->thumbnail) }}" alt=""></td>
-                                    <td>{!! $team->name !!}</td>
+                                    <td style="text-transform: capitalize">{{ $team->category }}</td>
+                                    <td>{{ $team->name }}</td>
                                     <td>{{ $team->phone }}</td>
                                     <td>
                                         <div class="btn-group">

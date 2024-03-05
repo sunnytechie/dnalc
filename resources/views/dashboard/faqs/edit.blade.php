@@ -5,7 +5,7 @@
             <p class="login-page__info__item">Teams & Leaders - DNA Learning center.</p>
 
             <div class="btn-group">
-                <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">Back</a>
+                <a href="{{ route('faq.index') }}" class="btn btn-primary btn-sm">Back</a>
                 <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </button>
             </div>

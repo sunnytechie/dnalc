@@ -37,6 +37,7 @@ class TeamController extends Controller
         $request->validate([
             'name' => 'required',
             'title' => 'nullable',
+            'category' => 'required',
             'about' => 'nullable',
             'quote' => 'nullable',
             'experience' => 'nullable',
@@ -68,6 +69,7 @@ class TeamController extends Controller
         $team = new Team();
         $team->name = $request->name;
         $team->title = $request->title;
+        $team->category = $request->category;
         $team->about = $request->about;
         $team->quote = $request->quote;
         $team->experience = $request->experience;
@@ -112,6 +114,7 @@ class TeamController extends Controller
         $request->validate([
             'name' => 'required',
             'title' => 'nullable',
+            'category' => 'nullable', //add category to the validation
             'about' => 'nullable',
             'quote' => 'nullable',
             'experience' => 'nullable',
@@ -142,6 +145,7 @@ class TeamController extends Controller
         $team = Team::find($id);
         $team->name = $request->name;
         $team->title = $request->title;
+        $team->category = $request->category; //add category to the update
         $team->about = $request->about;
         $team->quote = $request->quote;
         $team->experience = $request->experience;

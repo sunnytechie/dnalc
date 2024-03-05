@@ -5,7 +5,7 @@
             <p class="login-page__info__item">Teams & Leaders - DNA Learning center.</p>
 
             <div class="btn-group">
-                <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">Back</a>
+                <a href="{{ route('team.index') }}" class="btn btn-primary btn-sm">Back</a>
                 <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </button>
             </div>
@@ -44,8 +44,20 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="thumbnail"><img class="thumbnail-fit" src="/{{ $team->thumbnail }}" alt=""></label>
-                                    <input type="file" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail">
+                                    <label for="category">Category</label>
+                                    <select name="category" id="category" class="form-control">
+                                        <option @if ($team->category == "administrative") selected @endif value="administrative">Administrative</option>
+                                        <option @if ($team->category == "teaching") selected @endif value="teaching">Teaching</option>
+                                        <option @if ($team->category == "research") selected @endif value="research">Research</option>
+                                    </select>
+                                    @if ($errors->has('category'))
+                                        <span class="text-danger">{{ $errors->first('category') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    {{-- <label for="thumbnail"><img class="thumbnail-fit" src="" alt=""></label> --}}
+                                    <input type="file" class="dropify" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" data-default-file="{{ asset('storage/' . $team->thumbnail) }}">
 
                                     @if ($errors->has('thumbnail'))
                                         <span class="text-danger">{{ $errors->first('thumbnail') }}</span>

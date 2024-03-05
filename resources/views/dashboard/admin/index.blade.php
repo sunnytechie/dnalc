@@ -26,7 +26,7 @@
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('dnaresource.index') }}">Resources</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('faq.index') }}">FAQs</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('sponsor.index') }}">Sponsors</a></div>
-            {{-- <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Testimonials</a></div> --}}
+            <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Gallery</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Subscribers</a></div>
             {{-- <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Why Choose Us</a></div> --}}
             {{-- <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Others</a></div> --}}

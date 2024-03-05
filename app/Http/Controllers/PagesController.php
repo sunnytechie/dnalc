@@ -80,56 +80,56 @@ class PagesController extends Controller
 
     public function oTF() {
         $pageTitle = "OWing the Future.";
-        $pageLink = "About us / Owing the Future.";
+        $pageLink = "About us / Owing the Future";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.otf', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function boarddirectors() {
         $pageTitle = "The Board Of Directors.";
-        $pageLink = "About us / Board of Directors.";
+        $pageLink = "About us / Board of Directors";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.boarddirectors', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function adminstaff() {
         $pageTitle = "Administrative Staff.";
-        $pageLink = "About us / Administrative.";
+        $pageLink = "About us / Administrative";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.adminstaff', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function teachingstaff() {
         $pageTitle = "Teaching Staff.";
-        $pageLink = "About us / Teaching.";
+        $pageLink = "About us / Teaching";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.teachingstaff', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function researchstaff() {
         $pageTitle = "Research Staff.";
-        $pageLink = "About us / Research.";
+        $pageLink = "About us / Research";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.researchstaff', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function mediacenter() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "Gallery & Media Center.";
+        $pageLink = "About us / Media Center";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.mediacenter', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function signaturecourse() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "DNA World : Professional Courses.";
+        $pageLink = "Trainings / Program";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.signaturecourse', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function dnafacility() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "School Activities & Training.";
+        $pageLink = "Trainings";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.dnafacility', compact('pageTitle', 'about', 'pageLink'));
     }

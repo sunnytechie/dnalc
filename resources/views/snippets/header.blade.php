@@ -61,7 +61,7 @@
                             <li class="sub-menu"><a href="#">School Field Trips</a>
                                 <ul class="dropdown">
                                     <li><a href="{{ route('dnafacility') }}">DNA Facility Tour</a></li>
-                                    <li><a href="{{ route('saturdaydna') }}">Saturday DNA World classes</a></li>
+                                    <li><a href="{{ route('dnafacility') }}">Saturday DNA World classes</a></li>
                                 </ul>
                             </li>
                         </ul>

@@ -23,5 +23,6 @@ class Team extends Model
         'instagram',
         'thumbnail',
         'certificate',
+        'category',
     ];
 }
