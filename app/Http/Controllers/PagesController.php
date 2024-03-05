@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Faq;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -142,36 +143,36 @@ class PagesController extends Controller
     }
 
     public function sssinternship() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "Senior Secondary School Internships.";
+        $pageLink = "Research Opportunities";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.sssinternship', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function urex() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "Undergraduate Research Experience (UREx)";
+        $pageLink = "Research Opportunities";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.urex', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function postgraduate() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "Post Graduate Research Opportunities";
+        $pageLink = "Research Opportunities";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.postgraduate', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function drde() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "Doctoral Research Designs & Experiments";
+        $pageLink = "Research Opportunities";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.drde', compact('pageTitle', 'about', 'pageLink'));
     }
 
     public function pdrp() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "Post Doctoral Research Prospects";
+        $pageLink = "Research Opportunities";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.pdrp', compact('pageTitle', 'about', 'pageLink'));
     }
@@ -184,8 +185,8 @@ class PagesController extends Controller
     }
 
     public function gallery() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "Gallery";
+        $pageLink = "Gallery";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.gallery', compact('pageTitle', 'about', 'pageLink'));
     }
@@ -205,24 +206,24 @@ class PagesController extends Controller
     }
 
     public function employment() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
-        $about = About::select('title', 'description', 'thumbnail')->first();
-        return view('pages.employment', compact('pageTitle', 'about', 'pageLink'));
+        $pageTitle = "DNALC Nigeria | Employment";
+        $pageLink = "Employment";
+
+        return view('pages.employment', compact('pageTitle', 'pageLink'));
     }
 
     public function faq() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
-        $about = About::select('title', 'description', 'thumbnail')->first();
-        return view('pages.faq', compact('pageTitle', 'about', 'pageLink'));
+        $pageTitle = "Freuently Asked Questions.";
+        $pageLink = "Faqs";
+        $faqs = Faq::select('question', 'answer')->orderBy('id', 'desc')->get();
+        return view('pages.faq', compact('pageTitle', 'faqs', 'pageLink'));
     }
 
     public function contact() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
-        $about = About::select('title', 'description', 'thumbnail')->first();
-        return view('pages.contact', compact('pageTitle', 'about', 'pageLink'));
+        $pageTitle = "Contact Us";
+        $pageLink = "Contact";
+
+        return view('pages.contact', compact('pageTitle', 'pageLink'));
     }
 
     public function worlddna() {
@@ -261,8 +262,8 @@ class PagesController extends Controller
     }
 
     public function privacy() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "Privacy Policy.";
+        $pageLink = "Policy";
         $about = About::select('title', 'description', 'thumbnail')->first();
         return view('pages.privacy', compact('pageTitle', 'about', 'pageLink'));
     }

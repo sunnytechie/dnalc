@@ -196,5 +196,17 @@
             line-height: 2.2;
         }
 
+        a.workshop-btn {
+            background: #0EBD66;
+            padding: 10px 20px;
+            color: #FFFFFF;
+        }
+
+        a.workshop-btn:hover {
+            background: #0C4960;
+            padding: 10px 20px;
+            color: #FFFFFF;
+        }
+
     </style>
 </head>

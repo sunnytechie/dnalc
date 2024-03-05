@@ -33,7 +33,7 @@
             <div class="col-lg-6">
                 <div class="faq-two__right">
                     <div class="faq-two__image">
-                        <img src="assets/images/resources/faq-1-1.png" alt="laboix image">
+                        <img src="{{ asset('assets/images/dna/dnalc_group_pics_burlesque.jpg') }}" alt="laboix image">
                     </div>
                     <div class="faq-two__funfact">
                         <div class="faq-two__funfact__icon">
@@ -43,7 +43,7 @@
                             <span class="count-text" data-stop="500" data-speed="1500"></span>
                             <span>k+</span>
                         </h4>
-                        <p class="faq-two__funfact__text">Satisfied User </p>
+                        <p class="faq-two__funfact__text">Satisfied Students </p>
                     </div>
                 </div>
             </div>

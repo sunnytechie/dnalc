@@ -14,8 +14,6 @@
                         <a href="/">Home</a>
                     </li>
 
-
-
                     <li class="dropdown">
                         <a href="#">About us</a>
                         <ul>
@@ -84,25 +82,24 @@
                         </a>
                     </li>
 
-                    <li class="dropdown">
+                    <li>
+                        <a href="{{ route('gallery') }}">
+                            Gallery
+                        </a>
+                    </li>
+
+                    {{-- <li class="dropdown">
                         <a href="#">Multimedia & Resources</a>
                         <ul>
                             <li class="sub-menu"><a href="#">Multimedia</a>
                                 <ul class="dropdown">
-                                    {{-- <li class="sub-menu"><a href="#">DNA Event</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Workshop</a></li>
-                                            <li><a href="#">Conference</a></li>
-                                        </ul>
-                                    </li> --}}
                                     <li><a href="{{ route('workshop') }}">Workshop</a></li>
-                                    <li><a href="{{ route('gallery') }}">Conference</a></li>
-                                    <li><a href="{{ route('conference') }}">Gallery</a></li>
+                                    <li><a href="{{ route('gallery') }}">Gallery</a></li>
                                     <li><a href="{{ route('blog') }}">Blog</a></li>
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     <li class="dropdown">
                         <a href="#">More</a>
@@ -113,6 +110,12 @@
                             <li><a href="{{ route('faq') }}">Faqs</a></li>
                             <li><a href="{{ route('contact') }}">Contact us</a></li>
                         </ul>
+                    </li>
+
+                    <li>
+                        <a class="workshop-btn" href="#">
+                            Workshop
+                        </a>
                     </li>
 
                     {{-- <li class="dropdown megamenu">
