@@ -16,7 +16,7 @@
                 <div class="team-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
                     <div class="team-card__inner">
                         <div class="team-card__image">
-                            <img src="{{ asset('storage/' . $team->thumbnail) }}" alt="{{ $team->name }}">
+                            <img style="width: 100%; height: 350px; object-fit:cover;" src="{{ asset('storage/' . $team->thumbnail) }}" alt="{{ $team->name }}">
                         </div>
                         <div class="team-card__content">
                             <div class="team-card__content__inner">

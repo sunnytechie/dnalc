@@ -14,7 +14,9 @@
                     <div class="faq-two__inner">
                         <div class="faq-page__accordion laboix-accrodion" data-grp-name="laboix-accrodion">
                             @foreach ($faqs as $faq)
-                            <div class="accrodion">
+                            <div class="accrodion @if ($loop->first)
+                                active
+                            @endif">
                                 <div class="accrodion-title">
                                     <h4 class="accrodion-title__text">{{ $faq->question }}<span class="accrodion-title__icon"></span></h4>
                                 </div><!-- /.accordian-title -->

@@ -46,8 +46,8 @@
                                     </div>
                                 </div>
                                 <div class="service-card__thumb">
-                                    <div class="service-card__thumb__item">
-                                        <img src="{{ asset('storage/' . $webinar->thumbnail) }}" alt="Artificial <br> intelligence">
+                                    <div class="service-card-thumb-item">
+                                        <img src="{{ asset('storage/' . $webinar->thumbnail) }}" alt="{{ $webinar->id }} <br> {{ $webinar->id }}">
                                     </div>
                                     <div class="service-card__thumb__shape">
                                         <img src="assets/images/shapes/shape-service.png" alt>

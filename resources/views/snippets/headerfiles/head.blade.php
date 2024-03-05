@@ -208,5 +208,9 @@
             color: #FFFFFF;
         }
 
+        .service-card-thumb-item {
+            padding: 25px;
+        }
+
     </style>
 </head>

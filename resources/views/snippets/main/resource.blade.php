@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                                 <div class="service-card__thumb">
-                                    <div class="service-card__thumb__item">
+                                    <div class="service-card-thumb-item">
                                         <img src="{{ asset('storage/' . $data->thumbnail) }}" alt="{{ $data->title }}">
                                     </div>
                                     <div class="service-card__thumb__shape">
