@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Dashboard\FaqController;
@@ -10,10 +11,11 @@ use App\Http\Controllers\Dashboard\AboutController;
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\ContactController;
+use App\Http\Controllers\Dashboard\GalleryController;
 use App\Http\Controllers\Dashboard\SponsorController;
 use App\Http\Controllers\Dashboard\WebinarController;
+use App\Http\Controllers\Dashboard\WorkshopController;
 use App\Http\Controllers\Dashboard\DnaResourceController;
-use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +31,14 @@ use App\Http\Controllers\PagesController;
 Route::get('/', [WelcomeController::class, 'index'])->name('index.welcome');
 //store contact
 Route::post('/store', [ContactController::class, 'store'])->name('contact.store');
+//store subscribe
+Route::post('/subscribe', [ContactController::class, 'subscribe'])->name('subscribe.store');
 //dashboard
 Route::get('/dashboard', [AdminController::class, 'control'])->name('control.dashboard')->middleware('auth', 'admin');
-
+//workshop application form
+Route::get('/workshop/application/form/{id}', [WorkshopController::class, 'application'])->name('workshop.application');
+//store workshop application
+Route::post('/workshop/application/store', [WorkshopController::class, 'storeApplication'])->name('workshop.application.store');
 Route::prefix('pages')->group(function () {
     //about us
     Route::get('/history/cshl', [PagesController::class, 'historycshl'])->name('historycshl');
@@ -66,11 +73,12 @@ Route::prefix('pages')->group(function () {
     Route::get('/gallery', [PagesController::class, 'gallery'])->name('gallery');
     Route::get('/conference', [PagesController::class, 'conference'])->name('conference');
     Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
+    Route::get('/blog/post/{id}', [PagesController::class, 'blogPost'])->name('blog.post');
     //more
     Route::get('/employment', [PagesController::class, 'employment'])->name('employment');
     Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
     //contact
-    Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     //in page link
     Route::get('/world/dna', [PagesController::class, 'worlddna'])->name('worlddna');
     Route::get('/dna/science', [PagesController::class, 'dnascience'])->name('dnascience');
@@ -170,6 +178,26 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/edit/{id}', [DnaResourceController::class, 'edit'])->name('dnaresource.edit');
         Route::put('/update/{id}', [DnaResourceController::class, 'update'])->name('dnaresource.update');
         Route::delete('/destroy/{id}', [DnaResourceController::class, 'destroy'])->name('dnaresource.destroy');
+    });
+
+    //gallery
+    Route::prefix('gallery')->group(function () {
+        Route::get('/', [GalleryController::class, 'index'])->name('gallery.index');
+        Route::get('/create', [GalleryController::class, 'create'])->name('gallery.create');
+        Route::post('/store', [GalleryController::class, 'store'])->name('gallery.store');
+        Route::get('/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
+        Route::put('/update/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+        Route::delete('/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+    });
+
+    //workshop
+    Route::prefix('workshop')->group(function () {
+        Route::get('/', [WorkshopController::class, 'index'])->name('workshop.index');
+        Route::get('/create', [WorkshopController::class, 'create'])->name('workshop.create');
+        Route::post('/store', [WorkshopController::class, 'store'])->name('workshop.store');
+        Route::get('/edit/{id}', [WorkshopController::class, 'edit'])->name('workshop.edit');
+        Route::put('/update/{id}', [WorkshopController::class, 'update'])->name('workshop.update');
+        Route::delete('/destroy/{id}', [WorkshopController::class, 'destroy'])->name('workshop.destroy');
     });
 
 });

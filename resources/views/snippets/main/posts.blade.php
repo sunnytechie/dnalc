@@ -18,13 +18,13 @@
                     <div class="blog-card__image">
                         <div class="blog-card__image__item">
                             <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}">
-                            <a href="#" class="blog-card__image__link"></a>
+                            <a href="{{ route('blog.post', $post->id) }}" class="blog-card__image__link"></a>
                         </div>
                         <div class="blog-card__date"> <span class="blog-card__date__day">{{ $post->created_at->day }}</span>{{ $post->created_at->format('M') }}</div><!-- /.blog-card__date -->
                     </div><!-- /.blog-card__image -->
                     <div class="blog-card__content">
                         <div class="blog-card__author">
-                            <a href="#" class="blog-card__author__item">
+                            <a href="{{ route('blog.post', $post->id) }}" class="blog-card__author__item">
                                 <div class="blog-card__author__thumb">
                                     <img height="40px" src="{{ asset('assets/images/dna/dnalogo2.png') }}" alt="{{ $post->title }}" style="object-fit: cover">
                                 </div>
@@ -34,9 +34,9 @@
                                 </div>
                             </a>
                         </div><!-- /.list-unstyled blog-card__meta -->
-                        <h3 class="blog-card__title"><a href="#">{{ $post->title }}</a></h3><!-- /.blog-card__title -->
+                        <h3 class="blog-card__title"><a href="{{ route('blog.post', $post->id) }}">{{ $post->title }}</a></h3><!-- /.blog-card__title -->
                         <div class="blog-card__content__btn">
-                            <a href="blog-details-right.html" class="blog-card__content__btn__link">Read More<i class="icon-arrow"></i></a><!-- /.blog-card__link -->
+                            <a href="{{ route('blog.post', $post->id) }}" class="blog-card__content__btn__link">Read More<i class="icon-arrow"></i></a><!-- /.blog-card__link -->
                         </div><!-- /.blog-card__btn -->
 
                     </div><!-- /.blog-card__content -->

@@ -87,7 +87,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        <img src="/{{ $post->thumbnail }}" alt="{{ $post->title }}" class="img-fluid" style="width: 50px; height: 50px; object-fit: cover">
+                                        <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}" class="img-fluid" style="width: 50px; height: 50px; object-fit: cover">
                                     </td>
                                     <td>{{ $post->title }}</td>
                                     <td>{!! \Illuminate\Support\Str::limit($post->content, 10) !!}</td>

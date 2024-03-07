@@ -40,7 +40,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="thumbnail">Thumbnail</label>
-                                    <input type="file" class="dropify" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" data-default-file="/{{ $post->thumbnail }}">
+                                    <input type="file" class="dropify" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" data-default-file="{{ asset('storage/' . $post->thumbnail) }}">
 
                                     @if ($errors->has('thumbnail'))
                                         <span class="text-danger">{{ $errors->first('thumbnail') }}</span>

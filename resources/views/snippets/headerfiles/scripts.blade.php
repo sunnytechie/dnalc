@@ -41,6 +41,9 @@
     <!-- template js -->
     <script src="{{ asset('assets/js/laboix.js') }}"></script>
 
+    <!--  custom editor js plugins -->
+    {{-- <script src="{{ asset('assets/js/editor.js') }}"></script> --}}
+
      {{-- Dropify --}}
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      <script src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
@@ -79,10 +82,8 @@
         @endif
     </script>
 
-
-
     {{-- Dropify script --}}
-    <script>
+    {{-- <script>
       $(document).ready(function(){
           // Basic
           $('.dropify').dropify();
@@ -123,10 +124,18 @@
               }
           })
       });
+    </script> --}}
+
+    <script>
+        tinymce.init({
+        selector: 'textarea',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
     </script>
 
     {{-- Tiny MCE --}}
-    <script>
+    {{-- <script>
         ClassicEditor
             .create( document.querySelector( '#description' ) )
             .catch( error => {
@@ -162,4 +171,4 @@
             .catch( error => {
                 console.error( error );
             } );
-    </script>
+    </script> --}}

@@ -14,8 +14,9 @@
                             <img src="{{ asset('assets/images/dna/logo.png') }}" width="130" alt="footer logo">
                         </a><!-- /.footer-widget__logo -->
                         <div class="footer-widget__text text-white">{!! \Illuminate\Support\Str::limit($aboutInfo['description'], 400) !!}</div>
-                        <form action="#" data-url="MAILCHIMP_FORM_URL" class="footer-widget__newsletter mc-form">
-                            <input type="email" name="EMAIL" placeholder="Email">
+                        <form action="{{ route('subscribe.store') }}" method="POST" class="footer-widget__newsletter">
+                            @csrf
+                            <input type="email" name="email" placeholder="Email" required>
                             <button type="submit" class="laboix-btn laboix-btn--submite"><i class="icon-right-arrow"></i></button>
                         </form><!-- /.footer-widget__newsletter mc-form -->
                         <div class="mc-form__response"></div><!-- /.mc-form__response -->

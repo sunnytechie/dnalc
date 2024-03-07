@@ -78,7 +78,7 @@
                             @foreach ($sponsors as $sponsor)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td><img src="/{{ $sponsor->thumbnail }}" alt="{{ $sponsor->title }}" style="width: 50px; height: 50px; object-fit: cover"></td>
+                                    <td><img src="{{ asset('storage/' . $sponsor->thumbnail) }}" alt="{{ $sponsor->title }}" style="width: 50px; height: 50px; object-fit: cover"></td>
                                     <td>{{ $sponsor->title }}</td>
                                     <td>{{ $sponsor->link }}</td>
                                     <td>

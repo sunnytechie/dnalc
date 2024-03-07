@@ -55,21 +55,25 @@
 
     {{-- Dropify css --}}
     <link rel="stylesheet" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 
     {{-- Tiny MCE --}}
-    <script src="https://cdn.tiny.cloud/1/ifprekyziwmwbff5pm4lgrqgmsm0x5yaew0tctgdk95r94ae/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    {{-- <script src="https://cdn.tiny.cloud/1/ifprekyziwmwbff5pm4lgrqgmsm0x5yaew0tctgdk95r94ae/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
 
-    {{-- Ckeditor --}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+    {{-- Ckeditor download and replace --}}
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script> --}}
 
-    {{-- Dropify css --}}
-    <link rel="stylesheet" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
+    {{-- Dropify css download and replace --}}
+    {{-- <link rel="stylesheet" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css"> --}}
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 
     <!-- Include SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.2/dist/sweetalert2.min.css">
+
+    <!-- Place the first <script> tag in your HTML's <head> -->
+    <script src="https://cdn.tiny.cloud/1/ifprekyziwmwbff5pm4lgrqgmsm0x5yaew0tctgdk95r94ae/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 
     <style>
         .btn-primary {
@@ -136,7 +140,7 @@
             border-radius: 0 !important;
         }
 
-        input[type=text], input[type=email], input[type=url] {
+        input[type=text], input[type=email], input[type=url], input[type=password], input[type=tel], input[type=number], input[type=date], input[type=time], input[type=datetime-local], input[type=month], input[type=week], input[type=search], input[type=color], input[type=file], input[type=range], input[type=checkbox], input[type=radio], select, textarea {
             height: 60px;
             width: 100%;
             border: none;

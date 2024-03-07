@@ -1,3 +1,4 @@
+
 <header class="main-header sticky-header main-header--two sticky-header--normal">
     <div class="container-fluid">
         <div class="main-header__inner">
@@ -113,7 +114,7 @@
                     </li>
 
                     <li>
-                        <a class="workshop-btn" href="#">
+                        <a class="workshop-btn" href="{{ route('workshop') }}">
                             Workshop
                         </a>
                     </li>
@@ -162,9 +163,9 @@
                         <h6 class="main-header__right__content__number">{{ $aboutInfo['phone'] }}</h6>
                     </div>
                 </a>
-                <div class="main-header__right__info">
-                    <a href="#" class="search-toggler main-header__right__info__item"> <i class="icon-search" aria-hidden="true"></i> <span class="sr-only">Search</span> </a>
-                    <a href="{{ route('admin.dashboard') }}" class="main-header__right__info__item"> <i class="icon-user" aria-hidden="true"></i> <span class="sr-only">Search</span> </a>
+                <div class="main-header__right__info" style="margin-right: 10px">
+                    {{-- <a href="#" class="search-toggler main-header__right__info__item"> <i class="icon-search" aria-hidden="true"></i> <span class="sr-only">Search</span> </a> --}}
+                    <a href="{{ route('admin.dashboard') }}" class="main-header__right__info__item pr-2"> <i class="icon-user" aria-hidden="true"></i> <span class="sr-only">Profile</span> </a>
                 </div>
                 <div class="mobile-nav__btn mobile-nav__toggler">
                     <span></span><span></span><span></span>

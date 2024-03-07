@@ -22,7 +22,7 @@ class WelcomeController extends Controller
         $webinars = Webinar::orderBy('id', 'desc')->get();
         $dnaresources = DnaResource::orderBy('id', 'desc')->get();
         $posts = Post::inRandomOrder()->take(5)->get();
-        $teams = Team::orderBy('id', 'desc')->get();
+        $teams = Team::orderBy('id', 'desc')->paginate(5);
 
         return view('welcome', compact('sliders', 'sponsors', 'about', 'faqs', 'webinars', 'dnaresources', 'posts', 'teams'));
     }

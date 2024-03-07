@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\About;
 use App\Models\Faq;
+use App\Models\Post;
+use App\Models\Team;
+use App\Models\About;
+use App\Models\Gallery;
+use App\Models\Workshop;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -96,22 +100,22 @@ class PagesController extends Controller
     public function adminstaff() {
         $pageTitle = "Administrative Staff.";
         $pageLink = "About us / Administrative";
-        $about = About::select('title', 'description', 'thumbnail')->first();
-        return view('pages.adminstaff', compact('pageTitle', 'about', 'pageLink'));
+        $teams = Team::all();
+        return view('pages.adminstaff', compact('pageTitle', 'teams', 'pageLink'));
     }
 
     public function teachingstaff() {
         $pageTitle = "Teaching Staff.";
         $pageLink = "About us / Teaching";
-        $about = About::select('title', 'description', 'thumbnail')->first();
-        return view('pages.teachingstaff', compact('pageTitle', 'about', 'pageLink'));
+        $teams = Team::all();
+        return view('pages.teachingstaff', compact('pageTitle', 'teams', 'pageLink'));
     }
 
     public function researchstaff() {
         $pageTitle = "Research Staff.";
         $pageLink = "About us / Research";
-        $about = About::select('title', 'description', 'thumbnail')->first();
-        return view('pages.researchstaff', compact('pageTitle', 'about', 'pageLink'));
+        $teams = Team::all();
+        return view('pages.researchstaff', compact('pageTitle', 'teams', 'pageLink'));
     }
 
     public function mediacenter() {
@@ -178,17 +182,18 @@ class PagesController extends Controller
     }
 
     public function workshop() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
-        $about = About::select('title', 'description', 'thumbnail')->first();
-        return view('pages.workshop', compact('pageTitle', 'about', 'pageLink'));
+        $pageTitle = "Annual Workshop Schedule";
+        $pageLink = "Workshop";
+        $workshops = Workshop::orderBy('id', 'desc')->where('status', 'active')->get();
+        return view('pages.workshop', compact('pageTitle', 'workshops', 'pageLink'));
     }
 
     public function gallery() {
-        $pageTitle = "Gallery";
+        $pageTitle = "DNALC Gallery";
         $pageLink = "Gallery";
-        $about = About::select('title', 'description', 'thumbnail')->first();
-        return view('pages.gallery', compact('pageTitle', 'about', 'pageLink'));
+        $galleries = Gallery::all();
+
+        return view('pages.gallery', compact('pageTitle', 'galleries', 'pageLink'));
     }
 
     public function conference() {
@@ -199,10 +204,18 @@ class PagesController extends Controller
     }
 
     public function blog() {
-        $pageTitle = "Page Title.";
-        $pageLink = "link";
+        $pageTitle = "Blog";
+        $pageLink = "posts";
         $about = About::select('title', 'description', 'thumbnail')->first();
-        return view('pages.blog', compact('pageTitle', 'about', 'pageLink'));
+        $posts = Post::orderBy('id', 'desc')->paginate(7);
+        return view('pages.blog', compact('pageTitle', 'about', 'pageLink', 'posts'));
+    }
+
+    public function blogPost($id) {
+        $pageTitle = Post::find($id)->title;
+        $pageLink = "post";
+        $post = Post::find($id);
+        return view('pages.post', compact('pageTitle', 'post', 'pageLink', 'post'));
     }
 
     public function employment() {
@@ -217,13 +230,6 @@ class PagesController extends Controller
         $pageLink = "Faqs";
         $faqs = Faq::select('question', 'answer')->orderBy('id', 'desc')->get();
         return view('pages.faq', compact('pageTitle', 'faqs', 'pageLink'));
-    }
-
-    public function contact() {
-        $pageTitle = "Contact Us";
-        $pageLink = "Contact";
-
-        return view('pages.contact', compact('pageTitle', 'pageLink'));
     }
 
     public function worlddna() {

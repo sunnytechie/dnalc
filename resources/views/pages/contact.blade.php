@@ -10,7 +10,7 @@
     }
 </style>
 <section class="page-header">
-    <div class="page-header__bg" style="background-image: url(https://cdn.pixabay.com/photo/2017/02/01/13/53/analysis-2030265_1280.jpg);"></div>
+    <div class="page-header__bg" style="background-image: url({{ asset('assets/images/dna/85.jpg') }});"></div>
     <!-- /.page-header__bg -->
     <div class="container">
         <h2 class="page-header__title">{{ $pageTitle }}</h2>
@@ -76,7 +76,8 @@
                             <h3 class="sec-title__title">Feel free to write us anytime</h3><!-- /.sec-title__title -->
                         </div><!-- /.sec-title -->
                     </div><!-- /.contact-one__top -->
-                    <form class="contact-one__form contact-form-validated form-one background-base wow fadeInUp" data-wow-duration="1500ms" action="{{ route('contact.store') }}">
+                    <form class="contact-one__form form-one background-base wow fadeInUp" data-wow-duration="1500ms" method="POST" action="{{ route('contact.store') }}">
+                        @csrf
                         <div class="form-one__group">
                             <div class="form-one__control">
                                 <input type="text" name="name" placeholder="Your name">
@@ -85,7 +86,7 @@
                                 <input type="email" name="email" placeholder="Email address">
                             </div><!-- /.form-one__control form-one__control__full -->
                             <div class="form-one__control form-one__control">
-                                <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone" required="">
+                                <input type="tel" name="phone" placeholder="Phone" required="">
                             </div><!-- /.form-one__control form-one__control__full -->
                             <div class="form-one__control form-one__control">
                                 <input type="text" name="subject" placeholder="Subject">

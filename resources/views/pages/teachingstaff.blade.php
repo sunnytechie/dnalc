@@ -39,7 +39,7 @@
     }
 </style>
 <section class="page-header">
-    <div class="page-header__bg" style="background-image: url(https://cdn.pixabay.com/photo/2017/02/01/13/53/analysis-2030265_1280.jpg);"></div>
+    <div class="page-header__bg" style="background-image: url({{ asset('assets/images/dna/85.jpg') }});"></div>
     <!-- /.page-header__bg -->
     <div class="container">
         <h2 class="page-header__title">{{ $pageTitle }}</h2>
@@ -104,9 +104,52 @@
                             </h3><!-- /.sec-title__title -->
                         </div><!-- /.sec-title -->
                         <p class="about-text">As a center dedicated solely to capacity building and research, we pride ourselves with having an elite set of highly qualified teaching staff and research scientist.</p>
-                        <div class="profile-image">
-                            {{-- Content --}}
+
+
+                        <div class="col-md-9">
+                            <div class="about-two__right">
+                                <div class="about-two__top">
+                                    <div class="sec-title text-start wow fadeInUp" data-wow-duration='1500ms'>
+                                        <h6 class="sec-title__tagline"><img src="{{ asset('assets/images/shapes/sec-title-s-1.png') }}" alt="About Us" class="sec-title__img">About Us</h6><!-- /.sec-title__tagline -->
+                                        <h3 class="sec-title__title">Administrative Staff
+                                        </h3><!-- /.sec-title__title -->
+                                    </div><!-- /.sec-title -->
+                                    <p class="about-text">The administrative staff are responsible for the stability and day-to-day running of the Center
+                                    </p>
+                                </div>
+                            </div>
                         </div>
+
+                        @foreach ($teams as $team)
+                        <div class="col-md-4">
+                            <div class="team-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
+                                <div class="team-card__inner">
+                                    <div class="team-card__image">
+                                        <img style="width: 100%; height: 350px; object-fit:cover;" src="{{ asset('storage/' . $team->thumbnail) }}" alt="{{ $team->name }}">
+                                    </div>
+                                    <div class="team-card__content">
+                                        <div class="team-card__content__inner">
+                                            <div class="team-card__content__item">
+                                                <h3 class="team-card__content__title"><a href="#">{{ $team->name }}</a></h3><!-- /.team-card__title -->
+                                                <h6 class="team-card__content__designation">{{ $team->title }}</h6><!-- /.team-card__designation -->
+                                            </div>
+                                            <div class="team-card__content__hover">
+                                                <div class="team-card__content__hover__icon">
+                                                    <i class="icon-shear"></i>
+                                                </div><!-- /.team-card__content__hover__icon -->
+                                                <div class="team-card__content__hover__social">
+                                                    <a href="{{ $team->twitter }}"> <i class="fab fa-twitter" aria-hidden="true"></i> <span class="sr-only">Twitter</span> </a>
+                                                    <a href="{{ $team->facebook }}"> <i class="fab fa-facebook-f" aria-hidden="true"></i> <span class="sr-only">Facebook</span> </a>
+                                                    <a href="{{ $team->linkedin }}"> <i class="fab fa-linkedin" aria-hidden="true"></i> <span class="sr-only">LinkedIn</span></a>
+                                                    <a href="{{ $team->instagram }}"> <i class="fab fa-instagram" aria-hidden="true"></i> <span class="sr-only">Instagram</span></a>
+                                                </div><!-- /.team-card__social__list -->
+                                            </div><!-- /.team-card__content__hover -->
+                                        </div>
+                                    </div><!-- /.team-card__content -->
+                                </div><!-- /.team-card__content -->
+                            </div><!-- /.team-card -->
+                        </div><!-- /.col-md-6 col-lg-4 -->
+                        @endforeach
 
                     </div>
                 </div>
