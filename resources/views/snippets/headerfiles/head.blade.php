@@ -71,9 +71,10 @@
     <!-- Include SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.2/dist/sweetalert2.min.css">
 
+    @if (Route::currentRouteName() != 'index.welcome' && Route::currentRouteName() != 'contact')
     <!-- Place the first <script> tag in your HTML's <head> -->
     <script src="https://cdn.tiny.cloud/1/ifprekyziwmwbff5pm4lgrqgmsm0x5yaew0tctgdk95r94ae/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
+    @endif
 
     <style>
         .btn-primary {
@@ -140,7 +141,7 @@
             border-radius: 0 !important;
         }
 
-        input[type=text], input[type=email], input[type=url], input[type=password], input[type=tel], input[type=number], input[type=date], input[type=time], input[type=datetime-local], input[type=month], input[type=week], input[type=search], input[type=color], input[type=file], input[type=range], input[type=checkbox], input[type=radio], select, textarea {
+        input[type=text], input[type=email], input[type=url], input[type=password], input[type=tel], input[type=number], input[type=date], input[type=time], input[type=datetime-local], input[type=month], input[type=week], input[type=color], input[type=file], input[type=range], input[type=checkbox], input[type=radio], select, textarea {
             height: 60px;
             width: 100%;
             border: none;
@@ -153,6 +154,21 @@
             font-weight: 500;
             line-height: normal;
             display: block;
+        }
+
+        input[type=search] {
+            height: 45px;
+            width: 100%;
+            border: none;
+            background-color: var(--laboix-border-color2, #F3F3F3);
+            padding-left: 30px;
+            padding-right: 30px;
+            outline: none;
+            color: var(--laboix-text, #6A6A6A);
+            font-size: 14px;
+            font-weight: 500;
+            line-height: normal;
+            display: block; 
         }
 
         input[type=file] {

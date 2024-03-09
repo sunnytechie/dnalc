@@ -28,8 +28,7 @@
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('sponsor.index') }}">Sponsors</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('gallery.index') }}">Gallery</a></div>
             <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('workshop.index') }}">Workshops Schedules</a></div>
-            <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Workshop Applications</a></div>
-            <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="#">Subscribers</a></div>
+            <div class="col-md-3 mb-4"><a class="btn-lg btn w-100 btn-primary rounded-0" href="{{ route('email.subscribers') }}">Subscribers</a></div>
         </div>
 
 

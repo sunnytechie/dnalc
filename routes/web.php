@@ -36,9 +36,10 @@ Route::post('/subscribe', [ContactController::class, 'subscribe'])->name('subscr
 //dashboard
 Route::get('/dashboard', [AdminController::class, 'control'])->name('control.dashboard')->middleware('auth', 'admin');
 //workshop application form
-Route::get('/workshop/application/form/{id}', [WorkshopController::class, 'application'])->name('workshop.application');
+Route::get('/workshop/application/form/{id}', [WorkshopController::class, 'applicationForm'])->name('s');
 //store workshop application
-Route::post('/workshop/application/store', [WorkshopController::class, 'storeApplication'])->name('workshop.application.store');
+Route::post('/workshop/application/store/{id}', [WorkshopController::class, 'storeApplication'])->name('workshop.application.store');
+
 Route::prefix('pages')->group(function () {
     //about us
     Route::get('/history/cshl', [PagesController::class, 'historycshl'])->name('historycshl');
@@ -92,6 +93,7 @@ Route::prefix('pages')->group(function () {
 //group admin and prefix admin and middleware auth
 Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/subscribers', [AdminController::class, 'subscribers'])->name('email.subscribers');
 
     //slider
     Route::prefix('slider')->group(function () {
@@ -193,6 +195,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     //workshop
     Route::prefix('workshop')->group(function () {
         Route::get('/', [WorkshopController::class, 'index'])->name('workshop.index');
+        Route::get('/applications/{id}', [WorkshopController::class, 'applications'])->name('workshop.applications');
         Route::get('/create', [WorkshopController::class, 'create'])->name('workshop.create');
         Route::post('/store', [WorkshopController::class, 'store'])->name('workshop.store');
         Route::get('/edit/{id}', [WorkshopController::class, 'edit'])->name('workshop.edit');

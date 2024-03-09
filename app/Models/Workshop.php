@@ -21,4 +21,9 @@ class Workshop extends Model
         'flyer',
         'status',
     ];
+
+    public function workshopapplications()
+    {
+        return $this->hasMany(Workshopapplication::class);
+    }
 }

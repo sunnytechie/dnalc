@@ -2,7 +2,7 @@
 @section('content')
     <div class="container" style="margin-top: 50px; margin-bottom: 50px">
         <div class="login-page__info d-flex justify-content-between align-items-center">
-            <p class="login-page__info__item">workshop)s & Leaders - DNA Learning center.</p>
+            <p class="login-page__info__item">workshops & Leaders - DNA Learning center.</p>
 
             <div class="btn-group">
                 <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">Back</a>
@@ -45,10 +45,11 @@
                                             <button class="btn btn-sm btn-danger">Unplished</button>
                                         @endif
                                     </td>
-                                     <td>Count</td> {{--{{ $workshop)->registers->count() }} --}}
+                                     <td>{{ $workshop->workshopapplications->count() }}</td> 
                                     <td>{{ \Carbon\Carbon::parse($workshop->created_at)->format('j M Y') }}</td>
                                     <td>
                                         <div class="btn-group">
+                                            <a href="{{ route('workshop.applications', $workshop->id) }}" class="btn btn-secondary btn-sm rounded-0">Applications</a>
                                             <a href="{{ route('workshop.edit', $workshop->id) }}" class="btn btn-primary btn-sm rounded-0">Edit</a>
                                             <form class="m-0 p-0" action="{{ route('workshop.destroy', $workshop->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
                                                 @csrf

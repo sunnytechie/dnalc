@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Workshopapplication;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
@@ -20,14 +21,52 @@ class WorkshopController extends Controller
         return view('dashboard.workshop.index', compact('workshops'));
     }
 
-    public function application(string $id)
+    public function applications($id)
     {
-        return view('dashboard.workshop.application');
+        $workshop = Workshop::find($id);
+        $applications = Workshopapplication::where('workshop_id', $id)->orderBy('id', 'desc')->get();
+        return view('dashboard.workshop.applications', compact('applications', 'workshop'));
     }
 
-    public function storeApplication(string $id)
+    public function applicationForm(string $id)
     {
-        //validation
+        $workshop = Workshop::find($id);
+        $pageTitle = $workshop->title;
+        $pageLink = "Application Form";
+        return view('dashboard.workshop.form', compact('pageTitle', 'pageLink', 'id', 'workshop'));
+    }
+
+    public function storeApplication(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'fullname' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'country' => 'nullable',
+                'institution' => 'nullable',
+                'scholarship' => 'nullable',
+                'info_source' => 'nullable',
+                'referral' => 'nullable',
+            ]);
+
+            $workshop = new Workshopapplication();
+            $workshop->fullname = $request->fullname;
+            $workshop->email = $request->email;
+            $workshop->phone = $request->phone;
+            $workshop->country = $request->country;
+            $workshop->institution = $request->institution;
+            $workshop->scholarship = $request->scholarship;
+            $workshop->info_source = $request->info_source;
+            $workshop->referral = $request->referral;
+            $workshop->workshop_id = $id;
+            $workshop->save();
+            
+            return redirect()->back()->with('success', 'Application has been submitted successfully');
+
+        } catch (\Exception $e) {
+            return redirect()->back()->with('failed', 'An error occurred while saving the workshop');
+        }
     }
 
     /**

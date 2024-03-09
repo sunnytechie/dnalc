@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,6 +14,12 @@ class AdminController extends Controller
     public function index()
     {
         return view('dashboard.admin.index');
+    }
+
+    public function subscribers() {
+        $subscribers = Subscriber::all();
+        
+        return view('dashboard.subscribers.index', compact('subscribers'));
     }
 
     public function control()
