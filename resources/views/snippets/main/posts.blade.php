@@ -17,7 +17,7 @@
                 <div class="blog-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
                     <div class="blog-card__image">
                         <div class="blog-card__image__item">
-                            <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}">
+                            <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ Str::limit($post->title, 50) }}">
                             <a href="{{ route('blog.post', $post->id) }}" class="blog-card__image__link"></a>
                         </div>
                         <div class="blog-card__date"> <span class="blog-card__date__day">{{ $post->created_at->day }}</span>{{ $post->created_at->format('M') }}</div><!-- /.blog-card__date -->
@@ -34,7 +34,7 @@
                                 </div>
                             </a>
                         </div><!-- /.list-unstyled blog-card__meta -->
-                        <h3 class="blog-card__title"><a href="{{ route('blog.post', $post->id) }}">{{ $post->title }}</a></h3><!-- /.blog-card__title -->
+                        <h3 class="blog-card__title"><a href="{{ route('blog.post', $post->id) }}">{{ Str::limit($post->title, 45) }}</a></h3><!-- /.blog-card__title -->
                         <div class="blog-card__content__btn">
                             <a href="{{ route('blog.post', $post->id) }}" class="blog-card__content__btn__link">Read More<i class="icon-arrow"></i></a><!-- /.blog-card__link -->
                         </div><!-- /.blog-card__btn -->
