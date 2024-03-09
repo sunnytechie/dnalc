@@ -40,7 +40,7 @@
 
                 @foreach ($sponsors as $sponsor)
                     <div class="client-carousel__one__item">
-                        <a href="{{ $sponsor->link }}">
+                        <a href="{{ $sponsor->link }}" target="_blank">
                             <img style="width: 100px; height: 100px; object-fit:cover;" src="{{ asset('storage/' . $sponsor->thumbnail) }}" alt="sponsor">
                         </a>
                     </div><!-- /.owl-slide-item-->
