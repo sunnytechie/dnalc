@@ -121,7 +121,7 @@ class PagesController extends Controller
     public function mediacenter() {
         $pageTitle = "Gallery & Media Center.";
         $pageLink = "About us / Media Center";
-        $about = About::select('title', 'description', 'thumbnail')->first();
+        $galleries = Gallery::all();
         return view('pages.mediacenter', compact('pageTitle', 'about', 'pageLink'));
     }
 
