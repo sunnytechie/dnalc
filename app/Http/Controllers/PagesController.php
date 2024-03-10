@@ -122,7 +122,7 @@ class PagesController extends Controller
         $pageTitle = "Gallery & Media Center.";
         $pageLink = "About us / Media Center";
         $galleries = Gallery::all();
-        return view('pages.mediacenter', compact('pageTitle', 'about', 'pageLink'));
+        return view('pages.mediacenter', compact('pageTitle', 'galleries', 'pageLink'));
     }
 
     public function signaturecourse() {
