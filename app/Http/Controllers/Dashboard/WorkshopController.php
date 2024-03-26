@@ -61,7 +61,7 @@ class WorkshopController extends Controller
             $workshop->referral = $request->referral;
             $workshop->workshop_id = $id;
             $workshop->save();
-            
+
             return redirect()->back()->with('success', 'Application has been submitted successfully');
 
         } catch (\Exception $e) {

@@ -36,7 +36,7 @@ Route::post('/subscribe', [ContactController::class, 'subscribe'])->name('subscr
 //dashboard
 Route::get('/dashboard', [AdminController::class, 'control'])->name('control.dashboard')->middleware('auth', 'admin');
 //workshop application form
-Route::get('/workshop/application/form/{id}', [WorkshopController::class, 'applicationForm'])->name('s');
+Route::get('/workshop/application/form/{id}', [WorkshopController::class, 'applicationForm'])->name('workshop.application');
 //store workshop application
 Route::post('/workshop/application/store/{id}', [WorkshopController::class, 'storeApplication'])->name('workshop.application.store');
 
