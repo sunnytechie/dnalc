@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\SponsorController;
 use App\Http\Controllers\Dashboard\WebinarController;
 use App\Http\Controllers\Dashboard\WorkshopController;
 use App\Http\Controllers\Dashboard\DnaResourceController;
+use App\Http\Controllers\PaystackCallbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::get('/dashboard', [AdminController::class, 'control'])->name('control.das
 Route::get('/workshop/application/form/{id}', [WorkshopController::class, 'applicationForm'])->name('workshop.application');
 //store workshop application
 Route::post('/workshop/application/store/{id}', [WorkshopController::class, 'storeApplication'])->name('workshop.application.store');
+//paystack callback
+Route::get('workshop/payment/callback/{id}/{ref}', [PaystackCallbackController::class, 'workshopPaymentCallback'])->name('workshop.payment.callback');
 
 Route::prefix('pages')->group(function () {
     //about us

@@ -71,7 +71,7 @@
     <!-- Include SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.2/dist/sweetalert2.min.css">
 
-    @if (Route::currentRouteName() != 'index.welcome' && Route::currentRouteName() != 'contact')
+    @if (Route::currentRouteName() != 'index.welcome' && Route::currentRouteName() != 'contact' && Route::currentRouteName() != 'workshop.application')
     <!-- Place the first <script> tag in your HTML's <head> -->
     <script src="https://cdn.tiny.cloud/1/ifprekyziwmwbff5pm4lgrqgmsm0x5yaew0tctgdk95r94ae/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     @endif
@@ -168,7 +168,7 @@
             font-size: 14px;
             font-weight: 500;
             line-height: normal;
-            display: block; 
+            display: block;
         }
 
         input[type=file] {

@@ -26,5 +26,8 @@
 
 
         @include('snippets.headerfiles.scripts')
+
+
+        @yield('scripts')
     </body>
 </html>

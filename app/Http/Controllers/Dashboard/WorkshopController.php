@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Workshop;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Workshopapplication;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
+use Unicodeveloper\Paystack\Facades\Paystack;
 use Intervention\Image\Drivers\Imagick\Driver;
 
 class WorkshopController extends Controller
@@ -24,7 +25,9 @@ class WorkshopController extends Controller
     public function applications($id)
     {
         $workshop = Workshop::find($id);
-        $applications = Workshopapplication::where('workshop_id', $id)->orderBy('id', 'desc')->get();
+        $applications = Workshopapplication::where('workshop_id', $id)->orderBy('id', 'desc')
+                        ->where('status', 'success')
+                        ->get();
         return view('dashboard.workshop.applications', compact('applications', 'workshop'));
     }
 
@@ -46,23 +49,60 @@ class WorkshopController extends Controller
                 'country' => 'nullable',
                 'institution' => 'nullable',
                 'scholarship' => 'nullable',
-                'info_source' => 'nullable',
+                'infoSource' => 'nullable',
                 'referral' => 'nullable',
+                'othersource' => 'nullable', //added
+                'scholarshiprequestamount' => 'nullable', //added
+                'scholarshipreason' => 'nullable', //added
+                'question1' => 'nullable', //added
+                'question2' => 'nullable', //added
+                'question3' => 'nullable', //added
+                'question4' => 'nullable', //added
+                'question5' => 'nullable', //added
+                'role' => 'required', //added
+                'address' => 'required', //added
+                'area' => 'required', //added
             ]);
 
-            $workshop = new Workshopapplication();
-            $workshop->fullname = $request->fullname;
-            $workshop->email = $request->email;
-            $workshop->phone = $request->phone;
-            $workshop->country = $request->country;
-            $workshop->institution = $request->institution;
-            $workshop->scholarship = $request->scholarship;
-            $workshop->info_source = $request->info_source;
-            $workshop->referral = $request->referral;
-            $workshop->workshop_id = $id;
-            $workshop->save();
+            $workshop = Workshop::find($id);
+            $fee = $workshop->fee ? $workshop->fee : 50000;
 
-            return redirect()->back()->with('success', 'Application has been submitted successfully');
+            $application = new Workshopapplication();
+            $application->fullname = $request->fullname;
+            $application->email = $request->email;
+            $application->phone = $request->phone;
+            $application->country = $request->country;
+            $application->institution = $request->institution;
+            $application->scholarship = $request->scholarship;
+            $application->info_source = $request->info_source;
+            $application->referral = $request->referral;
+            $application->workshop_id = $id;
+            $application->othersource = $request->othersource; //added
+            $application->scholarshiprequestamount = $request->scholarshiprequestamount; //added
+            $application->scholarshipreason = $request->scholarshipreason; //added
+            $application->question1 = $request->question1; //added
+            $application->question2 = $request->question2; //added
+            $application->question3 = $request->question3; //added
+            $application->question4 = $request->question4; //added
+            $application->question5 = $request->question5; //added
+            $application->role = $request->role; //added
+            $application->address = $request->address; //added
+            $application->area = $request->area; //added
+            $application->save();
+
+            //paystack payment
+            $ref = Paystack::genTranxRef();
+            $callbackUrl = route('workshop.payment.callback', ['id' => $application->id, 'ref' => $ref]);
+            $data = array(
+                "amount" => $fee * 100,
+                "reference" => $ref,
+                "email" => $request->email,
+                "callback_url" => $callbackUrl,
+            );
+
+        return Paystack::getAuthorizationUrl($data)->redirectNow();
+
+            //return redirect()->back()->with('success', 'Application has been submitted successfully');
 
         } catch (\Exception $e) {
             return redirect()->back()->with('failed', 'An error occurred while saving the workshop');
