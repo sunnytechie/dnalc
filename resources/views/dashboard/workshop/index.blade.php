@@ -25,7 +25,7 @@
                                 <th>Type</th>
                                 <th>Venue</th>
                                 <th>Status</th>
-                                <th>Applications</th>
+                                <th colspan="2">Applications</th>
                                 <th>Date</th>
                                 <th>Actions</th>
                             </tr>
@@ -49,6 +49,7 @@
                                         //count where workshopapplications status is success
                                     @endphp
                                      <td>{{ $workshop->successful_application_count }}</td>
+                                     <td>{{ $workshop->pending_application_count }}</td>
 
                                     <td>
                                         {{ \Carbon\Carbon::parse($workshop->created_at)->format('j M Y') }}</td>

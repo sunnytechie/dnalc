@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Workshopapplication;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Intervention\Image\ImageManager;
+use App\Mail\ApplicationConfirmationMail;
 use Illuminate\Support\Facades\Validator;
 use Unicodeveloper\Paystack\Facades\Paystack;
 use Intervention\Image\Drivers\Imagick\Driver;
@@ -24,6 +26,10 @@ class WorkshopController extends Controller
             $count = $workshop->workshopapplications->where('status', 'success')->count();
             $workshop->successful_application_count = $count;
         });
+        $workshops->each(function ($workshop) {
+            $count = $workshop->workshopapplications->where('status', 'pending')->count();
+            $workshop->pending_application_count = $count;
+        });
 
         return view('dashboard.workshop.index', compact('workshops'));
     }
@@ -32,7 +38,7 @@ class WorkshopController extends Controller
     {
         $workshop = Workshop::find($id);
         $applications = Workshopapplication::where('workshop_id', $id)->orderBy('id', 'desc')
-                        ->where('status', 'success')
+                        //->where('status', 'success')
                         ->get();
         return view('dashboard.workshop.applications', compact('applications', 'workshop'));
     }
@@ -146,7 +152,10 @@ class WorkshopController extends Controller
                 return Paystack::getAuthorizationUrl($data)->redirectNow();
             }
 
-            return redirect()->back()->with('success', 'Application has been submitted successfully');
+            //send mail
+            Mail::to($request->email)->send(new ApplicationConfirmationMail($request->fullname, $workshop->title));
+
+            return redirect()->route('workshop')->with('success', 'Application has been submitted successfully');
 
         } catch (\Exception $e) {
             //return $e->getMessage();

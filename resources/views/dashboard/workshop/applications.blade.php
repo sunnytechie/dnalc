@@ -9,53 +9,57 @@
                 <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
                 {{-- <a href="{{ route('workshop.create') }}" class="btn btn-primary btn-sm">+ New</a> --}}
             </div>
-        </div><!-- login-info -->
+        </div>
 
 
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <table id="dnaDataTable" class="table table-bordered table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Fullname</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Institution</th>
-                                <th>Scholarship</th>
-                                <th>Referral</th>
-                                <td>Method</td>
-                                <th>Downloadables</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($applications as $application)
+                    <div class="table-responsive">
+                        <table id="dnaDataTable" class="table table-bordered table-striped table-sm">
+                            <thead>
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $application->fullname }}</td>
-                                    <td>{{ $application->email }}</td>
-                                    <td>{{ $application->phone }}</td>
-                                    <td>{{ $application->institution }}</td>
-                                    <td>{{ $application->scholarship }}</td>
-                                    <td>{{ $application->referral }}</td>
-                                    <td>
-                                        @if ($application->receipt == null)
-                                            Online
-                                                @else
-                                            Bank
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($application->receipt)
-                                            <a href="{{ asset('storage/' . $application->receipt) }}" download="" class="btn btn-primary btn-sm rounded-0">Download Receipt</a>
-                                        @endif
-                                    </td>
+                                    <th>#</th>
+                                    <th>Fullname</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Institution</th>
+                                    <th>Scholarship</th>
+                                    <th>Referral</th>
+                                    <th>Status</th>
+                                    <td>Method</td>
+                                    <th>Downloadables</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($applications as $application)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $application->fullname }}</td>
+                                        <td>{{ $application->email }}</td>
+                                        <td>{{ $application->phone }}</td>
+                                        <td>{{ $application->institution }}</td>
+                                        <td>{{ $application->scholarship }}</td>
+                                        <td>{{ $application->referral }}</td>
+                                        <td style="text-transform: capitalize">{{ $application->status }}</td>
+                                        <td>
+                                            @if ($application->receipt == null)
+                                                Online
+                                                    @else
+                                                Bank
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($application->receipt)
+                                                <a href="{{ asset('storage/' . $application->receipt) }}" download="" class="btn btn-primary btn-sm rounded-0">Download Receipt</a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 

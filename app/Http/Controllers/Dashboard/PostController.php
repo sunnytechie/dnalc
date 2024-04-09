@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create');
+        return view('dashboard.posts.new');
     }
 
     /**
@@ -63,7 +63,7 @@ class PostController extends Controller
         $post->user_id = auth()->id();
         $post->save();
 
-        return back()->with('success', 'Post created successfully');
+        return redirect()->route('post.index')->with('success', 'Post created successfully');
     }
 
     /**
