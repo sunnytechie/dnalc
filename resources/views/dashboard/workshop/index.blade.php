@@ -45,8 +45,13 @@
                                             <button class="btn btn-sm btn-danger">Unplished</button>
                                         @endif
                                     </td>
-                                     <td>{{ $workshop->workshopapplications->count() }}</td> 
-                                    <td>{{ \Carbon\Carbon::parse($workshop->created_at)->format('j M Y') }}</td>
+                                    @php
+                                        //count where workshopapplications status is success
+                                    @endphp
+                                     <td>{{ $workshop->successful_application_count }}</td>
+
+                                    <td>
+                                        {{ \Carbon\Carbon::parse($workshop->created_at)->format('j M Y') }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('workshop.applications', $workshop->id) }}" class="btn btn-secondary btn-sm rounded-0">Applications</a>

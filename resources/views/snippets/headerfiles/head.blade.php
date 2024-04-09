@@ -141,7 +141,7 @@
             border-radius: 0 !important;
         }
 
-        input[type=text], input[type=email], input[type=url], input[type=password], input[type=tel], input[type=number], input[type=date], input[type=time], input[type=datetime-local], input[type=month], input[type=week], input[type=color], input[type=file], input[type=range], input[type=checkbox], input[type=radio], select, textarea {
+        input[type=text], input[type=email], input[type=url], input[type=password], input[type=tel], input[type=number], input[type=date], input[type=time], input[type=datetime-local], input[type=month], input[type=week], input[type=color], input[type=file], input[type=range], select, textarea {
             height: 60px;
             width: 100%;
             border: none;

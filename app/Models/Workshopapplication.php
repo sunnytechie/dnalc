@@ -32,6 +32,7 @@ class Workshopapplication extends Model
         'address',
         'area',
         'reference',
+        'receipt'
     ];
 
     public function workshop()

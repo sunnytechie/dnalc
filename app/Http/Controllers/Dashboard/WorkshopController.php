@@ -8,6 +8,7 @@ use App\Models\Workshopapplication;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Validator;
 use Unicodeveloper\Paystack\Facades\Paystack;
 use Intervention\Image\Drivers\Imagick\Driver;
 
@@ -18,7 +19,12 @@ class WorkshopController extends Controller
      */
     public function index()
     {
-        $workshops = Workshop::all();
+        $workshops = Workshop::with('workshopapplications')->get();
+        $workshops->each(function ($workshop) {
+            $count = $workshop->workshopapplications->where('status', 'success')->count();
+            $workshop->successful_application_count = $count;
+        });
+
         return view('dashboard.workshop.index', compact('workshops'));
     }
 
@@ -42,7 +48,7 @@ class WorkshopController extends Controller
     public function storeApplication(Request $request, $id)
     {
         try {
-            $request->validate([
+            $validation = Validator::make($request->all(), [
                 'fullname' => 'required',
                 'email' => 'required',
                 'phone' => 'required',
@@ -62,7 +68,36 @@ class WorkshopController extends Controller
                 'role' => 'required', //added
                 'address' => 'required', //added
                 'area' => 'required', //added
+                'receipt' => 'nullable',
+                'paymentMethod' => 'required',
             ]);
+
+            if ($validation->fails()) {
+                return back()->withInput()->with('failed', 'All fields are required');
+            }
+
+            if ($request->paymentMethod == 'offline') {
+                $validation = Validator::make($request->all(), [
+                    'receipt' => 'required',
+                ]);
+
+                if ($validation->fails()) {
+                    return back()->withInput()->with('failed', 'Please upload evidence of payment receipt.');
+                }
+
+                if ($request->hasFile('receipt')) {
+                    //Manager driver for image Processing
+                $manager = new ImageManager(new Driver());
+
+                    //save the thumbnail
+                    $receipt = $manager->read($request->file('receipt')->getRealPath());
+                    $receipt->scaleDown(370, 322);
+
+                    $receiptName = $request->file('receipt')->hashName();
+                    //storeAs
+                    $file = $request->file('receipt')->storeAs('uploads/receipt', $receiptName, 'public');
+                }
+            }
 
             $workshop = Workshop::find($id);
             $fee = $workshop->fee ? $workshop->fee : 50000;
@@ -88,23 +123,33 @@ class WorkshopController extends Controller
             $application->role = $request->role; //added
             $application->address = $request->address; //added
             $application->area = $request->area; //added
+            if ($request->hasFile('receipt') == 'offline') {
+                $application->receipt = "uploads/receipt/" . $receiptName;
+                $application->status = 'success';
+            }
             $application->save();
 
-            //paystack payment
-            $ref = Paystack::genTranxRef();
-            $callbackUrl = route('workshop.payment.callback', ['id' => $application->id, 'ref' => $ref]);
-            $data = array(
-                "amount" => $fee * 100,
-                "reference" => $ref,
-                "email" => $request->email,
-                "callback_url" => $callbackUrl,
-            );
+            if ($request->paymentMethod == 'online') {
+                //For now return failed
+                return back()->withInput()->with('failed', 'We are currently not collecting online payment.');
 
-        return Paystack::getAuthorizationUrl($data)->redirectNow();
+                //paystack payment
+                $ref = Paystack::genTranxRef();
+                $callbackUrl = route('workshop.payment.callback', ['id' => $application->id, 'ref' => $ref]);
+                $data = array(
+                    "amount" => $fee * 100,
+                    "reference" => $ref,
+                    "email" => $request->email,
+                    "callback_url" => $callbackUrl,
+                );
 
-            //return redirect()->back()->with('success', 'Application has been submitted successfully');
+                return Paystack::getAuthorizationUrl($data)->redirectNow();
+            }
+
+            return redirect()->back()->with('success', 'Application has been submitted successfully');
 
         } catch (\Exception $e) {
+            //return $e->getMessage();
             return redirect()->back()->with('failed', 'An error occurred while saving the workshop');
         }
     }

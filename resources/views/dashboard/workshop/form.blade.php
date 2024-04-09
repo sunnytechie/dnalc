@@ -63,6 +63,13 @@ function validateSection(section) {
   return isValid;
 }
 </script>
+
+<script>
+    function toggleDiv(isOffline) {
+      var div = document.getElementById('offlinePaymentDiv');
+      div.style.display = isOffline ? 'block' : 'none';
+    }
+</script>
 @endsection
 
 @section('content')
@@ -128,7 +135,7 @@ function validateSection(section) {
 
                         <div class="card">
                             <h5 class="card-title text-danger pb-2" style="font-weight: 400; font-size: 16px;">* All applicants are required to ensure that all information entered below are valid and accurate!</h5>
-                            <form class="login-page__form" id="multiStepForm" action="{{ route('workshop.application.store', $workshop->id) }}" method="POST">
+                            <form class="login-page__form" id="multiStepForm" action="{{ route('workshop.application.store', $workshop->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div id="section1" class="section">
@@ -430,6 +437,33 @@ function validateSection(section) {
                                         </div>
                                     </div>
 
+                                    <div class="row mb-4">
+                                        <div class="col-md-12 d-flex">
+                                            <div class="form-check">
+                                                <input style="margin-top: 0.4em" type="radio" class="form-check-input" id="onlinePayment" name="paymentMethod" value="online" onclick="toggleDiv(false)">
+                                                <label class="form-check-label" for="onlinePayment">Online Payment</label>
+                                            </div>
+
+                                            <div class="form-check mx-3">
+                                                <input style="margin-top: 0.4em" type="radio" class="form-check-input" id="offlinePayment" name="paymentMethod" value="offline" onclick="toggleDiv(true)" checked>
+                                                <label class="form-check-label" for="offlinePayment">Offline Payment</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-4" id="offlinePaymentDiv">
+                                        <div class="col-md-12">
+                                            <h2>Evidence of Payment</h2>
+                                            <button type="button" class="btn btn-info border-0 rounded-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Account details
+                                            </button>
+                                        </div>
+                                        <div class="col-md-12 mt-4">
+                                            <label for="receipt">Payment Receipt</label>
+                                            <input type="file" name="receipt" class="form-control dropify">
+                                        </div>
+                                    </div>
+
 
                                     <div class="row">
                                         <div class="col-md-6">
@@ -453,5 +487,30 @@ function validateSection(section) {
         <img src="{{ asset('assets/images/shapes/about-shape-2-1.png') }}" alt>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background: #031B4E">
+          <h5 class="modal-title text-center text-white" id="exampleModalLabel">MAKE YOUR PAYMENT TO THE FOLLOWING ACCOUNT DETAILS</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="justify-content-center text-center mb-4">
+                <img style="width: 100px; height: 100px; object-fit: contain" src="{{ asset('assets/images/zenithbanklogo.png') }}" alt="">
+            </div>
+          <p>ACCOUNT NAME:   DNA LEARNING CENTER AFRI. PRJ.</p>
+          <p>ACCOUNT NUMBER:   1016283735</p>
+          <p>BANK NAME:   ZENITH BANK</p>
+          <p>AMOUNT IN FIGURE:   <strong>₦{{ number_format($workshop->fee, 2) }}</strong></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection

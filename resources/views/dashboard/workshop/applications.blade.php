@@ -23,10 +23,11 @@
                                 <th>Fullname</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Country</th>
                                 <th>Institution</th>
                                 <th>Scholarship</th>
                                 <th>Referral</th>
+                                <td>Method</td>
+                                <th>Downloadables</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,11 +37,21 @@
                                     <td>{{ $application->fullname }}</td>
                                     <td>{{ $application->email }}</td>
                                     <td>{{ $application->phone }}</td>
-                                    <td>{{ $application->country }}</td>
                                     <td>{{ $application->institution }}</td>
                                     <td>{{ $application->scholarship }}</td>
                                     <td>{{ $application->referral }}</td>
-                                    
+                                    <td>
+                                        @if ($application->receipt == null)
+                                            Online
+                                                @else
+                                            Bank
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($application->receipt)
+                                            <a href="{{ asset('storage/' . $application->receipt) }}" download="" class="btn btn-primary btn-sm rounded-0">Download Receipt</a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

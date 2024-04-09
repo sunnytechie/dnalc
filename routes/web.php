@@ -36,12 +36,14 @@ Route::post('/store', [ContactController::class, 'store'])->name('contact.store'
 Route::post('/subscribe', [ContactController::class, 'subscribe'])->name('subscribe.store');
 //dashboard
 Route::get('/dashboard', [AdminController::class, 'control'])->name('control.dashboard')->middleware('auth', 'admin');
-//workshop application form
-Route::get('/workshop/application/form/{id}', [WorkshopController::class, 'applicationForm'])->name('workshop.application');
-//store workshop application
-Route::post('/workshop/application/store/{id}', [WorkshopController::class, 'storeApplication'])->name('workshop.application.store');
-//paystack callback
-Route::get('workshop/payment/callback/{id}/{ref}', [PaystackCallbackController::class, 'workshopPaymentCallback'])->name('workshop.payment.callback');
+Route::prefix('workshop')->group(function () {
+    //workshop application form
+    Route::get('/application/form/{id}', [WorkshopController::class, 'applicationForm'])->name('workshop.application');
+    //store workshop application
+    Route::post('/application/store/{id}', [WorkshopController::class, 'storeApplication'])->name('workshop.application.store');
+    //paystack callback
+    Route::get('/payment/callback/{id}/{ref}', [PaystackCallbackController::class, 'workshopPaymentCallback'])->name('workshop.payment.callback');
+});
 
 Route::prefix('pages')->group(function () {
     //about us
