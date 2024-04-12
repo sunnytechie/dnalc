@@ -136,8 +136,8 @@ class WorkshopController extends Controller
             $application->save();
 
             if ($request->paymentMethod == 'online') {
-                //For now return failed
-                return back()->withInput()->with('failed', 'We are currently not collecting online payment.');
+                ////For now return failed
+                ////return back()->withInput()->with('failed', 'We are currently not collecting online payment.');
 
                 //paystack payment
                 $ref = Paystack::genTranxRef();
