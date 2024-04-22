@@ -25,11 +25,6 @@
         @include('snippets.mobile_nav_search_back_up')
 
 
-        @include('snippets.headerfiles.scripts')
-
-
-        @yield('scripts')
-
         <!--Start of Tawk.to Script-->
         <script type="text/javascript">
             var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
@@ -43,5 +38,10 @@
             })();
         </script>
         <!--End of Tawk.to Script-->
+        
+        @include('snippets.headerfiles.scripts')
+
+
+        @yield('scripts')
     </body>
 </html>
