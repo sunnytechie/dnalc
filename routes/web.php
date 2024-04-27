@@ -46,6 +46,8 @@ Route::prefix('workshop')->group(function () {
 });
 
 Route::prefix('pages')->group(function () {
+    //team details
+    Route::get('/team/{id}', [PagesController::class, 'team'])->name('team.details');
     //about us
     Route::get('/history/cshl', [PagesController::class, 'historycshl'])->name('historycshl');
     Route::get('/parent/center', [PagesController::class, 'parentcenter'])->name('parentcenter');

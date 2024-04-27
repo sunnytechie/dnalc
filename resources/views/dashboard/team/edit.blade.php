@@ -7,7 +7,7 @@
             <div class="btn-group">
                 <a href="{{ route('team.index') }}" class="btn btn-primary btn-sm">Back</a>
                 <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
-                <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </button>
+                <a href="{{ route('team.create') }}" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </a>
             </div>
         </div><!-- login-info -->
 
@@ -32,11 +32,14 @@
                                 <div class="form-group mb-3">
                                     <label for="title">Title</label>
                                     <select name="title" id="title" class="form-control">
-                                        <option @if ($team->title == "Mr.") selected @endif value="Mr.">Mr.</option>
-                                        <option @if ($team->title == "Mrs.") selected @endif value="Mrs.">Mrs.</option>
-                                        <option @if ($team->title == "Miss.") selected @endif value="Miss">Miss</option>
-                                        <option @if ($team->title == "Dr.") selected @endif value="Dr.">Dr.</option>
-                                        <option @if ($team->title == "Prof.") selected @endif value="Prof.">Prof.</option>
+                                        <option @if ($team->title == "Professor") selected @endif>Professor</option>
+                                        <option @if ($team->title == "Reverend") selected @endif>Reverend</option>
+                                        <option @if ($team->title == "Honorable") selected @endif>Honorable</option>
+                                        <option @if ($team->title == "Sir") selected @endif>Sir</option>
+                                        <option @if ($team->title == "Madam") selected @endif>Madam</option>
+                                        <option @if ($team->title == "Esquire") selected @endif>Esquire</option>
+                                        <option @if ($team->title == "Engineer") selected @endif>Engineer</option>
+                                        <option @if ($team->title == "Doctor") selected @endif>Doctor</option>
                                     </select>
                                     @if ($errors->has('title'))
                                         <span class="text-danger">{{ $errors->first('title') }}</span>
@@ -56,6 +59,7 @@
                                 </div>
 
                                 <div class="form-group mb-3">
+                                    <label for="thumbnail">User Profile Image(Leave empty if you don't want to update)</label>
                                     {{-- <label for="thumbnail"><img class="thumbnail-fit" src="" alt=""></label> --}}
                                     <input type="file" class="dropify" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" data-default-file="{{ asset('storage/' . $team->thumbnail) }}">
 
@@ -85,7 +89,7 @@
                                 {{-- experience --}}
                                 <div class="form-group">
                                     <label for="experience">Experience</label>
-                                    <input type="text" id="experience" name="experience" value="{{ old('experience') ?? $team->experience }}" placeholder="Experience of the leader or team">
+                                    <input type="number" id="experience" name="experience" value="{{ old('experience') ?? $team->experience }}" placeholder="Years of Experience">
 
                                     @if ($errors->has('experience'))
                                         <span class="text-danger">{{ $errors->first('experience') }}</span>
@@ -104,7 +108,7 @@
                                 {{-- phone --}}
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" id="phone" name="phone" value="{{ old('phone') ?? $team->phone }}" placeholder="Phone of the leader or team">
+                                    <input type="tel" id="phone" name="phone" value="{{ old('phone') ?? $team->phone }}" placeholder="Phone of the leader or team">
 
                                     @if ($errors->has('phone'))
                                         <span class="text-danger">{{ $errors->first('phone') }}</span>
@@ -114,7 +118,7 @@
                                 {{-- facebook --}}
                                 <div class="form-group">
                                     <label for="facebook">Facebook</label>
-                                    <input type="text" id="facebook" name="facebook" value="{{ old('facebook') ?? $team->facebook }}" placeholder="Facebook link of the leader or team">
+                                    <input type="url" id="facebook" name="facebook" value="{{ old('facebook') ?? $team->facebook }}" placeholder="Facebook link of the leader or team">
 
                                     @if ($errors->has('facebook'))
                                         <span class="text-danger">{{ $errors->first('facebook') }}</span>
@@ -124,7 +128,7 @@
                                 {{-- twitter --}}
                                 <div class="form-group">
                                     <label for="twitter">Twitter</label>
-                                    <input type="text" id="twitter" name="twitter" value="{{ old('twitter') ?? $team->twitter }}" placeholder="Twitter link of the leader or team">
+                                    <input type="url" id="twitter" name="twitter" value="{{ old('twitter') ?? $team->twitter }}" placeholder="Twitter link of the leader or team">
 
                                     @if ($errors->has('twitter'))
                                         <span class="text-danger">{{ $errors->first('twitter') }}</span>
@@ -134,7 +138,7 @@
                                 {{-- linkedin --}}
                                 <div class="form-group">
                                     <label for="linkedin">Linkedin</label>
-                                    <input type="text" id="linkedin" name="linkedin" value="{{ old('linkedin') ?? $team->linkedin }}" placeholder="Linkedin link of the leader or team">
+                                    <input type="url" id="linkedin" name="linkedin" value="{{ old('linkedin') ?? $team->linkedin }}" placeholder="Linkedin link of the leader or team">
 
                                     @if ($errors->has('linkedin'))
                                         <span class="text-danger">{{ $errors->first('linkedin') }}</span>
@@ -144,7 +148,7 @@
                                 {{-- instagram --}}
                                 <div class="form-group">
                                     <label for="instagram">Instagram</label>
-                                    <input type="text" id="instagram" name="instagram" value="{{ old('instagram') ?? $team->instagram }}" placeholder="Instagram link of the leader or team">
+                                    <input type="url" id="instagram" name="instagram" value="{{ old('instagram') ?? $team->instagram }}" placeholder="Instagram link of the leader or team">
 
                                     @if ($errors->has('instagram'))
                                         <span class="text-danger">{{ $errors->first('instagram') }}</span>
@@ -152,16 +156,16 @@
                                 </div>
 
                                 {{-- certificate --}}
-                                <div class="form-group mb-4">
+                                {{-- <div class="form-group mb-4">
                                     <label for="certificate">Certificate</label>
                                     <textarea id="description" name="certificate" placeholder="Summary of your achievements">{{ old('certificate') ?? $team->certificate }}</textarea>
 
                                     @if ($errors->has('certificate'))
                                         <span class="text-danger">{{ $errors->first('certificate') }}</span>
                                     @endif
-                                </div>
+                                </div> --}}
 
-                            <button type="submit" class="btn btn-primary">Publish</button>
+                            <button type="submit" class="btn btn-primary mt-4">Publish</button>
 
                         </form>
                     </div>

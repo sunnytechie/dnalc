@@ -6,7 +6,7 @@
             <div class="col-lg-6">
                 <div class="choose-us-one__left">
                     <div class="choose-us-one__top">
-                        <div class="sec-title sec-title--two text-start wow fadeInUp" data-wow-duration='1500ms'>
+                        <div class="sec-title sec-title--two text-start wow fadeInUp" data-wow-duration='100ms'>
                             <h6 class="sec-title__tagline"><img src="assets/images/shapes/sec-title-s-2.png" alt="Why choose us" class="sec-title__img">OUR EDUCATION PROGRAMS
                             </h6><!-- /.sec-title__tagline -->
                             <h3 class="sec-title__title">Prepares students and families to thrive in the gene age.</h3><!-- /.sec-title__title -->

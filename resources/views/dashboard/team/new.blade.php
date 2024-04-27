@@ -5,25 +5,20 @@
             <p class="login-page__info__item">Teams & Leaders - DNA Learning center.</p>
 
             <div class="btn-group">
-                <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">Back</a>
+                <a href="{{ route('team.index') }}" class="btn btn-primary btn-sm">Back</a>
                 <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
-                <a href="{{ route('team.create') }}" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </a>
+                <button href="{{ route('team.create') }}" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </button>
             </div>
         </div><!-- login-info -->
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New Leader</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">New Team/Leader</div>
+                    <div class="card-body">
                         <form class="m-0 p-0" action="{{ route('team.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-                            <div class="modal-body">
                                 <div class="form-group mb-3">
                                     <label for="name">Name</label>
                                     <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Fullname" required>
@@ -36,11 +31,11 @@
                                 <div class="form-group mb-3">
                                     <label for="title">Title</label>
                                     <select name="title" id="title" class="form-control">
+                                        <option>Sir</option>
+                                        <option>Madam</option>
                                         <option>Professor</option>
                                         <option>Reverend</option>
                                         <option>Honorable</option>
-                                        <option>Sir</option>
-                                        <option>Madam</option>
                                         <option>Esquire</option>
                                         <option>Engineer</option>
                                         <option>Doctor</option>
@@ -63,8 +58,8 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="thumbnail">Thumbnail</label>
-                                    <input type="file" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" required>
+                                    <label for="thumbnail">User Profile Image</label>
+                                    <input type="file" class="dropify" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" required>
 
                                     @if ($errors->has('thumbnail'))
                                         <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
@@ -92,7 +87,7 @@
                                 {{-- experience --}}
                                 <div class="form-group">
                                     <label for="experience">Experience</label>
-                                    <input type="text" id="experience" name="experience" value="{{ old('experience') }}" placeholder="Experience of the leader or team">
+                                    <input type="number" id="experience" name="experience" value="{{ old('experience') }}" placeholder="Years of experience">
 
                                     @if ($errors->has('experience'))
                                         <span class="text-danger">{{ $errors->first('experience') }}</span>
@@ -111,7 +106,7 @@
                                 {{-- phone --}}
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Phone of the leader or team">
+                                    <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Phone of the leader or team">
 
                                     @if ($errors->has('phone'))
                                         <span class="text-danger">{{ $errors->first('phone') }}</span>
@@ -121,7 +116,7 @@
                                 {{-- facebook --}}
                                 <div class="form-group">
                                     <label for="facebook">Facebook</label>
-                                    <input type="text" id="facebook" name="facebook" value="{{ old('facebook') }}" placeholder="Facebook link of the leader or team">
+                                    <input type="url" id="facebook" name="facebook" value="{{ old('facebook') }}" placeholder="Facebook link of the leader or team">
 
                                     @if ($errors->has('facebook'))
                                         <span class="text-danger">{{ $errors->first('facebook') }}</span>
@@ -131,7 +126,7 @@
                                 {{-- twitter --}}
                                 <div class="form-group">
                                     <label for="twitter">Twitter</label>
-                                    <input type="text" id="twitter" name="twitter" value="{{ old('twitter') }}" placeholder="Twitter link of the leader or team">
+                                    <input type="url" id="twitter" name="twitter" value="{{ old('twitter') }}" placeholder="Twitter link of the leader or team">
 
                                     @if ($errors->has('twitter'))
                                         <span class="text-danger">{{ $errors->first('twitter') }}</span>
@@ -141,7 +136,7 @@
                                 {{-- linkedin --}}
                                 <div class="form-group">
                                     <label for="linkedin">Linkedin</label>
-                                    <input type="text" id="linkedin" name="linkedin" value="{{ old('linkedin') }}" placeholder="Linkedin link of the leader or team">
+                                    <input type="url" id="linkedin" name="linkedin" value="{{ old('linkedin') }}" placeholder="Linkedin link of the leader or team">
 
                                     @if ($errors->has('linkedin'))
                                         <span class="text-danger">{{ $errors->first('linkedin') }}</span>
@@ -151,7 +146,7 @@
                                 {{-- instagram --}}
                                 <div class="form-group">
                                     <label for="instagram">Instagram</label>
-                                    <input type="text" id="instagram" name="instagram" value="{{ old('instagram') }}" placeholder="Instagram link of the leader or team">
+                                    <input type="url" id="instagram" name="instagram" value="{{ old('instagram') }}" placeholder="Instagram link of the leader or team">
 
                                     @if ($errors->has('instagram'))
                                         <span class="text-danger">{{ $errors->first('instagram') }}</span>
@@ -159,68 +154,20 @@
                                 </div>
 
                                 {{-- certificate --}}
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="certificate">Certificate</label>
                                     <textarea id="description" name="certificate" value="{{ old('certificate') }}" placeholder="Summary of your achievements"></textarea>
 
                                     @if ($errors->has('certificate'))
                                         <span class="text-danger">{{ $errors->first('certificate') }}</span>
                                     @endif
-                                </div>
-
-
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Publish</button>
-                            </div>
+                                </div> --}}
+                            <button type="submit" class="btn btn-primary mt-4">Publish</button>
                         </form>
                     </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <table id="dnaDataTable" class="table table-bordered table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Thumbnail</th>
-                                <th>Category</th>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($teams as $team)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td><img class="thumbnail-fit" src="{{ asset('storage/' . $team->thumbnail) }}" alt=""></td>
-                                    <td style="text-transform: capitalize">{{ $team->category }}</td>
-                                    <td>{{ $team->name }}</td>
-                                    <td>{{ $team->phone }}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="{{ route('team.edit', $team->id) }}" class="btn btn-primary btn-sm rounded-0">Edit</a>
-                                            <form class="m-0 p-0" action="{{ route('team.destroy', $team->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm rounded-0">Delete</button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 </div>
             </div>
-
-            </div>
         </div>
-
 
     </div>
 @endsection

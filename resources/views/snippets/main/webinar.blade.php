@@ -37,7 +37,7 @@
 
                     @foreach ($webinars as $webinar)
                     <div class="item">
-                        <div class="service-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
+                        <div class="service-card">
                             <div class="service-card__inner">
                                 <div class="service-card__top">
                                     <h3 class="service-card__title"><a href="{{ $webinar->link }}">{{ $webinar->title }}</a></h3>

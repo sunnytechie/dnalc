@@ -1,5 +1,5 @@
 <!-- Team section Start -->
-<section class="team-one team-one--home" style="padding-bottom: 120px">
+<section class="team-one team-one--home" style="padding: 120px 30px;">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -10,18 +10,40 @@
             </div>
         </div>
         <div class="row gutter-y-30">
-
+            <div class="service-page__carousel laboix-owl__carousel laboix-owl__carousel--with-shadow laboix-owl__carousel--basic-nav owl-carousel owl-theme" data-owl-options='{
+                "items": 1,
+                "margin": 0,
+                "loop": true,
+                "smartSpeed": 700,
+                "nav": false,
+                "dots": true,
+                "autoplay": false,
+                "responsive": {
+                    "0": {
+                        "items": 1
+                    },
+                    "768": {
+                        "items": 2,
+                        "margin": 30
+                    },
+                    "992": {
+                        "items": 4,
+                        "margin": 30
+                    }
+                }
+            }'>
             @foreach ($teams as $team)
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="team-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
+
+            <div class="item">
+                <div class="team-card"'>
                     <div class="team-card__inner">
                         <div class="team-card__image">
-                            <img style="width: 100%; height: 350px; object-fit:cover;" src="{{ asset('storage/' . $team->thumbnail) }}" alt="{{ $team->name }}">
+                            <img style="width: 100%; height: 350px; object-fit: cover;" src="{{ asset('storage/' . $team->thumbnail) }}" alt="{{ $team->name }}">
                         </div>
                         <div class="team-card__content">
                             <div class="team-card__content__inner">
                                 <div class="team-card__content__item">
-                                    <h3 class="team-card__content__title"><a href="#">{{ $team->name }}</a></h3><!-- /.team-card__title -->
+                                    <h3 class="team-card__content__title"><a href="{{ route('team.details', $team->id) }}">{{ $team->name }}</a></h3><!-- /.team-card__title -->
                                     <h6 class="team-card__content__designation">{{ $team->title }}</h6><!-- /.team-card__designation -->
                                 </div>
                                 <div class="team-card__content__hover">
@@ -41,6 +63,7 @@
                 </div><!-- /.team-card -->
             </div><!-- /.col-md-6 col-lg-4 -->
             @endforeach
+        </div>
 
         </div><!-- /.row -->
     </div><!-- /.container -->

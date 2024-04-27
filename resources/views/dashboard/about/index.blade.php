@@ -205,7 +205,7 @@
 
                                 <div class="form-group mb-2">
                                     <label for="address">Office address</label>
-                                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') ?? $about->address }}" placeholder="Enter email">
+                                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') ?? $about->address }}" placeholder="Enter address">
 
                                     @error('address')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -214,7 +214,7 @@
 
                                 <div class="form-group mb-2">
                                     <label for="facebook">Facebook</label>
-                                    <input type="text" class="form-control" id="facebook" name="facebook" value="{{ old('facebook') ?? $about->facebook }}" placeholder="Enter email">
+                                    <input type="url" class="form-control" id="facebook" name="facebook" value="{{ old('facebook') ?? $about->facebook }}" placeholder="Enter facebook link">
 
                                     @error('facebook')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -223,7 +223,7 @@
 
                                 <div class="form-group mb-2">
                                     <label for="twitter">Twitter</label>
-                                    <input type="text" class="form-control" id="twitter" name="twitter" value="{{ old('twitter') ?? $about->twitter }}" placeholder="Enter email">
+                                    <input type="url" class="form-control" id="twitter" name="twitter" value="{{ old('twitter') ?? $about->twitter }}" placeholder="Enter twitter link">
 
                                     @error('twitter')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -232,7 +232,7 @@
 
                                 <div class="form-group mb-2">
                                     <label for="instagram">Instagram</label>
-                                    <input type="text" class="form-control" id="instagram" name="instagram" value="{{ old('instagram') ?? $about->instagram }}" placeholder="Enter email">
+                                    <input type="url" class="form-control" id="instagram" name="instagram" value="{{ old('instagram') ?? $about->instagram }}" placeholder="Enter instagram link">
 
                                     @error('instagram')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -241,7 +241,7 @@
 
                                 <div class="form-group mb-2">
                                     <label for="linkedin">Linkedin</label>
-                                    <input type="text" class="form-control" id="linkedin" name="linkedin" value="{{ old('linkedin') ?? $about->linkedin }}" placeholder="Enter email">
+                                    <input type="url" class="form-control" id="linkedin" name="linkedin" value="{{ old('linkedin') ?? $about->linkedin }}" placeholder="Enter linkedin link">
 
                                     @error('linkedin')
                                         <div class="alert alert-danger">{{ $message }}</div>

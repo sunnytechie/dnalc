@@ -274,4 +274,10 @@ class PagesController extends Controller
         return view('pages.privacy', compact('pageTitle', 'about', 'pageLink'));
     }
 
+    public function team($id) {
+        $team = Team::find($id);
+        $pageTitle = $team->name;
+        $pageLink = "Team";
+        return view('pages.team', compact('pageTitle', 'team', 'pageLink'));
+    }
 }

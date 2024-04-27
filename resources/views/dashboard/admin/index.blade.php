@@ -2,7 +2,7 @@
 @section('content')
     <div class="container" style="margin-top: 50px; margin-bottom: 50px">
         <div class="login-page__info d-flex justify-content-between align-items-center">
-            <p class="login-page__info__item">DNA Learning center Admin dashboard.</p>
+            <p class="login-page__info__item">DNA Learning Center Admin dashboard.</p>
 
             <div class="btn-group">
                 <a href="/" target="_blank" class="btn btn-primary rounded-0">Home Page</a>

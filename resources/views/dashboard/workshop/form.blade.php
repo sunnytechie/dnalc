@@ -500,10 +500,10 @@ function validateSection(section) {
             <div class="justify-content-center text-center mb-4">
                 <img style="width: 100px; height: 100px; object-fit: contain" src="{{ asset('assets/images/zenithbanklogo.png') }}" alt="">
             </div>
-          <p>ACCOUNT NAME:   DNA LEARNING CENTER AFRI. PRJ.</p>
-          <p>ACCOUNT NUMBER:   1016283735</p>
-          <p>BANK NAME:   ZENITH BANK</p>
-          <p>AMOUNT IN FIGURE:   <strong>₦{{ number_format($workshop->fee, 2) }}</strong></p>
+          <p>ACCOUNT NAME: DNA LEARNING CENTER AFRI. PRJ.</p>
+          <p>ACCOUNT NUMBER: 1016283735</p>
+          <p>BANK NAME: ZENITH BANK</p>
+          <p>AMOUNT IN FIGURE: <strong>₦{{ number_format($workshop->fee, 2) }}</strong></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

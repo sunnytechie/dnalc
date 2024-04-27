@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="sec-title text-center wow fadeInUp" data-wow-duration='1500ms'>
                     <h6 class="sec-title__tagline"><img src="assets/images/shapes/sec-title-s-1.png" alt="our Service" class="sec-title__img">EXPLORE RESOURCES</h6><!-- /.sec-title__tagline -->
-                    <h3 class="sec-title__title">Our Websites - Online Education</h3><!-- /.sec-title__title -->
+                    <h3 class="sec-title__title">Our Websites <br> Online Education</h3><!-- /.sec-title__title -->
                     <p>The DNALC’s award-winning suite websites includes primers on DNA structure and function, genetic disorders, the molecular basis of cancer and cognition, the history of maize cultivation, and the American eugenics movement.</p>
                 </div><!-- /.sec-title -->
             </div>
@@ -38,7 +38,7 @@
 
                     @foreach ($dnaresources as $data)
                     <div class="item">
-                        <div class="service-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
+                        <div class="service-card">
                             <div class="service-card__inner">
                                 <div class="service-card__top">
                                     <h3 class="service-card__title"><a href="{{ $data->link }}">{{ $data->title }}</a></h3>

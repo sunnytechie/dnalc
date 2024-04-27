@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('content')
+<style>
+    .blog-card__title, .blog-card__content__btn a, .team-card__content__title {
+        font-size: 12px;
+    }
+
+    .sec-title__title {
+        font-size: 35px;
+    }
+</style>
     @include('snippets.main.slider')
     @include('snippets.main.about')
     @include('snippets.main.whychooseus')

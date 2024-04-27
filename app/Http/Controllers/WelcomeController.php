@@ -15,12 +15,12 @@ use Illuminate\Http\Request;
 class WelcomeController extends Controller
 {
     public function index() {
-        $sliders = Slider::orderBy('id', 'desc')->get();
-        $sponsors = Sponsor::orderBy('id', 'desc')->get();
+        $sliders = Slider::inRandomOrder()->take(5)->get();
+        $sponsors = Sponsor::inRandomOrder()->get();
         $about = About::select('thumbnail', 'thumbnail_2', 'heading_1', 'content_1', 'heading_2', 'heading_2_content', 'content')->first();
         $faqs = Faq::orderBy('id', 'desc')->paginate(5);
-        $webinars = Webinar::orderBy('id', 'desc')->get();
-        $dnaresources = DnaResource::orderBy('id', 'desc')->get();
+        $webinars = Webinar::inRandomOrder()->get();
+        $dnaresources = DnaResource::inRandomOrder()->get();
         $posts = Post::inRandomOrder()->take(5)->get();
         $teams = Team::orderBy('id', 'desc')->paginate(5);
 

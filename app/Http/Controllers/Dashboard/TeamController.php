@@ -25,7 +25,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.team.new');
     }
 
     /**
@@ -84,7 +84,7 @@ class TeamController extends Controller
         $team->save();
 
         //redirect to the back
-        return back()->with('success', 'Team member added successfully');
+        return redirect()->route('team.index')->with('success', 'Team member added successfully');
 
     }
 

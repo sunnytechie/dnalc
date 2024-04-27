@@ -53,7 +53,7 @@
                     </div><!-- /.footer-widget -->
                 </div><!-- /.col-md-6 -->
 
-                <div class="col-md-6 col-xl-3">
+                {{-- <div class="col-md-6 col-xl-3">
                     <div class="footer-widget footer-widget--time">
                         <h4 class="footer-widget__title">Opening hours</h4>
                         <ul class="list-unstyled footer-widget__time">
@@ -86,6 +86,13 @@
                                 <p>{{ $aboutInfo['saturday_schedule'] }}</p>
                             </li>
                         </ul><!-- /.list-unstyled footer-widget__links -->
+                    </div><!-- /.footer-widget -->
+                </div><!-- /.col-md-6 --> --}}
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="footer-widget footer-widget--time">
+                        <h4 class="footer-widget__title">Facebook Page</h4>
+                        <div class="fb-like-box" data-href="https://www.facebook.com/dnalcnigeria/126860630690822/?fref=ts%2F" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
                     </div><!-- /.footer-widget -->
                 </div><!-- /.col-md-6 -->
             </div><!-- /.row -->

@@ -75,7 +75,7 @@
             <div class="col-lg-6">
                 <div class="about-two__right">
                     <div class="about-two__top">
-                        <div class="sec-title text-start wow fadeInUp" data-wow-duration='1500ms'>
+                        <div class="sec-title text-start wow fadeInUp" data-wow-duration='100ms'>
                             <h6 class="sec-title__tagline"><img src="assets/images/shapes/sec-title-s-1.png" alt="About Us" class="sec-title__img">About Us</h6><!-- /.sec-title__tagline -->
                             <h5 class="sec-title__title" style="font-size: 20px">{{ $aboutInfo['title'] }}</h3><!-- /.sec-title__title -->
                         </div><!-- /.sec-title -->
