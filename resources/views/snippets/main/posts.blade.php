@@ -39,7 +39,7 @@
                 <div class="blog-card">
                     <div class="blog-card__image">
                         <div class="blog-card__image__item">
-                            <img style="width: 100%; height: 350px; object-fit: contain;" src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ Str::limit($post->title, 30) }}">
+                            <img style="width: 100%; height: 350px; object-fit: cover;" src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ Str::limit($post->title, 30) }}">
                             <a href="{{ route('blog.post', $post->id) }}" class="blog-card__image__link"></a>
                         </div>
                         <div class="blog-card__date"> <span class="blog-card__date__day">{{ $post->created_at->day }}</span>{{ $post->created_at->format('M') }}</div><!-- /.blog-card__date -->
