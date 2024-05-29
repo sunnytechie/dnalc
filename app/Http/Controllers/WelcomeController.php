@@ -18,7 +18,7 @@ class WelcomeController extends Controller
         $sliders = Slider::inRandomOrder()->take(5)->get();
         $sponsors = Sponsor::inRandomOrder()->get();
         $about = About::select('thumbnail', 'thumbnail_2', 'heading_1', 'content_1', 'heading_2', 'heading_2_content', 'content')->first();
-        $faqs = Faq::orderBy('id', 'desc')->paginate(5);
+        $faqs = Faq::orderBy('id', 'desc')->paginate(3);
         $webinars = Webinar::inRandomOrder()->get();
         $dnaresources = DnaResource::inRandomOrder()->get();
         $posts = Post::inRandomOrder()->take(5)->get();

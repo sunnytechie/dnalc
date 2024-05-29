@@ -78,7 +78,6 @@
                                 <th>#</th>
                                 <th>Thumbnail</th>
                                 <th>Title</th>
-                                <th>Description</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -90,7 +89,7 @@
                                         <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}" class="img-fluid" style="width: 50px; height: 50px; object-fit: cover">
                                     </td>
                                     <td>{{ $post->title }}</td>
-                                    <td>{!! \Illuminate\Support\Str::limit($post->content, 10) !!}</td>
+                                    {{-- <td>{!! \Illuminate\Support\Str::limit($post->content, 10) !!}</td> --}}
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary btn-sm">Edit</a>

@@ -12,7 +12,7 @@
         </div><!-- login-info -->
 
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-10 offset-md-1">
                 <div class="card mb-5">
                     <div class="card-header">Post</div>
                     <div class="card-body">

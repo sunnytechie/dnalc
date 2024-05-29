@@ -27,7 +27,10 @@
                                 </div>
                             </div><!-- /.accordian-item -->
                             @endforeach
+                        </div>
 
+                        <div class="mt-3">
+                            <a class="btn border-0 rounded-0 btn-success" href="{{ route('faq') }}">See more...</a>
                         </div>
                     </div>
                 </div>
