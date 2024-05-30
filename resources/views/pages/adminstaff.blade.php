@@ -107,14 +107,15 @@
                         </p>
                     </div>
                 </div>
-            </div>
 
-            @foreach ($teams as $team)
+
+                    <div class="row">
+                        @foreach ($teams as $team)
                             <div class="col-md-4">
                                 <div class="team-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
                                     <div class="team-card__inner">
                                         <div class="team-card__image">
-                                            <img style="width: 100%; height: 350px; object-fit:cover;" src="{{ asset('storage/' . $team->thumbnail) }}" alt="{{ $team->name }}">
+                                            <img class="img-responsive" src="{{ asset('storage/' . $team->thumbnail) }}" alt="{{ $team->name }}">
                                         </div>
                                         <div class="team-card__content">
                                             <div class="team-card__content__inner">
@@ -139,6 +140,9 @@
                                 </div><!-- /.team-card -->
                             </div><!-- /.col-md-6 col-lg-4 -->
                         @endforeach
+                    </div>
+
+            </div>
 
         </div>
     </div>

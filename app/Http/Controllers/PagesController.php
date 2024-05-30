@@ -100,21 +100,21 @@ class PagesController extends Controller
     public function adminstaff() {
         $pageTitle = "Administrative Staff.";
         $pageLink = "About us / Administrative";
-        $teams = Team::all();
+        $teams = Team::where('category', 'administrative')->get();
         return view('pages.adminstaff', compact('pageTitle', 'teams', 'pageLink'));
     }
 
     public function teachingstaff() {
         $pageTitle = "Teaching Staff.";
         $pageLink = "About us / Teaching";
-        $teams = Team::all();
+        $teams = Team::where('category', 'teaching')->get();
         return view('pages.teachingstaff', compact('pageTitle', 'teams', 'pageLink'));
     }
 
     public function researchstaff() {
         $pageTitle = "Research Staff.";
         $pageLink = "About us / Research";
-        $teams = Team::all();
+        $teams = Team::where('category', 'research')->get();
         return view('pages.researchstaff', compact('pageTitle', 'teams', 'pageLink'));
     }
 
