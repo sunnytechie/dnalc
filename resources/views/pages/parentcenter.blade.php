@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<title>{{ $pageTitle }}</title>
 @section('content')
 <style>
     .page-header {
@@ -30,7 +31,7 @@
                     <div class="about-two__thumb">
 
                         <div class="about-two__thumb__item">
-                            <img style="width: 100%;" src="{{ asset('storage/' . $about->thumbnail) }}" alt="DNALC">
+                            <img style="width: 100%;" src="{{ asset('assets/images/dna/dnalearningcenter.png') }}" alt="DNALC">
                         </div>
 
                         <div style="background: #0C4960; padding: 20px; width: 100%;">

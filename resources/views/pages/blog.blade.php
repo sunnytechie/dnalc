@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<title>{{ $pageTitle }}</title>
 @section('content')
 <style>
     .page-header {
@@ -11,6 +12,12 @@
 
     .blog-card__two__meta__item:last-child::before {
         display: none;
+    }
+
+    .post-card-img {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
     }
 </style>
 <section class="page-header">
@@ -27,25 +34,25 @@
 
 <section class="blog-one blog-one--page">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="row">
                     @foreach ($posts as $post)
-                    <div class="col-md-12">
+                    <div class="col-md-4">
                         <div class="blog-card__two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
                             <div class="blog-card__two__image">
-                                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}">
+                                <img class="post-card-img" src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}">
                                 <a href="{{ route('blog.post', $post->id) }}" class="blog-card__two__image__item"></a>
                                 <div class="blog-card__two__date"> <span class="blog-card__two__date__day">{{ $post->created_at->day }}</span>{{ $post->created_at->format('M') }}</div><!-- /.blog-card__two__date -->
                             </div><!-- /.blog-card__two__image -->
                             <div class="blog-card__two__content">
                                 <ul class="list-unstyled blog-card__two__meta">
-                                    <li class="blog-card__two__meta__item"><a href="{{ route('blog.post', $post->id) }}"> <i class="icon-user"></i>By admin</a></li>
+                                    <li class="blog-card__two__meta__item"><a href="{{ route('blog.post', $post->id) }}"> <i class="icon-user"></i><span>Post By admin on:  {{ $post->created_at->day }}</span> {{ $post->created_at->format('M') }} {{ $post->created_at->format('Y') }}</a> </li>
                                     {{-- <li class="blog-card__two__meta__item"><a href="blog-details.html"> <i class="icon-chatting2"></i> 2 Comment</a></li> --}}
                                 </ul><!-- /.list-unstyled blog-card__two__meta -->
-                                <h3 class="blog-card__two__title"><a href="{{ route('blog.post', $post->id) }}">{{ $post->title }}</a></h3><!-- /.blog-card__two__title -->
-                                <p class="blog-card__two__text">{!! Str::limit($post->content, '100') !!}</p><!-- /.blog-card__two-two__text -->
-                                <a href="{{ route('blog.post', $post->id) }}" class="blog-card__two__link laboix-btn laboix-btn--submite"><i class="icon-arrow"></i></a><!-- /.blog-card__two__link -->
+                                <h5 style="font-size: 20px" class="blog-card__two__title"><a href="{{ route('blog.post', $post->id) }}">{{ $post->title }}</a></h5><!-- /.blog-card__two__title -->
+                                {{-- <p class="blog-card__two__text">{!! Str::limit($post->content, '100') !!}</p><!-- /.blog-card__two-two__text --> --}}
+                                {{-- <a href="{{ route('blog.post', $post->id) }}" class="blog-card__two__link laboix-btn laboix-btn--submite"><i class="icon-arrow"></i></a><!-- /.blog-card__two__link --> --}}
                             </div><!-- /.blog-card-two__content -->
                         </div><!-- /.blog-card -->
                     </div><!-- /.col-md-12 -->

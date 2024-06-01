@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<title>{{ $pageTitle }}</title>
 @section('content')
 <style>
     .page-header {
@@ -14,7 +15,7 @@
     }
 </style>
 <section class="page-header">
-    <div class="page-header__bg" style="background-image: url({{ asset('assets/images/dna/83.png') }})"></div>
+    <div class="page-header__bg" style="background-image: url({{ asset('storage/' . $post->thumbnail) }})"></div>
     <!-- /.page-header__bg -->
     <div class="container">
         <h2 class="page-header__title">{{ $pageTitle }}</h2>
@@ -31,13 +32,13 @@
             <div class="col-lg-8">
                 <div class="blog-details">
                     <div class="blog-card__two">
-                        <div class="blog-card__two__image">
+                        {{-- <div class="blog-card__two__image">
                             <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}">
                             <div class="blog-card__two__date"> <span class="blog-card__two__date__day">{{ $post->created_at->day }}</span>{{ $post->created_at->format('M') }}</div><!-- /.blog-card__two__date -->
-                        </div><!-- /.blog-card__two__image -->
+                        </div><!-- /.blog-card__two__image --> --}}
                         <div class="blog-card__two__content">
                             <ul class="list-unstyled blog-card__two__meta">
-                                <li class="blog-card__two__meta__item"><a href="#"> <i class="icon-user"></i>By admin</a></li>
+                                <li class="blog-card__two__meta__item"><a href="#"> <i class="icon-user"></i>Post By admin on:  {{ $post->created_at->day }}</span> {{ $post->created_at->format('M') }} {{ $post->created_at->format('Y') }}</a></li>
                                 {{-- <li class="blog-card__two__meta__item"><a href="blog-details.html"> <i class="icon-chatting2"></i> 2 Comment</a></li> --}}
                             </ul><!-- /.list-unstyled blog-card__two__meta -->
                             {{-- <h3 class="blog-card__two__title blog-card__two__title--two"><a href="blog-details-right.html">Chemical plant for workplace safety topics </a></h3><!-- /.blog-card__two__title --> --}}

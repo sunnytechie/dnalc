@@ -1,5 +1,6 @@
 
 @extends('layouts.app')
+<title>{{ $pageTitle }}</title>
 @section('content')
 <style>
     .page-header {
