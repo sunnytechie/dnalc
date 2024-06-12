@@ -43,8 +43,8 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="image">image</label>
-                                    <input type="file" id="image" class="dropify" accept=".png, .jpg, .jpeg" name="image" required>
+                                    <label for="gallery">gallery</label>
+                                    <input type="file" id="gallery" multiple class="dropify" accept=".png, .jpg, .jpeg" name="images[]" required>
 
                                     @if ($errors->has('image'))
                                         <span class="text-danger">{{ $errors->first('image') }}</span>
@@ -268,4 +268,23 @@
 
         </div>
     </div>
+
+
+
+
+    <script>
+        document.getElementById('gallery').addEventListener('change', function(event) {
+            const gallery = event.target;
+            const files = gallery.files;
+            const fileError = document.getElementById('fileError');
+
+            if (files.length > 10) {
+                fileError.style.display = 'block';
+                gallery.value = ''; // Clear the input
+            } else {
+                fileError.style.display = 'none';
+            }
+        });
+
+    </script>
 @endsection

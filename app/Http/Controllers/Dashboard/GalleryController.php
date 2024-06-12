@@ -28,7 +28,7 @@ class GalleryController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $fileName = uniqid(). '_' . time() . '.' . $request->file('image')->getClientOriginalExtension();;
+            $fileName = uniqid(). '_' . time() . '.' . $request->file('image')->getClientOriginalExtension();
             $file->storeAs('public/gallerycover', $fileName);
         }
 
@@ -61,7 +61,7 @@ class GalleryController extends Controller
     public function newsubcategory(Request $request) {
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $fileName = uniqid(). '_' . time() . '.' . $request->file('image')->getClientOriginalExtension();;
+            $fileName = uniqid(). '_' . time() . '.' . $request->file('image')->getClientOriginalExtension();
             $file->storeAs('public/gallerycover', $fileName);
         }
 
@@ -102,36 +102,29 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        //validate the request
-        $request->validate([
-            'category' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
 
-        //store the image
-        //Manager driver for image Processing
-        if ($request->hasFile('image')) {
-            //Manager driver for image Processing
-            $manager = new ImageManager(new Driver());
+        if ($request->hasFile('images')) {
+            $files = $request->file('images');
 
-            //save the image
-            $image = $manager->read($request->file('image')->getRealPath());
-            $image->scaleDown(370, 240);
+            foreach ($files as $file) {
+                // Generate a unique file name
+                $fileName = uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension();
 
-            $imageName = $request->file('image')->hashName();
-            //storeAs
-            $file = $request->file('image')->storeAs('uploads/gallery', $imageName, 'public');
+                // Store the file
+                $file->storeAs('uploads/gallery', $fileName, 'public');
+
+                try {
+                    // Save the file information in the database
+                    $gallery = new Gallery();
+                    $gallery->category = $request->category;
+                    $gallery->image = "uploads/gallery/" . $fileName;
+                    $gallery->save();
+                } catch (\Exception $e) {
+                    return redirect()->back()->with('error', 'Error Adding Image');
+                }
+            }
         }
 
-        try {
-            $gallery = new Gallery();
-            $gallery->category = $request->category;
-            $gallery->image = "uploads/gallery/" . $imageName;
-            $gallery->save();
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error Adding Image');
-        }
 
         return redirect()->back()->with('success', 'Image Added Successfully');
     }
