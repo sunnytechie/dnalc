@@ -48,7 +48,7 @@
         opacity: 1;
     }
 </style>
-<section class="about-two pt-3">
+<section class="about-two">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 remove-on-599">
