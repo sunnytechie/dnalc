@@ -59,11 +59,12 @@
                 <div class="about-two__left">
 
                     <div class="about-two__thumb in-page-link">
-                        <a href="{{ route('worlddna') }}" class="mb-3 w-100 btn staff-btn @if(Route::currentRouteName() == 'worlddna') active @endif">DNA World</a>
-                        <a href="{{ route('dnascience') }}" class="mb-3 w-100 btn staff-btn @if(Route::currentRouteName() == 'dnascience') active @endif">DNA Science</a>
-                        <a href="{{ route('genomescience') }}" class="mb-3 w-100 btn staff-btn @if(Route::currentRouteName() == 'genomescience') active @endif">Genome Science</a>
-                        <a href="{{ route('dnabarcoding') }}" class="mb-3 w-100 btn staff-btn @if(Route::currentRouteName() == 'dnabarcoding') active @endif">DNA Barcoding</a>
-                        <a href="{{ route('dnametabarcoding') }}" class="mb-3 w-100 btn staff-btn @if(Route::currentRouteName() == 'dnametabarcoding') active @endif">DNA Metabarcoding</a>
+                        <div class="mb-3 w-100 btn staff-btn active">World of DNA</div>
+                        <div class="mb-3 w-100 btn staff-btn active">DNA Science</div>
+                        <div class="mb-3 w-100 btn staff-btn active">Genome Science & Human Genetics using PV92</div>
+                        <div class="mb-3 w-100 btn staff-btn active">DNA Barcoding</div>
+                        <div class="mb-3 w-100 btn staff-btn active">DNA Microbiome & Metabarcoding</div>
+                        <div class="mb-3 w-100 btn staff-btn active">DNA Fingerprinting & forensics</div>
                     </div>
 
                 </div>

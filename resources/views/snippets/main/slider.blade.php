@@ -39,11 +39,11 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-lg-6">
+                                            {{-- 590 x 692 --}}
+                            <div class="col-lg-6 remove-on-765">
                                 <div class="main-slider-two__image">
                                     <div class="main-slider-two__image__item">
-                                        {{-- 590 x 692 --}}
+
                                         <img src="{{ asset('storage/' . $slider->flyer) }}" alt="laboix hero image">
                                     </div>
 

@@ -84,7 +84,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('gallery') }}">
+                        <a href="{{ route('category.gallery') }}">
                             Gallery
                         </a>
                     </li>

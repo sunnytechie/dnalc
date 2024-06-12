@@ -1,5 +1,5 @@
 <!-- Team section Start -->
-<section class="team-one team-one--home" style="padding: 120px 30px;">
+<section class="team-one team-one--home remove-on-mobile" style="padding: 120px 50px;">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -17,17 +17,17 @@
                 "smartSpeed": 700,
                 "nav": false,
                 "dots": true,
-                "autoplay": false,
+                "autoplay": true,
                 "responsive": {
                     "0": {
                         "items": 1
                     },
                     "768": {
-                        "items": 2,
+                        "items": 3,
                         "margin": 30
                     },
                     "992": {
-                        "items": 4,
+                        "items": 5,
                         "margin": 30
                     }
                 }
@@ -38,7 +38,7 @@
                 <div class="team-card"'>
                     <div class="team-card__inner">
                         <div class="team-card__image">
-                            <img style="width: 100%; height: 350px; object-fit: cover;" src="{{ asset('storage/' . $team->thumbnail) }}" alt="{{ $team->name }}">
+                            <img style="width: 100%; height: 250px; object-fit: cover;" src="{{ asset('storage/' . $team->thumbnail) }}" alt="{{ $team->name }}">
                         </div>
                         <div class="team-card__content">
                             <div class="team-card__content__inner">

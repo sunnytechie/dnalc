@@ -7,6 +7,8 @@ use App\Models\Post;
 use App\Models\Team;
 use App\Models\About;
 use App\Models\Gallery;
+use App\Models\GalleryCategory;
+use App\Models\GallerySubCategory;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
 
@@ -188,12 +190,25 @@ class PagesController extends Controller
         return view('pages.workshop', compact('pageTitle', 'workshops', 'pageLink'));
     }
 
-    public function gallery() {
+    public function galleryCategory() {
         $pageTitle = "DNALC Gallery";
         $pageLink = "Gallery";
         $galleries = Gallery::all();
 
-        return view('pages.gallery', compact('pageTitle', 'galleries', 'pageLink'));
+        $categories = GalleryCategory::orderBy('id', 'DESC')->get();
+
+        return view('pages.gallery.category', compact('pageTitle', 'galleries', 'pageLink', 'categories'));
+    }
+
+    public function gallery($id) {
+        $pageTitle = "DNALC Gallery";
+        $pageLink = "Gallery";
+
+        $subcategories = GallerySubCategory::with('galleries')->orderBy('id', 'DESC')
+                                ->where('gallery_category_id', $id)
+                                ->get();
+
+        return view('pages.gallery.index', compact('pageTitle', 'pageLink', 'subcategories'));
     }
 
     public function conference() {

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\GalleryCategory;
+use App\Models\GallerySubCategory;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
@@ -17,8 +19,75 @@ class GalleryController extends Controller
     public function index()
     {
         $galleries = Gallery::all();
-        return view('dashboard.gallery.index', compact('galleries'));
+        $categories = GalleryCategory::with('gallery_sub_categories')->get();
+
+        return view('dashboard.gallery.index', compact('galleries', 'categories'));
     }
+
+    public function newcategory(Request $request) {
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = uniqid(). '_' . time() . '.' . $request->file('image')->getClientOriginalExtension();;
+            $file->storeAs('public/gallerycover', $fileName);
+        }
+
+        try {
+            $category = new GalleryCategory();
+            $category->title = $request->title;
+            $category->image = $fileName ?? null;
+            $category->save();
+            return back()->with('success', "Category added.");
+        } catch (\Throwable $th) {
+            return back()->with('failed', "Error oocured.");
+        }
+    }
+
+    public function deletecategory($id) {
+        try {
+            $category = GalleryCategory::find($id);
+            $subcategories = GallerySubCategory::where('gallery_category_id', $id)->get();
+            foreach ($subcategories as $subcategory) {
+                $subcategory->delete();
+            }
+            $category->delete();
+            return back()->with('success', "Category deleted.");
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('failed', "Error oocured.");
+        }
+    }
+
+    public function newsubcategory(Request $request) {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = uniqid(). '_' . time() . '.' . $request->file('image')->getClientOriginalExtension();;
+            $file->storeAs('public/gallerycover', $fileName);
+        }
+
+        try {
+            $category = new GallerySubCategory();
+            $category->title = $request->title;
+            $category->image = $fileName ?? null;
+            $category->gallery_category_id = $request->category;
+            $category->save();
+            return back()->with('success', "Sub Category added.");
+        } catch (\Throwable $th) {
+            return back()->with('failed', "Error oocured.");
+        }
+    }
+
+    public function deletesubcategory($id) {
+        try {
+            $category = GallerySubCategory::find($id);
+            $category->delete();
+            return back()->with('success', "Category deleted.");
+        } catch (\Throwable $th) {
+            return back()->with('failed', "Error oocured.");
+        }
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

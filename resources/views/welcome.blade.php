@@ -10,6 +10,7 @@
     }
 </style>
     @include('snippets.main.slider')
+    {{-- @include('snippets.main.newslider') --}}
     @include('snippets.main.about')
     @include('snippets.main.whychooseus')
     @include('snippets.main.webinar')

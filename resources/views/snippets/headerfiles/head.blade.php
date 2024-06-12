@@ -232,5 +232,17 @@
             padding: 25px;
         }
 
+        @media(max-width: 765px){
+            .remove-on-765 {
+                display: none;
+            }
+        }
+
+        @media(max-width: 599px){
+            .remove-on-599 {
+                display: none;
+            }
+        }
+
     </style>
 </head>

@@ -8,9 +8,9 @@
         <div class="custom-cursor__cursor-two"></div>
 
         <!-- Preloader Start-->
-        <div class="preloader">
+        {{-- <div class="preloader">
             <div class="preloader__image" style="background-image: url({{ asset('assets/images/dna/dnalogo2.png') }});"></div>
-        </div>
+        </div> --}}
         <!-- Preloader End-->
 
         <div class="page-wrapper">

@@ -76,9 +76,11 @@ Route::prefix('pages')->group(function () {
     Route::get('/post/graduate', [PagesController::class, 'postgraduate'])->name('postgraduate');
     Route::get('/drde', [PagesController::class, 'drde'])->name('drde');
     Route::get('/pdrp', [PagesController::class, 'pdrp'])->name('pdrp');
-    //multimedia
     Route::get('/workshop', [PagesController::class, 'workshop'])->name('workshop');
-    Route::get('/gallery', [PagesController::class, 'gallery'])->name('gallery');
+
+    Route::get('/gallery/category', [PagesController::class, 'galleryCategory'])->name('category.gallery');
+    Route::get('/gallery/{id}', [PagesController::class, 'gallery'])->name('gallery');
+
     Route::get('/conference', [PagesController::class, 'conference'])->name('conference');
     Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
     Route::get('/blog/post/{id}', [PagesController::class, 'blogPost'])->name('blog.post');
@@ -197,6 +199,17 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
         Route::get('/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
         Route::put('/update/{id}', [GalleryController::class, 'update'])->name('gallery.update');
         Route::delete('/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+
+        //category
+        Route::prefix('category')->group(function () {
+            Route::post('/store', [GalleryController::class, 'newcategory'])->name('category.gallery.store');
+            Route::delete('/destroy/{id}', [GalleryController::class, 'deletecategory'])->name('category.gallery.destroy');
+        });
+        //sub category
+        Route::prefix('subcategory')->group(function () {
+            Route::post('/store', [GalleryController::class, 'newsubcategory'])->name('sub.category.gallery.store');
+            Route::delete('/destroy/{id}', [GalleryController::class, 'deletesubcategory'])->name('sub.category.gallery.destroy');
+        });
     });
 
     //workshop

@@ -48,10 +48,10 @@
         opacity: 1;
     }
 </style>
-<section class="about-two">
+<section class="about-two pt-3">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 remove-on-599">
                 <div class="about-two__left">
                     <div>
                         <div class="client-carousel client-carousel-one about-us">
@@ -66,29 +66,17 @@
                             "nav":false,
                             "dots":false,
                             "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
-                            "responsive":{
-                                "0":{
-                                    "items":1,
-                                    "margin": 0
+                            "responsive": {
+                                "0": {
+                                    "items": 1
                                 },
-                                "360":{
-                                    "items":1,
-                                    "margin": 0
-                                },
-                                "575":{
-                                    "items":1,
+                                "768": {
+                                    "items": 3,
                                     "margin": 30
                                 },
-                                "768":{
-                                    "items":1,
-                                    "margin": 40
-                                },
-                                "992":{
-                                    "items": 1,
-                                    "margin": 40
-                                },
-                                "1200":{
-                                    "items": 1
+                                "992": {
+                                    "items": 5,
+                                    "margin": 30
                                 }
                             }
                             }'>
@@ -117,6 +105,16 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
             <div class="col-lg-6">
                 <div class="about-two__right">
                     <div class="about-two__top">
