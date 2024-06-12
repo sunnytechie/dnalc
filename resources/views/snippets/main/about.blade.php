@@ -71,11 +71,11 @@
                                     "items": 1
                                 },
                                 "768": {
-                                    "items": 3,
+                                    "items": 1,
                                     "margin": 30
                                 },
                                 "992": {
-                                    "items": 5,
+                                    "items": 2,
                                     "margin": 30
                                 }
                             }
