@@ -31,7 +31,7 @@
                 <div class="col-md-6 col-lg-4">
                     <a href="{{ route('gallery', $category->id) }}">
                         <div class="gallery-one__card">
-                            <img style="width: 100%; height: 250px; object-fit: cover" src="{{ asset('storage/gallerycover/' . $category->image) }}" alt="laboix">
+                            <img style="width: 100%; height: 250px; object-fit: cover" src="{{ url('storage' . '/gallerycover/' . $category->image) }}" alt="{{ $category->name }}">
                         </div><!-- /.gallery-one__card -->
                     </a>
                 </div><!-- /.col-md-6 col-lg-4 -->
