@@ -35,7 +35,7 @@ class SliderController extends Controller
     {
         //validate the request
         $request->validate([
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            //'thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'flyer' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
@@ -45,15 +45,7 @@ class SliderController extends Controller
         //Manager driver for image Processing
         $manager = new ImageManager(new Driver());
 
-        if ($request->hasFile('thumbnail')) {
-            //save the thumbnail
-            $thumbnail = $manager->read($request->file('thumbnail')->getRealPath());
-            $thumbnail->scaleDown(1920, 1080);
 
-            $thumbnailName = $request->file('thumbnail')->hashName();
-            //storeAs
-            $file = $request->file('thumbnail')->storeAs('uploads/slider', $thumbnailName, 'public');
-        }
 
         //if has flyer
         if ($request->hasFile('flyer')) {
@@ -71,10 +63,8 @@ class SliderController extends Controller
         $slider->title = $request->title;
         $slider->description = $request->description;
         $slider->link = $request->link;
-        if ($request->hasFile('thumbnail')) {
-        $slider->thumbnail = "uploads/slider/$thumbnailName";
-        }
         if ($request->hasFile('flyer')) {
+        $slider->thumbnail = "uploads/slider/$flyerName";
         $slider->flyer = "uploads/slider/$flyerName";
         }
         $slider->save();

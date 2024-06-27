@@ -9,7 +9,7 @@
         font-size: 35px;
     }
 </style>
-    @include('snippets.main.slider')
+    @include('snippets.main.slide')
     {{-- @include('snippets.main.newslider') --}}
     @include('snippets.main.about')
     @include('snippets.main.whychooseus')

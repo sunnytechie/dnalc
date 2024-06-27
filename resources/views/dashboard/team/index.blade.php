@@ -36,6 +36,9 @@
                                 <div class="form-group mb-3">
                                     <label for="title">Title</label>
                                     <select name="title" id="title" class="form-control">
+                                        <option>Mr</option>
+                                        <option>Mrs</option>
+                                        <option>Miss</option>
                                         <option>Professor</option>
                                         <option>Reverend</option>
                                         <option>Honorable</option>

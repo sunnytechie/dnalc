@@ -31,14 +31,21 @@
                                 <div class="form-group mb-3">
                                     <label for="title">Title</label>
                                     <select name="title" id="title" class="form-control">
-                                        <option>Sir</option>
-                                        <option>Madam</option>
-                                        <option>Professor</option>
-                                        <option>Reverend</option>
-                                        <option>Honorable</option>
-                                        <option>Esquire</option>
-                                        <option>Engineer</option>
-                                        <option>Doctor</option>
+                                        <option value="Mr">Mr.</option>
+                                        <option value="Mrs">Mrs.</option>
+                                        <option value="Miss">Miss.</option>
+                                        <option value="Master">Master.</option>
+                                        <option value="Prof">Prof.</option>
+                                        <option value="Rev">Rev.</option>
+                                        <option value="Hon">Hon.</option>
+                                        <option value="Sir">Sir.</option>
+                                        <option value="Engr">Engr.</option>
+                                        <option value="Doc">Doc.</option>
+                                        <option value="Intern">Intern</option>
+                                        <option value="Head of Research">Head of Research</option>
+                                        <option value="Head of Teaching">Head of Teaching</option>
+                                        <option value="Security">Security</option>
+                                        <option value="Janitor">Janitor</option>
                                     </select>
                                     @if ($errors->has('title'))
                                         <span class="text-danger">{{ $errors->first('title') }}</span>

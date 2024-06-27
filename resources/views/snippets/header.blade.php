@@ -1,4 +1,11 @@
 
+<style>
+    header {
+        background: rgba(0, 0, 0, 0.7) !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+</style>
 <header class="main-header sticky-header main-header--two sticky-header--normal">
     <div class="container-fluid">
         <div class="main-header__inner">

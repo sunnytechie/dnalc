@@ -121,8 +121,8 @@
                                         <div class="team-card__content">
                                             <div class="team-card__content__inner">
                                                 <div class="team-card__content__item">
-                                                    <h3 class="team-card__content__title"><a href="#">{{ $team->name }}</a></h3><!-- /.team-card__title -->
-                                                    <h6 class="team-card__content__designation">{{ $team->title }}</h6><!-- /.team-card__designation -->
+                                                    <h3 class="team-card__content__title"><a href="#">{{ $team->title }}. {{ $team->name }}</a></h3>
+                                                    {{-- <h6 class="team-card__content__designation">{{ $team->title }}</h6> --}}
                                                 </div>
                                                 <div class="team-card__content__hover">
                                                     <div class="team-card__content__hover__icon">

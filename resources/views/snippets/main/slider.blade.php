@@ -1,10 +1,10 @@
 <!-- main-slider-start -->
-{{-- <style>
+<style>
     .main-slider-two__image__item {
         mask: none;
         -webkit-mask: none;
     }
-</style> --}}
+</style>
 <section class="main-slider-two">
     <div class="main-slider-two__carousel laboix-owl__carousel owl-carousel" data-owl-options='{
     "loop": true,

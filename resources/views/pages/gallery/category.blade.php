@@ -32,6 +32,7 @@
                     <a href="{{ route('gallery', $category->id) }}">
                         <div class="gallery-one__card">
                             <img style="width: 100%; height: 250px; object-fit: cover" src="/storage{{ '/gallerycover/' . $category->image }}" alt="{{ $category->title }}">
+                            <div class="p-2" style="background: #0C4960; color: #ffffff">{{ $category->title }}</div>
                         </div><!-- /.gallery-one__card -->
                     </a>
                 </div><!-- /.col-md-6 col-lg-4 -->

@@ -32,14 +32,21 @@
                                 <div class="form-group mb-3">
                                     <label for="title">Title</label>
                                     <select name="title" id="title" class="form-control">
-                                        <option @if ($team->title == "Professor") selected @endif>Professor</option>
-                                        <option @if ($team->title == "Reverend") selected @endif>Reverend</option>
-                                        <option @if ($team->title == "Honorable") selected @endif>Honorable</option>
-                                        <option @if ($team->title == "Sir") selected @endif>Sir</option>
-                                        <option @if ($team->title == "Madam") selected @endif>Madam</option>
-                                        <option @if ($team->title == "Esquire") selected @endif>Esquire</option>
-                                        <option @if ($team->title == "Engineer") selected @endif>Engineer</option>
-                                        <option @if ($team->title == "Doctor") selected @endif>Doctor</option>
+                                        <option @if ($team->title == "Mr") selected @endif>Mr.</option>
+                                        <option @if ($team->title == "Mrs") selected @endif>Mrs.</option>
+                                        <option @if ($team->title == "Miss") selected @endif>Miss.</option>
+                                        <option @if ($team->title == "Master") selected @endif>Master.</option>
+                                        <option @if ($team->title == "Prof") selected @endif>Prof.</option>
+                                        <option @if ($team->title == "Rev") selected @endif>Rev.</option>
+                                        <option @if ($team->title == "Hon") selected @endif>Hon.</option>
+                                        <option @if ($team->title == "Sir") selected @endif>Sir.</option>
+                                        <option @if ($team->title == "Engr") selected @endif>Engr.</option>
+                                        <option @if ($team->title == "Doc") selected @endif>Doc.</option>
+                                        <option @if ($team->title == "Intern") selected @endif>Intern</option>
+                                        <option @if ($team->title == "Head of Research") selected @endif>Head of Research</option>
+                                        <option @if ($team->title == "Head of Teaching") selected @endif>Head of Teaching</option>
+                                        <option @if ($team->title == "Security") selected @endif>Security</option>
+                                        <option @if ($team->title == "Janitor") selected @endif>Janitor</option>
                                     </select>
                                     @if ($errors->has('title'))
                                         <span class="text-danger">{{ $errors->first('title') }}</span>

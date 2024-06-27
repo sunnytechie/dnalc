@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="flyer">Flyer (Appropriate size: 590x682)</label>
+                                    <label for="flyer">Flyer (Appropriate size: 1080x1920)</label>
                                     <input type="file" id="flyer" accept=".png, .jpg, .jpeg" name="flyer" required>
 
                                     @if ($errors->has('flyer'))
@@ -60,14 +60,14 @@
                                     @endif
                                 </div>
 
-                                <div class="form-group mb-3">
+                                {{-- <div class="form-group mb-3">
                                     <label for="thumbnail">Background Image</label>
                                     <input type="file" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" required>
 
                                     @if ($errors->has('thumbnail'))
                                         <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
                                     @endif
-                                </div>
+                                </div> --}}
 
                                 {{-- <div class="form-group mb-3">
                                     <label for="logo">Logo (optional)</label>
