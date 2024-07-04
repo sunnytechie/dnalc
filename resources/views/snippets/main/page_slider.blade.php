@@ -16,7 +16,7 @@
                     @foreach ($sliders as $slider)
                         <div class="item">
                             <div class="main-slider-three__item">
-                                <div class="main-slider-three__bg" style="background-image: url({{ asset('storage/' . $slider->thumbnail) }});"></div>
+                                <div class="main-slider-three__bg" style="background-image: url({{ asset('storage/' . $slider->thumbnail) }}); background-size: contain;"></div>
                                 <div class="container">
                                     <div class="row align-items-center">
                                         <div class="col-12">
