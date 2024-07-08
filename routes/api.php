@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\HomeScreenController;
 use App\Http\Controllers\Api\NewsScreenController;
 use App\Http\Controllers\Api\PinkController;
 use App\Http\Controllers\Api\SearchController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +22,16 @@ Route::prefix('auth')->group(function () {
     Route::post('/new/password', [AuthController::class, 'newPassword']);
 });
 
+//user profile
+Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
+    Route::post('/profile', [UserController::class, 'profileUpdate']);
+    Route::post('/password', [UserController::class, 'passwordUpdate']);
+});
+
 //Quest Can
 Route::prefix('home')->group(function () {
     Route::get('/', [HomeScreenController::class, 'home']);
 });
-
 
 //Quest Can
 Route::post('/search/{type?}', [SearchController::class, 'search']);
