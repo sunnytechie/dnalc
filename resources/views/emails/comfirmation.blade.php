@@ -10,5 +10,5 @@
 
 Best regards,<br>
 Admin
-{{ config('app.name') }}
+&copy; {{ date('Y') }} DNA | Learning Center. All rights reserved.
 </x-mail::message>

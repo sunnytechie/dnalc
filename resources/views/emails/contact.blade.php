@@ -13,5 +13,5 @@ Message: {{ $contact['message'] }} <br>
 Please respond to this message as soon as possible.
 <br><br>
 Thank you,<br>
-{{ config('app.name') }}
+&copy; {{ date('Y') }} DNA | Learning Center. All rights reserved.
 </x-mail::message>
