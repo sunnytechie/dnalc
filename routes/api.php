@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CourseScreenController;
 use App\Http\Controllers\Api\HomeScreenController;
 use App\Http\Controllers\Api\NewsScreenController;
 use App\Http\Controllers\Api\PinkController;
+use App\Http\Controllers\Api\SearchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,27 +21,32 @@ Route::prefix('auth')->group(function () {
     Route::post('/new/password', [AuthController::class, 'newPassword']);
 });
 
+//Quest Can
 Route::prefix('home')->group(function () {
     Route::get('/', [HomeScreenController::class, 'home']);
 });
 
+
+//Quest Can
+Route::post('/search/{type?}', [SearchController::class, 'search']);
+Route::get('/faq', [HomeScreenController::class, 'faq']);
+
+//Only Auth
 Route::group(['prefix' => 'courses', 'middleware' => 'auth:api'], function () {
     Route::get('/user', [CourseScreenController::class, 'userCourses']);
+    Route::post('/apply/{id}', [CourseScreenController::class, 'apply']);
 });
 
+//Quest Can
 Route::prefix('courses')->group(function () {
     Route::get('/recommended', [CourseScreenController::class, 'recommendedCourses']);
 });
 
+//Quest Can
 Route::prefix('news')->group(function () {
     Route::get('/', [NewsScreenController::class, 'newsScreen']);
     Route::get('/all', [NewsScreenController::class, 'allNews']);
-    Route::get('/search', [NewsScreenController::class, 'search']);
 });
-
-
-
-
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

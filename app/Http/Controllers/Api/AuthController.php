@@ -36,7 +36,6 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
-
         $token = $user->createToken('MyApp')->accessToken;
 
         return response()->json([
@@ -45,7 +44,7 @@ class AuthController extends Controller
             'userDetails' => [
                 'user' => $user,
             ]
-        ]);
+        ], 200);
 
         //else
         return response()->json([
@@ -87,7 +86,7 @@ class AuthController extends Controller
             'userDetails' => [
                 'user' => $user,
             ]
-        ]);
+        ], 201);
     }
 
     public function forgotPassword(Request $request) {
@@ -107,7 +106,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => false,
                 'error' => 'Unidentified Email Address'
-            ]);
+            ], 401);
         }
 
         //send email
@@ -120,7 +119,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Reset pin sent to ' . $request->email,
-        ]);
+        ], 200);
     }
 
     public function verifyOtp(Request $request) {
@@ -143,13 +142,13 @@ class AuthController extends Controller
             return response()->json([
                 'status' => false,
                 'error' => 'Reset Pin incorrect.'
-            ]);
+            ], 401);
         }
 
         return response()->json([
             'status' => true,
             'message' => 'Confirmed, proceed'
-        ]);
+        ], 200);
     }
 
     public function newPassword(Request $request) {
@@ -175,7 +174,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => false,
                 'error' => 'An Error occured'
-            ]);
+            ], 401);
         }
 
         //Update Password and delete otp
@@ -186,7 +185,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Password Reset successful'
-        ]);
+        ], 201);
 
     }
 }

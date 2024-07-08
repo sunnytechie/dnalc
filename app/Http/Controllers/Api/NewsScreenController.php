@@ -22,7 +22,7 @@ class NewsScreenController extends Controller
             'status' => true,
             'news' => $this->slideNews(),
             'categories' => $this->category(),
-        ]);
+        ], 200);
     }
 
     public function allNews() {
@@ -31,10 +31,7 @@ class NewsScreenController extends Controller
         return response()->json([
             'status' => true,
             'allnews' => $posts,
-        ]);
+        ], 200);
     }
 
-    public function search() {
-        //Scout search
-    }
 }

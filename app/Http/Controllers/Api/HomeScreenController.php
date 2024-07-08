@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
 use App\Models\Post;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
@@ -40,6 +41,13 @@ class HomeScreenController extends Controller
             'upcomingEvent' => $this->upcomingEvent(),
             'recentNews' => $this->recentNews(),
             'annualWorkshops' => $this->annualWorkshop(),
-        ]);
+        ], 200);
+    }
+
+    public function faq() {
+        return response()->json([
+            'status' => true,
+            'faq' => Faq::orderBy('id', 'ASC')->get()
+        ], 200);
     }
 }

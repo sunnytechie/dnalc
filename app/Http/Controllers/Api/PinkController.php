@@ -11,6 +11,6 @@ class PinkController extends Controller
         return response()->json([
             'status' => true,
             'providedError' => []
-        ]);
+        ], 200);
     }
 }

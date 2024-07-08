@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Workshopapplication;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CourseScreenController extends Controller
 {
@@ -38,6 +39,51 @@ class CourseScreenController extends Controller
             'status' => true,
             'courses' => $workshopApplications
         ]);
+    }
+
+    public function apply(Request $request, $id) {
+        $workshop = Workshop::find($id);
+
+        if (!$workshop) {
+            return response()->json([
+                'status' => false,
+                'error' => 'Workshop not found'
+            ], 401);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'tx_reference' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'error' => $validator->errors()], 401);
+        }
+
+        try {
+            $apply = new Workshopapplication();
+            $apply->fullname = Auth::user()->name;
+            $apply->email = Auth::user()->email;
+            $apply->workshop_id = $id;
+            $apply->reference = $request->tx_reference;
+            $apply->save();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Application successful'
+            ], 201);
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'status' => false,
+                'error' => 'An Error occured'
+            ], 500);
+        }
+
+
+
     }
 
 
