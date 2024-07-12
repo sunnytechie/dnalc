@@ -165,6 +165,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::prefix('post')->group(function () {
         Route::get('/', [PostController::class, 'index'])->name('post.index');
         Route::get('/create', [PostController::class, 'create'])->name('post.create');
+        Route::post('/create/category', [PostController::class, 'createCategory'])->name('post.category.create');
         Route::post('/store', [PostController::class, 'store'])->name('post.store');
         Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
         Route::put('/update/{id}', [PostController::class, 'update'])->name('post.update');

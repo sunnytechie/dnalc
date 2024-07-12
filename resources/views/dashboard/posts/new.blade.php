@@ -13,11 +13,22 @@
 
         <div class="row">
             <div class="col-md-10 offset-md-1">
-                <div class="card mb-5">
+                <div class="card p-0">
                     <div class="card-header">Post</div>
                     <div class="card-body">
                         <form class="m-0 p-0" action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+
+                            <div class="form-group mb-3">
+                                <label for="" class="form-label">Categorise you news</label>
+                                <select name="category" id="category" class="form-control">
+                                    <option selected disabled>Choose</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
 
                                 <div class="form-group mb-3">
                                     <label for="title">Title</label>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Postcategory;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
@@ -26,7 +27,20 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.new');
+        $categories = Postcategory::orderBy('id', 'DESC')->get();
+        return view('dashboard.posts.new', compact('categories'));
+    }
+
+    public function createCategory(Request $request) {
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        $category = new Postcategory();
+        $category->title = $request->title;
+        $category->save();
+
+        return back()->with('success', 'Category created successfully');
     }
 
     /**
@@ -36,6 +50,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'category' => 'required',
             'content' => 'required',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -56,6 +71,7 @@ class PostController extends Controller
 
         $post = new Post();
         $post->title = $request->title;
+        $post->postcategory_id = $request->category;
         $post->content = $request->content;
         if ($request->hasFile('thumbnail')) {
             $post->thumbnail = "uploads/posts/{$thumbnailName}";
@@ -80,8 +96,8 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
-
-        return view('dashboard.posts.edit', compact('post'));
+        $categories = Postcategory::orderBy('id', 'DESC')->get();
+        return view('dashboard.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -91,6 +107,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'category' => 'required',
             'content' => 'required',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -113,6 +130,7 @@ class PostController extends Controller
         }
 
         $post->title = $request->title;
+        $post->postcategory_id = $request->category;
         $post->content = $request->content;
         $post->save();
 

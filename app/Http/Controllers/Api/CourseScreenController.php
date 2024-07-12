@@ -20,7 +20,8 @@ class CourseScreenController extends Controller
 
         foreach ($workshops as $workshop) {
             $workshop->details = $workshop->note;
-            $workshop->makeHidden('note');
+            $workshop->image = asset('storage/' . $workshop->flyer);
+            $workshop->makeHidden('note', 'flyer');
         }
 
         return response()->json([
@@ -34,6 +35,13 @@ class CourseScreenController extends Controller
                                 ->where('email', Auth::user()->email)
                                 ->orderBy('id', 'DESC')
                                 ->get();
+
+        foreach ($workshopApplications as $application) {
+            $workshop = $application->workshop;
+            $workshop->details = $workshop->note;
+            $workshop->image = asset('storage/' . $workshop->flyer);
+            $workshop->makeHidden(['note', 'flyer']);
+        }
 
         return response()->json([
             'status' => true,

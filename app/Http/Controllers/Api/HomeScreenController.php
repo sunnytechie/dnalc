@@ -14,6 +14,8 @@ class HomeScreenController extends Controller
         //load the most recent (first()) upcoming event
         return [
             'title' => 'Basic Forensic Training',
+            'date' => now(),
+            'icon' => 'https://via.placeholder.com/200',
             'description' => 'Register todat and be among the few to enrol on the Basic Forensic Training.',
             'webviewLink' => 'https://dnalcnigeria.org/',
         ];
@@ -21,6 +23,10 @@ class HomeScreenController extends Controller
 
     private function recentNews() {
         $posts = Post::select('id', 'title', 'content', 'thumbnail', 'created_at')->orderBy('id', 'DESC')->take(7)->get();
+        foreach ($posts as $post) {
+            $post->image = asset('storage/' . $post->thumbnail);
+            $post->makeHidden('thumbnail');
+        }
         return $posts;
     }
 
@@ -29,7 +35,8 @@ class HomeScreenController extends Controller
 
         foreach ($workshops as $workshop) {
             $workshop->details = $workshop->note;
-            $workshop->makeHidden('note');
+            $workshop->image = asset('storage/' . $workshop->flyer);
+            $workshop->makeHidden('note', 'flyer');
         }
 
         return $workshops;

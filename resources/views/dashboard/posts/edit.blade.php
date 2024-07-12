@@ -20,6 +20,17 @@
                             @csrf
                             @method('PUT')
 
+                            <div class="form-group mb-3">
+                                <label for="" class="form-label">Categorise you news</label>
+                                <select name="category" id="category" class="form-control">
+                                    <option selected disabled>Choose</option>
+                                    @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ $category->id == $post->postcategory_id ? 'selected' : '' }}>{{ $category->title }}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
+
                                 <div class="form-group mb-3">
                                     <label for="title">Title</label>
                                     <input type="text" id="title" name="title" value="{{ old('title') ?? $post->title }}" placeholder="Title..." required>

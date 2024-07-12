@@ -10,11 +10,17 @@ class Post extends Model
 {
     use HasFactory, Searchable;
 
-    protected $fillable = ['title', 'content', 'thumbnail', 'user_id'];
+    protected $fillable = ['title', 'content', 'thumbnail', 'user_id', 'postcategory_id'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+
+    public function postcategory()
+    {
+        return $this->belongsTo(Postcategory::class);
     }
 
     public function toSearchableArray()
