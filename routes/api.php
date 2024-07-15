@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\APi\CommentController;
 use App\Http\Controllers\Api\CourseScreenController;
 use App\Http\Controllers\Api\HomeScreenController;
 use App\Http\Controllers\Api\NewsScreenController;
@@ -52,6 +53,10 @@ Route::prefix('courses')->group(function () {
 Route::prefix('news')->group(function () {
     Route::get('/', [NewsScreenController::class, 'newsScreen']);
     Route::get('/all', [NewsScreenController::class, 'allNews']);
+});
+
+Route::group(['prefix' => 'news', 'middleware' => 'auth:api'], function () {
+    Route::post('/{id}/comment', [CommentController::class, 'store']);
 });
 
 

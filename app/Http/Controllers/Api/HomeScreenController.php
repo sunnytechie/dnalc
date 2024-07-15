@@ -22,7 +22,7 @@ class HomeScreenController extends Controller
     }
 
     private function recentNews() {
-        $posts = Post::select('id', 'title', 'content', 'thumbnail', 'created_at')->orderBy('id', 'DESC')->take(7)->get();
+        $posts = Post::with('comments')->select('id', 'title', 'content', 'thumbnail', 'created_at')->orderBy('id', 'DESC')->take(7)->get();
         foreach ($posts as $post) {
             $post->image = asset('storage/' . $post->thumbnail);
             $post->makeHidden('thumbnail');

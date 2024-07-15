@@ -23,6 +23,11 @@ class Post extends Model
         return $this->belongsTo(Postcategory::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function toSearchableArray()
     {
         $array = $this->toArray();

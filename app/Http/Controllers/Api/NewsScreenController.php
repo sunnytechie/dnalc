@@ -10,18 +10,18 @@ use App\Models\Postcategory;
 class NewsScreenController extends Controller
 {
     private function slideNews() {
-        $posts = Post::select('id', 'title', 'content', 'created_at', 'thumbnail')->orderBy('id', 'DESC')->take(5)->get();
+        $posts = Post::with('comments')->select('id', 'title', 'content', 'created_at', 'thumbnail')->orderBy('id', 'DESC')->take(5)->get();
         foreach ($posts as $post) {
             $post->image = asset('storage/' . $post->thumbnail);
             $post->makeHidden('thumbnail');
         }
         $posts = $posts->shuffle();
-        
+
         return $posts;
     }
 
     private function category() {
-        $categories = Postcategory::orderBy('id', 'DESC')->with('posts')->get();
+        $categories = Postcategory::orderBy('id', 'DESC')->with(['posts.comments'])->get();
 
         foreach ($categories as $category) {
             $category->makeHidden('created_at', 'updated_at');
@@ -43,7 +43,7 @@ class NewsScreenController extends Controller
     }
 
     public function allNews() {
-        $posts = Post::select('id', 'title', 'content', 'created_at', 'thumbnail')->orderBy('id', 'DESC')->get();
+        $posts = Post::with('comments')->select('id', 'title', 'content', 'created_at', 'thumbnail')->orderBy('id', 'DESC')->get();
         foreach ($posts as $post) {
             $post->image = asset('storage/' . $post->thumbnail);
             $post->makeHidden('thumbnail');
