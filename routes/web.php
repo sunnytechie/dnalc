@@ -217,6 +217,7 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::prefix('workshop')->group(function () {
         Route::get('/', [WorkshopController::class, 'index'])->name('workshop.index');
         Route::get('/applications/{id}', [WorkshopController::class, 'applications'])->name('workshop.applications');
+        Route::patch('/applications/{id}', [WorkshopController::class, 'destroyApplication'])->name('destroy.workshop.applications');
         Route::get('/create', [WorkshopController::class, 'create'])->name('workshop.create');
         Route::post('/store', [WorkshopController::class, 'store'])->name('workshop.store');
         Route::get('/edit/{id}', [WorkshopController::class, 'edit'])->name('workshop.edit');

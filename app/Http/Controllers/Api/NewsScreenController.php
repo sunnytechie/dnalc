@@ -28,7 +28,7 @@ class NewsScreenController extends Controller
 
             foreach ($category->posts as $post) {
                 $post->image = asset('storage/' . $post->thumbnail);
-                $post->makeHidden('thumbnail', 'created_at', 'updated_at');
+                $post->makeHidden('thumbnail', 'updated_at');
             }
         }
         return $categories;

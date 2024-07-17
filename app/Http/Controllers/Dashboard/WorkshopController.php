@@ -171,6 +171,21 @@ class WorkshopController extends Controller
         return view('dashboard.workshop.new');
     }
 
+    public function destroyApplication($id) {
+        try {
+            $workshopApplication = Workshopapplication::findOrFail($id);
+            $workshopApplication->delete();
+
+            return back()->with('success', 'Application deleted successfully');
+        }
+            catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('failed', 'An error occured');
+        }
+
+
+    }
+
     /**
      * Store a newly created resource in storage.
      */

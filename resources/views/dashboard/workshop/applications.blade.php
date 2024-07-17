@@ -30,18 +30,19 @@
                                     <th>Status</th>
                                     <td>Method</td>
                                     <th>Downloadables</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($applications as $application)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $application->fullname }}</td>
-                                        <td>{{ $application->email }}</td>
-                                        <td>{{ $application->phone }}</td>
-                                        <td>{{ $application->institution }}</td>
-                                        <td>{{ $application->scholarship }}</td>
-                                        <td>{{ $application->referral }}</td>
+                                        <td style="white-space: nowrap">{{ $application->fullname }}</td>
+                                        <td style="white-space: nowrap">{{ $application->email }}</td>
+                                        <td style="white-space: nowrap">{{ $application->phone }}</td>
+                                        <td style="white-space: nowrap">{{ $application->institution }}</td>
+                                        <td style="white-space: nowrap">{{ $application->scholarship }}</td>
+                                        <td style="white-space: nowrap">{{ $application->referral }}</td>
                                         <td style="text-transform: capitalize">{{ $application->status }}</td>
                                         <td>
                                             @if ($application->receipt == null)
@@ -54,6 +55,17 @@
                                             @if ($application->receipt)
                                                 <a href="{{ asset('storage/' . $application->receipt) }}" download="" class="btn btn-primary btn-sm rounded-0">Download Receipt</a>
                                             @endif
+                                        </td>
+                                        <td>
+
+                                            <form id="deleteApply-{{ $application->id }}" class="m-0 p-0" action="{{ route('destroy.workshop.applications', $application->id) }}" method="POST">
+                                                @method('patch')
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?')" form="deleteApply-{{ $application->id }}">
+                                                    <i class="fa fa-trash"></i> Delete
+                                                </button>
+                                            </form>
+
                                         </td>
                                     </tr>
                                 @endforeach
