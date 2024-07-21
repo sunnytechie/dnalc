@@ -53,6 +53,9 @@ Route::prefix('courses')->group(function () {
 Route::prefix('news')->group(function () {
     Route::get('/', [NewsScreenController::class, 'newsScreen']);
     Route::get('/all', [NewsScreenController::class, 'allNews']);
+
+    Route::get('/categories', [NewsScreenController::class, 'categories']);
+    Route::post('/filter', [NewsScreenController::class, 'filter']);
 });
 
 Route::group(['prefix' => 'news', 'middleware' => 'auth:api'], function () {

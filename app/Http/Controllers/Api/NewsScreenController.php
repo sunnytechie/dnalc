@@ -55,4 +55,46 @@ class NewsScreenController extends Controller
         ], 200);
     }
 
+    public function categories() {
+        $categories = Postcategory::orderBy()->get();
+
+        return response()->json([
+            'status' => true,
+            'categories' => $categories
+        ]);
+    }
+
+    public function filter(Request $request) {
+        if ($request->has('categories')) {
+            $categories = json_decode($request->categories);
+
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                // Handle JSON decoding error
+                return response()->json([
+                    'status' => false,
+                    'error' => 'Error in category selection',
+                ], 400);
+            }
+
+            if (!empty($categories)) {
+                $query = Postcategory::with(['posts.comments'])
+                    ->whereIn('id', $categories);
+            }
+
+            $news = $query->get();
+
+            return response()->json([
+                'status' => true,
+                'news' => $news
+            ]);
+        }
+
+        else {
+            return response()->json([
+                'status' => false,
+                'error' => 'Please select one or more category',
+            ], 401);
+        }
+    }
+
 }
