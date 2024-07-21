@@ -56,12 +56,15 @@ class NewsScreenController extends Controller
     }
 
     public function categories() {
-        $categories = Postcategory::orderBy()->get();
+
+        $categories = Postcategory::orderBy('id', 'DESC')
+                        ->get();
 
         return response()->json([
             'status' => true,
             'categories' => $categories
         ]);
+
     }
 
     public function filter(Request $request) {
