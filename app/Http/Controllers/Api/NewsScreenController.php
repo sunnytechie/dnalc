@@ -56,7 +56,6 @@ class NewsScreenController extends Controller
     }
 
     public function categories() {
-
         $categories = Postcategory::orderBy('id', 'DESC')
                         ->get();
 
