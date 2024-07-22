@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\APi;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Post;
 use App\Models\Comment;
@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Validator;
 class CommentController extends Controller
 {
 
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request, $id)
     {
         $post = Post::find($id);
@@ -36,7 +32,7 @@ class CommentController extends Controller
                 'error' => $validator->errors()], 401);
         }
 
-        Comment::create([
+        $comment = Comment::create([
             'post_id' => $id,
             'comment' => $request->comment,
             'user_name' => Auth::user()->name,
@@ -49,25 +45,4 @@ class CommentController extends Controller
 
     }
 
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

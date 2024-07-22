@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\ForgotPasswordMail;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Mail\ForgotPasswordMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -110,7 +111,10 @@ class AuthController extends Controller
         }
 
         //send email
-        $otp = rand(0000, 9999);
+        //$otp = rand(0000, 9999);
+        $randomNumber = rand(0, 9999);
+        $otp = Str::padLeft($randomNumber, 4, '0');
+
         Mail::to($request->email)->send(new ForgotPasswordMail($otp, $user->name));
 
         $user->user_otp = $otp;
