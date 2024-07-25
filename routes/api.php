@@ -58,6 +58,7 @@ Route::prefix('news')->group(function () {
     Route::post('/filter', [NewsScreenController::class, 'filter']);
 });
 
+//Only Auth
 Route::group(['prefix' => 'news', 'middleware' => 'auth:api'], function () {
     Route::post('/{id}/comment', [CommentController::class, 'store']);
 });

@@ -12,10 +12,9 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function profileUpdate(Request $request): JsonResponse {
+    public function profileUpdate(Request $request) {
         $validator = Validator::make($request->all(), [
             'fullname' => 'required',
-            'email' => 'required',
             'phone' => 'required',
         ]);
 
@@ -25,13 +24,14 @@ class UserController extends Controller
                 'error' => $validator->errors()], 401);
         }
 
+        $userID = Auth::user()->id;
+
         try {
-            $user = User::find(Auth::user()->id);
+            $user = User::find($userID);
             $user->name = $request->fullname;
-            $user->email = $request->email;
             $user->phone = $request->phone;
             $user->save();
-        
+
         return response()->json([
             'status' => true,
             'message' => 'Profile updated'
@@ -40,7 +40,7 @@ class UserController extends Controller
             //throw $th;
             return response()->json([
                 'status' => false,
-                'error' => 'Please try again.'
+                'error' => 'Something went wrong'
             ], 401);
         }
     }
@@ -81,6 +81,6 @@ class UserController extends Controller
             ], 401);
         }
 
-        
+
     }
 }

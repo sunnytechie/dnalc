@@ -26,7 +26,7 @@ class SearchController extends Controller
         if ($type != 'courses' && $type != 'news') {
             return response()->json([
                 'status' => false,
-                'error' => 'Only news and courses are searchable'
+                'error' => 'Only news or courses are searchable'
             ], 500);
         }
 
