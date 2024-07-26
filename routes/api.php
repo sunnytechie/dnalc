@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\APi\CommentController;
+use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\CourseScreenController;
 use App\Http\Controllers\Api\HomeScreenController;
 use App\Http\Controllers\Api\NewsScreenController;
