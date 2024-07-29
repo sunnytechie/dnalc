@@ -21,6 +21,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Unique Id.</th>
                                     <th>Fullname</th>
                                     <th>Email</th>
                                     <th>Phone</th>
@@ -37,6 +38,7 @@
                                 @foreach ($applications as $application)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td style="white-space: nowrap">{{ "INN/GOU/" . $application->created_at->format('Y') . "/" . $application->id }}</td>
                                         <td style="white-space: nowrap">{{ $application->fullname }}</td>
                                         <td style="white-space: nowrap">{{ $application->email }}</td>
                                         <td style="white-space: nowrap">{{ $application->phone }}</td>
