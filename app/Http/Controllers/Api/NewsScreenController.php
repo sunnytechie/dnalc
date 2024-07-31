@@ -78,12 +78,24 @@ class NewsScreenController extends Controller
                 ], 400);
             }
 
+            //if (!empty($categories)) {
+            //    $query = Postcategory::with(['posts.comments'])->whereIn('id', $categories);
+            //}
+
+            //$news = $query->get();
+
+
             if (!empty($categories)) {
-                $query = Postcategory::with(['posts.comments'])
-                    ->whereIn('id', $categories);
+                $query = Postcategory::with(['posts.comments'])->whereIn('id', $categories);
+                $news = $query->get();
             }
 
-            $news = $query->get();
+            foreach ($news as $category) {
+                foreach ($category->posts as $post) {
+                    $post->image = asset('storage/' . $post->thumbnail);
+                    $post->makeHidden('thumbnail');
+                }
+            }
 
             return response()->json([
                 'status' => true,
