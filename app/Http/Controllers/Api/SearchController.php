@@ -11,13 +11,24 @@ use Illuminate\Http\JsonResponse;
 class SearchController extends Controller
 {
     private function posts($search){
-        $posts = Post::search($search)->get();
+        $posts = Post::search($search)->get()->load('comments');
+
+        foreach ($posts as $post) {
+            $post->image = asset('storage/' . $post->thumbnail);
+            $post->makeHidden('thumbnail');
+            $post->makeHidden('user_id');
+        }
 
         return $posts;
     }
 
     private function workshops($search){
         $workshops = Workshop::search($search)->get();
+        foreach ($workshops as $workshop) {
+            $workshop->details = $workshop->note;
+            $workshop->image = asset('storage/' . $workshop->flyer);
+            $workshop->makeHidden('note', 'flyer');
+        }
 
         return $workshops;
     }

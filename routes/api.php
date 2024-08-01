@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\CourseScreenController;
 use App\Http\Controllers\Api\HomeScreenController;
 use App\Http\Controllers\Api\NewsScreenController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PinkController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\UserController;
@@ -49,7 +50,7 @@ Route::prefix('courses')->group(function () {
     Route::get('/recommended', [CourseScreenController::class, 'recommendedCourses']);
 });
 
-//Quest Can
+//Guest Can
 Route::prefix('news')->group(function () {
     Route::get('/', [NewsScreenController::class, 'newsScreen']);
     Route::get('/all', [NewsScreenController::class, 'allNews']);
@@ -62,6 +63,9 @@ Route::prefix('news')->group(function () {
 Route::group(['prefix' => 'news', 'middleware' => 'auth:api'], function () {
     Route::post('/{id}/comment', [CommentController::class, 'store']);
 });
+
+//Guest can
+Route::get('/notifications', [NotificationController::class, 'index']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

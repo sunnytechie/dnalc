@@ -14,6 +14,7 @@ class NewsScreenController extends Controller
         foreach ($posts as $post) {
             $post->image = asset('storage/' . $post->thumbnail);
             $post->makeHidden('thumbnail');
+            $post->makeHidden('user_id');
         }
         $posts = $posts->shuffle();
 
