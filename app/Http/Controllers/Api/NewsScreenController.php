@@ -13,6 +13,7 @@ class NewsScreenController extends Controller
         $posts = Post::with('comments')->select('id', 'title', 'content', 'created_at', 'thumbnail')->orderBy('id', 'DESC')->take(5)->get();
         foreach ($posts as $post) {
             $post->image = asset('storage/' . $post->thumbnail);
+            $post->share_link = route('blog.post', ['id' => $post->id]);
             $post->makeHidden('thumbnail');
             $post->makeHidden('user_id');
         }
@@ -47,6 +48,7 @@ class NewsScreenController extends Controller
         $posts = Post::with('comments')->select('id', 'title', 'content', 'created_at', 'thumbnail')->orderBy('id', 'DESC')->get();
         foreach ($posts as $post) {
             $post->image = asset('storage/' . $post->thumbnail);
+            $post->share_link = route('blog.post', ['id' => $post->id]);
             $post->makeHidden('thumbnail');
         }
 

@@ -25,6 +25,7 @@ class HomeScreenController extends Controller
         $posts = Post::with('comments')->select('id', 'title', 'content', 'thumbnail', 'created_at')->orderBy('id', 'DESC')->take(7)->get();
         foreach ($posts as $post) {
             $post->image = asset('storage/' . $post->thumbnail);
+            $post->share_link = route('blog.post', ['id' => $post->id]);
             $post->makeHidden('thumbnail');
             $post->makeHidden('user_id');
         }
