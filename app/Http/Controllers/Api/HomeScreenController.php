@@ -19,7 +19,7 @@ class HomeScreenController extends Controller
             'title' => $slider->title,
             'date' => $slider->created_at,
             'icon' => asset('storage/' . $slider->flyer),
-            'description' => $slider->description,
+            'description' => "",//$slider->description,
             'webviewLink' => $slider->link,
         ];
     }
