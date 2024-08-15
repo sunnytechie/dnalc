@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use App\Models\Post;
+use App\Models\Slider;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
 
@@ -12,12 +13,14 @@ class HomeScreenController extends Controller
 {
     private function upcomingEvent() {
         //load the most recent (first()) upcoming event
+        $slider = Slider::orderBy('id', 'DESC')->first();
+
         return [
-            'title' => 'Basic Forensic Training',
-            'date' => now(),
-            'icon' => 'https://via.placeholder.com/200',
-            'description' => 'Register todat and be among the few to enrol on the Basic Forensic Training.',
-            'webviewLink' => 'https://dnalcnigeria.org/',
+            'title' => $slider->title,
+            'date' => $slider->created_at,
+            'icon' => asset('storage/' . $slider->flyer),
+            'description' => $slider->description,
+            'webviewLink' => $slider->link,
         ];
     }
 

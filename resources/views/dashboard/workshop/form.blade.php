@@ -126,10 +126,10 @@ function validateSection(section) {
                 <div class="about-two__right">
                     <div class="about-two__top">
                         <div class="sec-title text-start wow fadeInUp" data-wow-duration='1500ms'>
-                            <h6 class="sec-title__tagline"><img src="{{ asset('assets/images/shapes/sec-title-s-1.png') }}" alt="About Us" class="sec-title__img">Workshop</h6><!-- /.sec-title__tagline -->
-                            <h2 class="sec-title__title" style="font-size: 30px">Workshop form requirement
-                            </h2><!-- /.sec-title__title -->
+                            <h6 class="sec-title__tagline m-0 p-0"><img src="{{ asset('assets/images/shapes/sec-title-s-1.png') }}" alt="About Us" class="sec-title__img">Workshop Registeration</h6><!-- /.sec-title__tagline -->
+                            {{-- <h2 class="sec-title__title" style="font-size: 20px">Details</h2> --}}
                         </div><!-- /.sec-title -->
+                        <div> {!! $workshop->note !!}</div>
                         <p class="about-text">Venue: {{ $workshop->venue }}</p>
                         <div class="mb-4">Scheduled: {{ \Carbon\Carbon::parse($workshop->start_date)->format('j M Y') }} to {{ \Carbon\Carbon::parse($workshop->end_date)->format('j M Y') }}</div>
 
