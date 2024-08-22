@@ -52,11 +52,19 @@
                                             selected
                                         @endif
                                         value="cedfoci">CeDFOCI</option>
+
                                         <option
                                         @if ($webinar->school == "cefarai")
                                             selected
                                         @endif
                                         value="cefarai">CeFARAI</option>
+
+                                        <option
+                                        @if ($webinar->school == "cetras")
+                                            selected
+                                        @endif
+                                        value="cetras">CeTRAS</option>
+
                                         <option
                                         @if ($webinar->school == "cesavims")
                                             selected

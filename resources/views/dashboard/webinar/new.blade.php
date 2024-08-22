@@ -48,6 +48,7 @@
                                     <select name="school" id="school" class="">
                                         <option selected value="cedfoci">CeDFOCI</option>
                                         <option value="cefarai">CeFARAI</option>
+                                        <option value="cetras">CeTRAS</option>
                                         <option value="cesavims">CeSAVIMS</option>
                                         <option value="cesisten">CeSISTEN</option>
                                     </select>
