@@ -60,6 +60,11 @@
                                         @endif
                                         value="cefarai">CeFARAI</option>
                                         <option
+                                        @if ($post->school == "cetras")
+                                            selected
+                                        @endif
+                                        value="cetras">CeTRAS</option>
+                                        <option
                                         @if ($post->school == 'cesavims')
                                             selected
                                         @endif
