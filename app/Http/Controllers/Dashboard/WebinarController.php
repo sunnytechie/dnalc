@@ -28,7 +28,7 @@ class WebinarController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.webinar.new');
     }
 
     /**
@@ -38,11 +38,15 @@ class WebinarController extends Controller
     {
         //try
         try {
+
             //validate the request
             $request->validate([
                 'title' => 'nullable|string|max:255',
                 'thumbnail' => 'required|image',
-                'link' => 'nullable|url'
+                'school' => 'required',
+                'event_date' => 'required|date',
+                'content' => 'required',
+                'link' => 'nullable'
             ]);
         } catch (\Exception $e) {
             //return error message
@@ -51,7 +55,7 @@ class WebinarController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             //Manager driver for image Processing
-        $manager = new ImageManager(new Driver());
+            $manager = new ImageManager(new Driver());
 
             //save the thumbnail
             $thumbnail = $manager->read($request->file('thumbnail')->getRealPath());
@@ -66,12 +70,15 @@ class WebinarController extends Controller
             //create the webinar
             $webinar = new Webinar();
             $webinar->title = $request->title;
+            $webinar->school = $request->school;
+            $webinar->event_date = $request->event_date;
+            $webinar->description = $request->content;
             $webinar->thumbnail = "uploads/webinars/" . $request->file('thumbnail')->hashName();
             $webinar->link = $request->link;
             $webinar->save();
 
             //return success message
-            return redirect()->back()->with('success', 'Webinar published successfully');
+            return redirect()->route('webinar.index')->with('success', 'Webinar published successfully');
         } catch (\Exception $e) {
             //return error message
             return redirect()->back()->with('failed', 'Failed to create webinar');
@@ -91,7 +98,11 @@ class WebinarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $webinar = Webinar::find($id);
+
+        return view('dashboard.webinar.edit', [
+            'webinar' => $webinar,
+        ]);
     }
 
     /**
@@ -99,7 +110,48 @@ class WebinarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'nullable|string|max:255',
+            'thumbnail' => 'nullable',
+            'school' => 'required',
+            'event_date' => 'required|date',
+            'content' => 'required',
+            'link' => 'nullable'
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            //Manager driver for image Processing
+            $manager = new ImageManager(new Driver());
+
+            //save the thumbnail
+            $thumbnail = $manager->read($request->file('thumbnail')->getRealPath());
+            $thumbnail->scaleDown(370, 322);
+
+            $thumbnailName = $request->file('thumbnail')->hashName();
+            //storeAs
+            $file = $request->file('thumbnail')->storeAs('uploads/webinars', $thumbnailName, 'public');
+        }
+
+        try {
+            //create the webinar
+            $webinar = Webinar::find($id);
+            $webinar->title = $request->title;
+            $webinar->school = $request->school;
+            $webinar->event_date = $request->event_date;
+            $webinar->description = $request->content;
+            if ($request->hasFile('thumbnail')) {
+                $webinar->thumbnail = "uploads/webinars/" . $request->file('thumbnail')->hashName();
+            }
+
+            $webinar->link = $request->link;
+            $webinar->save();
+
+            //return success message
+            return redirect()->route('webinar.index')->with('success', 'Webinar updated successfully');
+        } catch (\Exception $e) {
+            //return error message
+            return redirect()->back()->with('failed', 'Failed to update webinar');
+        }
     }
 
     /**

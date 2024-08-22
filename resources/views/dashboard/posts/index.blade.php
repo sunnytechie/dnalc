@@ -24,6 +24,7 @@
                                 <th>Thumbnail</th>
                                 <th>Title</th>
                                 <th>Category</th>
+                                <th>School</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                                     </td>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->postcategory->title ?? '' }}</td>
+                                    <td>{{ $post->school }}</td>
                                     {{-- <td>{!! \Illuminate\Support\Str::limit($post->content, 10) !!}</td> --}}
                                     <td>
                                         <div class="btn-group">

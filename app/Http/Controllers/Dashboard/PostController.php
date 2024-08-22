@@ -52,6 +52,7 @@ class PostController extends Controller
             'title' => 'required',
             'category' => 'required',
             'content' => 'required',
+            'school' => 'required',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -71,6 +72,7 @@ class PostController extends Controller
 
         $post = new Post();
         $post->title = $request->title;
+        $post->school = $request->school;
         $post->postcategory_id = $request->category;
         $post->content = $request->content;
         if ($request->hasFile('thumbnail')) {
@@ -109,6 +111,7 @@ class PostController extends Controller
             'title' => 'required',
             'category' => 'required',
             'content' => 'required',
+            'school' => 'required',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -130,6 +133,7 @@ class PostController extends Controller
         }
 
         $post->title = $request->title;
+        $post->school = $request->school;
         $post->postcategory_id = $request->category;
         $post->content = $request->content;
         $post->save();

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <style>
-    input[type=text], input[type=file], select {
+    input[type=text], input[type=file], input[type=date], input[type=url], select {
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
@@ -11,35 +11,24 @@
             <p class="login-page__info__item">Teams & Leaders - DNA Learning center.</p>
 
             <div class="btn-group">
-                <a href="{{ route('post.index') }}" class="btn btn-primary btn-sm">Back</a>
+                <a href="{{ route('webinar.index') }}" class="btn btn-primary btn-sm">Back</a>
                 <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
-                <a href="{{ route('post.create') }}" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </a>
+                <a href="{{ route('webinar.create') }}" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </a>
             </div>
         </div><!-- login-info -->
 
         <div class="row">
             <div class="col-md-10 offset-md-1">
-                <div class="card mb-5">
-                    <div class="card-header">Post</div>
+                <div class="card p-0">
+                    <div class="card-header">Edit Webinar/Events</div>
                     <div class="card-body">
-                        <form class="m-0 p-0" action="{{ route('post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                        <form class="m-0 p-0" action="{{ route('webinar.update', ['id' => $webinar->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
-
-                            <div class="form-group mb-3">
-                                <label for="" class="form-label">Categorise you news</label>
-                                <select name="category" id="category" class="form-control">
-                                    <option selected disabled>Choose</option>
-                                    @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" {{ $category->id == $post->postcategory_id ? 'selected' : '' }}>{{ $category->title }}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
+                            @method('put')
 
                                 <div class="form-group mb-3">
                                     <label for="title">Title</label>
-                                    <input type="text" id="title" name="title" value="{{ old('title') ?? $post->title }}" placeholder="Title..." required>
+                                    <input type="text" id="title" name="title" value="{{ old('title') ?? $webinar->title }}" placeholder="Title">
 
                                     @if ($errors->has('title'))
                                         <span class="text-danger">{{ $errors->first('title') }}</span>
@@ -47,25 +36,34 @@
                                 </div>
 
                                 <div class="form-group mb-3">
+                                    <label for="event_date">Event Date</label>
+                                    <input type="date" id="event_date" name="event_date" value="{{ old('event_date') ?? $webinar->event_date }}" placeholder="Schedule">
+
+                                    @if ($errors->has('event_date'))
+                                        <span class="text-danger">{{ $errors->first('event_date') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group mb-3">
                                     <label for="school">School</label>
                                     <select name="school" id="school" class="">
                                         <option
-                                        @if ($post->school == 'cedfoci')
+                                        @if ($webinar->school == "cedfoci")
                                             selected
                                         @endif
                                         value="cedfoci">CeDFOCI</option>
                                         <option
-                                        @if ($post->school == 'cefarai')
+                                        @if ($webinar->school == "cefarai")
                                             selected
                                         @endif
                                         value="cefarai">CeFARAI</option>
                                         <option
-                                        @if ($post->school == 'cesavims')
+                                        @if ($webinar->school == "cesavims")
                                             selected
                                         @endif
                                         value="cesavims">CeSAVIMS</option>
                                         <option
-                                        @if ($post->school == 'cesisten')
+                                        @if ($webinar->school == "cesisten")
                                             selected
                                         @endif
                                         value="cesisten">CeSISTEN</option>
@@ -75,22 +73,30 @@
                                     @endif
                                 </div>
 
-
                                 <div class="form-group mb-3">
-                                    <label for="content">Content</label>
-                                    <textarea id="content" name="content" placeholder="Compose post">{{ old('content') ?? $post->content }}</textarea>
+                                    <label for="thumbnail">Thumbnail</label>
+                                    <input type="file" class="dropify" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail">
 
-                                    @if ($errors->has('content'))
-                                        <span class="text-danger">{{ $errors->first('content') }}</span>
+                                    @if ($errors->has('thumbnail'))
+                                        <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
                                     @endif
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="thumbnail">Thumbnail</label>
-                                    <input type="file" class="dropify" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" data-default-file="{{ asset('storage/' . $post->thumbnail) }}">
+                                    <label for="link">Link</label>
+                                    <input type="url" id="link" name="link" value="{{ old('link') ?? $webinar->link }}" placeholder="https://....">
 
-                                    @if ($errors->has('thumbnail'))
-                                        <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
+                                    @if ($errors->has('link'))
+                                        <span class="text-danger">{{ $errors->first('link') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="content">Content</label>
+                                    <textarea id="content" name="content" placeholder="Compose post">{{ old('content') ?? $webinar->description }}</textarea>
+
+                                    @if ($errors->has('content'))
+                                        <span class="text-danger">{{ $errors->first('content') }}</span>
                                     @endif
                                 </div>
 

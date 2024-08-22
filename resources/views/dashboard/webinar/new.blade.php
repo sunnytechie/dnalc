@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <style>
-    input[type=text], input[type=file], select {
+    input[type=text], input[type=file], input[type=date], input[type=url], select {
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
@@ -11,36 +11,34 @@
             <p class="login-page__info__item">Teams & Leaders - DNA Learning center.</p>
 
             <div class="btn-group">
-                <a href="{{ route('post.index') }}" class="btn btn-primary btn-sm">Back</a>
+                <a href="#" class="btn btn-primary btn-sm">Back</a>
                 <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
-                <a href="{{ route('post.create') }}" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </a>
+                <a href="#" class="btn btn-primary btn-sm" style="margin-left: 5px">New + </a>
             </div>
         </div><!-- login-info -->
 
         <div class="row">
             <div class="col-md-10 offset-md-1">
                 <div class="card p-0">
-                    <div class="card-header">Post</div>
+                    <div class="card-header">Webinar/Events</div>
                     <div class="card-body">
-                        <form class="m-0 p-0" action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                        <form class="m-0 p-0" action="{{ route('webinar.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-
-                            <div class="form-group mb-3">
-                                <label for="" class="form-label">Categorise you news</label>
-                                <select name="category" id="category" class="form-control">
-                                    <option selected disabled>Choose</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
 
                                 <div class="form-group mb-3">
                                     <label for="title">Title</label>
-                                    <input type="text" id="title" name="title" value="{{ old('title') }}" placeholder="Title..." required>
+                                    <input type="text" id="title" name="title" value="{{ old('title') }}" placeholder="Title">
 
                                     @if ($errors->has('title'))
+                                        <span class="text-danger">{{ $errors->first('title') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="event_date">Event Date</label>
+                                    <input type="date" id="event_date" name="event_date" value="{{ old('event_date') }}" placeholder="Schedule">
+
+                                    @if ($errors->has('event_date'))
                                         <span class="text-danger">{{ $errors->first('title') }}</span>
                                     @endif
                                 </div>
@@ -59,20 +57,29 @@
                                 </div>
 
                                 <div class="form-group mb-3">
+                                    <label for="thumbnail">Thumbnail</label>
+                                    <input type="file" class="dropify" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail" required>
+
+                                    @if ($errors->has('thumbnail'))
+                                        <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="link">Link</label>
+                                    <input type="url" id="link" name="link" value="{{ old('link') }}" placeholder="https://....">
+
+                                    @if ($errors->has('link'))
+                                        <span class="text-danger">{{ $errors->first('link') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group mb-3">
                                     <label for="content">Content</label>
                                     <textarea id="content" name="content" placeholder="Compose post">{{ old('content') }}</textarea>
 
                                     @if ($errors->has('content'))
                                         <span class="text-danger">{{ $errors->first('content') }}</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="thumbnail">Thumbnail</label>
-                                    <input type="file" class="dropify" id="thumbnail" accept=".png, .jpg, .jpeg" name="thumbnail">
-
-                                    @if ($errors->has('thumbnail'))
-                                        <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
                                     @endif
                                 </div>
 
