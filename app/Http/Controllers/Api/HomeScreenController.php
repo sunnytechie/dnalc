@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use App\Models\Post;
 use App\Models\Slider;
+use App\Models\Webinar;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
 
@@ -47,12 +48,23 @@ class HomeScreenController extends Controller
         return $workshops;
     }
 
+    private function webinar() {
+        $events = Webinar::orderBy('id', 'DESC')->get();
+        foreach ($events as $event) {
+            $event->image = asset('storage/' . $event->thumbnail);
+            $event->makeHidden('thumbnail');
+        }
+
+        return $events;
+    }
+
     public function home() {
         return response()->json([
             'status' => true,
+            'annualWorkshops' => $this->annualWorkshop(),
             'upcomingEvent' => $this->upcomingEvent(),
             'recentNews' => $this->recentNews(),
-            'annualWorkshops' => $this->annualWorkshop(),
+            'events' => $this->webinar(),
         ], 200);
     }
 
