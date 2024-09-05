@@ -59,7 +59,7 @@
                                 <span>{{ $post->created_at->format('M') }}</span>
                             </div>
                             <div class="post-desc">
-                                <h5 class="post-title"><a href="{{ route('blog.post', [$post->id]) }}">{{ $post->title }}</a></h5>
+                                <h5 class="post-title"><a href="{{ route('blog.post', [$post->id]) }}">{{ Str::limit($post->title, 20) }}</a></h5>
                                 <span class="post-category">{{ $post->postcategory->title }}</span>
                             </div>
                         </div>
@@ -81,12 +81,9 @@
                 <div class="col-lg-3 col-md-12">
                     <h3 class="footer-title">Gallery</h3>
                     <ul class="flickr-feed">
-                        <li><a href="#"><img src="newassets/images/flickr/1.jpg" alt="Project Image"></a></li>
-                        <li><a href="#"><img src="newassets/images/flickr/2.jpg" alt="Project Image"></a></li>
-                        <li><a href="#"><img src="newassets/images/flickr/3.jpg" alt="Project Image"></a></li>
-                        <li><a href="#"><img src="newassets/images/flickr/4.jpg" alt="Project Image"></a></li>
-                        <li><a href="#"><img src="newassets/images/flickr/5.jpg" alt="Project Image"></a></li>
-                        <li><a href="#"><img src="newassets/images/flickr/6.jpg" alt="Project Image"></a></li>
+                        @foreach ($galleries as $gallery)
+                        <li><a href="#"><img style="height: 50px; width:50px; object-fit:cover" height="50px" width="50px" src="{{ '/storage/' . $gallery->image }}" alt="Image"></a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

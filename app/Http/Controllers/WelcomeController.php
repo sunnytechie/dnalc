@@ -10,6 +10,7 @@ use App\Models\Slider;
 use App\Models\Sponsor;
 use App\Models\Webinar;
 use App\Models\DnaResource;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -39,10 +40,11 @@ class WelcomeController extends Controller
         $dnaresources = DnaResource::inRandomOrder()->get();
         $posts = Post::inRandomOrder()->take(5)->get();
         $footerposts = Post::orderBy('id', 'DESC')->take(2)->get();
+        $galleries = Gallery::orderBy('id', 'DESC')->take(6)->get();
 
         $teams = Team::orderBy('id', 'desc')
                             ->where('category', 'administrative')
                             ->paginate(5);
-        return view('index', compact('sliders', 'footerposts', 'sponsors', 'about', 'faqs', 'webinars', 'dnaresources', 'posts', 'teams'));
+        return view('index', compact('sliders', 'galleries', 'footerposts', 'sponsors', 'about', 'faqs', 'webinars', 'dnaresources', 'posts', 'teams'));
     }
 }

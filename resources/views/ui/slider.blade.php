@@ -9,10 +9,10 @@
                 <div class="display-table">
                     <div class="display-table-cell">
                         <div class="container">
-                            <h1 class="slider-title" data-animation-in="fadeInLeft" data-animation-out="animate-out">WELCOME TO DNALC Science City</h1>
+                            <h1 style="font-size: 25px" class="slider-title" data-animation-in="fadeInLeft" data-animation-out="animate-out">WELCOME TO DNALC Science City</h1>
                             <p data-animation-in="fadeInUp" data-animation-out="animate-out" class="slider-desc">{{ $slider->title }}</p>
                             {!! $slider->description !!}
-                            <a href="{{ $slider->link }}" class="sl-readmore-btn mr-30" data-animation-in="lightSpeedIn" data-animation-out="animate-out">READ MORE</a>
+                            {{-- <a href="{{ $slider->link }}" class="sl-readmore-btn mr-30" data-animation-in="lightSpeedIn" data-animation-out="animate-out">READ MORE</a> --}}
                             <a href="{{ route('workshop') }}" class="sl-get-started-btn" data-animation-in="lightSpeedIn" data-animation-out="animate-out">GET STARTED NOW</a>
                         </div>
                     </div>
