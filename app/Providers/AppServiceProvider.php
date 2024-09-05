@@ -51,12 +51,12 @@ class AppServiceProvider extends ServiceProvider
         } else {
             view()->share('aboutInfo', [
                 'title' => 'About Us',
-                'description' => 'We are a team of professionals',
-                'phone' => '123-456-7890',
-                'phone_2' => '123-456-7890',
+                'description' => 'DNALC Nigeria',
+                'phone' => '0802-273-9313',
+                'phone_2' => '0802-273-9313',
                 'email' => 'address',
-                'email_2' => 'address',
-                'address' => '1234 Street Name, City Name',
+                'email_2' => 'Ugwuomu Nike, Enugu State, Nigeria',
+                'address' => 'Ugwuomu Nike, Enugu State, Nigeria',
                 'facebook' => 'https://www.facebook.com/',
                 'twitter' => 'https://www.twitter.com/',
                 'instagram' => 'https://www.instagram.com/',

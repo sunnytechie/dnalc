@@ -29,7 +29,8 @@ use App\Http\Controllers\PaystackCallbackController;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'index'])->name('index.welcome');
+Route::get('/cetras', [WelcomeController::class, 'index'])->name('cetras');
+Route::get('/', [WelcomeController::class, 'newindex'])->name('index.welcome');
 //store contact
 Route::post('/store', [ContactController::class, 'store'])->name('contact.store');
 //store subscribe
@@ -76,7 +77,7 @@ Route::prefix('pages')->group(function () {
     Route::get('/post/graduate', [PagesController::class, 'postgraduate'])->name('postgraduate');
     Route::get('/drde', [PagesController::class, 'drde'])->name('drde');
     Route::get('/pdrp', [PagesController::class, 'pdrp'])->name('pdrp');
-    Route::get('/workshop', [PagesController::class, 'workshop'])->name('workshop');
+    Route::get('/workshops', [PagesController::class, 'workshop'])->name('workshop');
 
     Route::get('/gallery/category', [PagesController::class, 'galleryCategory'])->name('category.gallery');
     Route::get('/gallery/{id}', [PagesController::class, 'gallery'])->name('gallery');
