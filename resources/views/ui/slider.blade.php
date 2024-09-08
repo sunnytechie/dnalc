@@ -4,7 +4,7 @@
         @foreach ($sliders as $slider)
         <!-- Item 1 -->
         <div class="item @if($loop->first) active @endif">
-            <img style="height: 100vh; object-fit:cover" src="{{ asset('storage/' . $slider->flyer) }}" alt="Slider" />
+            <img class="new-slider" src="{{ asset('storage/' . $slider->flyer) }}" alt="Slider" />
             <div class="slide-content">
                 <div class="display-table">
                     <div class="display-table-cell">

@@ -47,4 +47,49 @@ class WelcomeController extends Controller
                             ->paginate(5);
         return view('index', compact('sliders', 'galleries', 'footerposts', 'sponsors', 'about', 'faqs', 'webinars', 'dnaresources', 'posts', 'teams'));
     }
+
+    public function about() {
+        $footerposts = Post::orderBy('id', 'DESC')->take(2)->get();
+        $galleries = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        return view('ui.pages.about', [
+            'galleries' => $galleries,
+            'footerposts' => $footerposts,
+        ]);
+    }
+
+    public function vacancy() {
+        $footerposts = Post::orderBy('id', 'DESC')->take(2)->get();
+        $galleries = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        return view('ui.pages.vacancy', [
+            'galleries' => $galleries,
+            'footerposts' => $footerposts,
+        ]);
+    }
+
+    public function organizations() {
+        $footerposts = Post::orderBy('id', 'DESC')->take(2)->get();
+        $galleries = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        return view('ui.pages.organizations', [
+            'galleries' => $galleries,
+            'footerposts' => $footerposts,
+        ]);
+    }
+
+    public function management() {
+        $footerposts = Post::orderBy('id', 'DESC')->take(2)->get();
+        $galleries = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        return view('ui.pages.management', [
+            'galleries' => $galleries,
+            'footerposts' => $footerposts,
+        ]);
+    }
+
+    public function organogram() {
+        $footerposts = Post::orderBy('id', 'DESC')->take(2)->get();
+        $galleries = Gallery::orderBy('id', 'DESC')->take(6)->get();
+        return view('ui.pages.organogram', [
+            'galleries' => $galleries,
+            'footerposts' => $footerposts,
+        ]);
+    }
 }

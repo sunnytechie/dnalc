@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-12">
                         <div class="logo-area">
-                            <a href="/"><img src="{{ asset('assets/images/dna/logo.png') }}" alt="logo"></a>
+                            <a href="/"><img id="logo" src="{{ asset('assets/images/dna/logo.png') }}" alt="logo"></a>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-12">
@@ -98,9 +98,9 @@
                             <nav class="rs-menu">
                                 <ul class="nav-menu">
                                     <!-- Home -->
-                                    <li class="current-menu-item current_page_item menu-item-has-children"> <a href="/" class="home">Centers</a>
+                                    <li class="{{ Route::currentRouteName() == 'index.welcome' ? 'current-menu-item current_page_item' : '' }} menu-item-has-children"> <a href="/" class="home">Centers</a>
                                     <ul class="sub-menu">
-                                        <li class="active"><a target="_blank" href="{{ route('cetras') }}">CeTRAS</a> </li>
+                                        <li class="{{ Route::currentRouteName() == 'cetras' ? 'active' : '' }}"><a target="_blank" href="{{ route('cetras') }}">CeTRAS</a> </li>
                                       <li><a target="_blank" href="https://cedfoci.dnalcnigeria.org/">CeDFOCI</a> </li>
                                       <li><a target="_blank" href="#">CeFARAI</a> </li>
                                       <li><a target="_blank" href="#">CeSAVIMS</a> </li>
@@ -110,7 +110,7 @@
                                     <!-- End Home -->
 
                                     <!--About Menu Start-->
-                                    <li class="rs-mega-menu mega-rs"> <a href="#">About us</a>
+                                    <li class="rs-mega-menu mega-rs {{ Route::currentRouteName() == 'center.about' ? 'active' : '' }}"> <a href="{{ route('center.about') }}">About us</a>
                                         {{-- <ul class="mega-menu">
                                             <li class="mega-menu-container">
                                                 <div class="mega-menu-innner">
@@ -152,7 +152,7 @@
                                     <!--About Menu End-->
 
                                     <!-- Drop Down Pages Start -->
-                                    <li class="rs-mega-menu mega-rs"> <a href="#">Vacancy</a>
+                                    <li class="rs-mega-menu mega-rs {{ Route::currentRouteName() == 'center.vacancy' ? 'active' : '' }}"> <a href="{{ route('center.vacancy') }}">Vacancy</a>
                                         {{-- <ul class="mega-menu">
                                             <li class="mega-menu-container">
                                                 <div class="mega-menu-innner">
@@ -196,7 +196,7 @@
                                     <!--Drop Down Pages End -->
 
                                     <!--Courses Menu Start-->
-                                    <li class="menu-item-has-children"> <a href="#">Organizations</a>
+                                    <li class="menu-item-has-children {{ Route::currentRouteName() == 'center.organizations' ? 'active' : '' }}"> <a href="{{ route('center.organizations') }}">Organizations</a>
                                       {{-- <ul class="sub-menu">
                                         <li><a href="#">Courses One</a></li>
                                         <li><a href="#">Courses Two</a></li>
@@ -207,7 +207,7 @@
                                     <!--Courses Menu End-->
 
                                     <!--Events Menu Start-->
-                                    <li class="menu-item-has-children"> <a href="#">Management</a>
+                                    <li class="menu-item-has-children {{ Route::currentRouteName() == 'center.management' ? 'active' : '' }}"> <a href="{{ route('center.management') }}">Management</a>
                                         {{-- <ul class="sub-menu">
                                             <li><a href="#">Events</a></li>
                                             <li><a href="#">Events Details</a></li>
@@ -216,7 +216,7 @@
                                     <!--Events Menu End-->
 
                                     <!-- Drop Down -->
-                                    <li class="menu-item-has-children"> <a href="#">Organogram</a>
+                                    <li class="menu-item-has-children {{ Route::currentRouteName() == 'center.organogram' ? 'active' : '' }}"> <a href="{{ route('center.organogram') }}">Organogram</a>
                                         {{-- <ul class="sub-menu">
                                             <li class="menu-item-has-children"> <a href="#">Teachers</a>
                                               <ul class="sub-menu">

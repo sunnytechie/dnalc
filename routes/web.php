@@ -46,7 +46,16 @@ Route::prefix('workshop')->group(function () {
     Route::get('/payment/callback/{id}/{ref}', [PaystackCallbackController::class, 'workshopPaymentCallback'])->name('workshop.payment.callback');
 });
 
+Route::prefix('centers')->group(function () {
+    Route::get('/about', [WelcomeController::class, 'about'])->name('center.about');
+    Route::get('/vacancy', [WelcomeController::class, 'vacancy'])->name('center.vacancy');
+    Route::get('/organizations', [WelcomeController::class, 'organizations'])->name('center.organizations');
+    Route::get('/management', [WelcomeController::class, 'management'])->name('center.management');
+    Route::get('/organogram', [WelcomeController::class, 'organogram'])->name('center.organogram');
+});
+
 Route::prefix('pages')->group(function () {
+
     //team details
     Route::get('/team/{id}', [PagesController::class, 'team'])->name('team.details');
     //about us

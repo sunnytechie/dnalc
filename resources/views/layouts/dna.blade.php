@@ -3,7 +3,7 @@
     <head>
         <!-- meta tag -->
         <meta charset="utf-8">
-        <title>Official Website || DNA || Learning Center</title>
+        <title>DNA || Learning Science Center Nigeria</title>
         <link rel="shortcut icon" href="assets/images/dna/dnalogo2.png" type="image/x-icon">
         <link rel="apple-touch-icon" sizes="180x180" href="assets/images/dna/dnalogo2.png">
         <link rel="icon" type="image/png" sizes="32x32" href="assets/images/dna/dnalogo2.png">
@@ -52,20 +52,33 @@
             .services-desc p {
                 font-size: 12px;
             }
+
+            @media (max-width: 600px) {
+                .rs-header-top {
+                    display: none;
+                }
+            }
+
+            @media (min-width: 1200px) {
+                .new-slider {
+                    height: 100vh;
+                    object-fit:cover
+                }
+            }
         </style>
     </head>
 
-
     <body class="home2">
 
-        @include('ui.header')
-        @include('ui.slider')
-        @include('ui.centers')
+            @include('ui.header')
+        @if (Route::currentRouteName() == 'index.welcome')
+            @include('ui.slider')
+            @include('ui.centers')
+        @endif
+
             @yield('content')
-        @include('ui.footer')
 
-
-
+            @include('ui.footer')
 
     <!-- modernizr js -->
     <script src="{{ asset('newassets/js/modernizr-2.8.3.min.js') }}"></script>
