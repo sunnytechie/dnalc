@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use GuzzleHttp\Client;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\ForgotPasswordMail;
@@ -191,5 +192,51 @@ class AuthController extends Controller
             'message' => 'Password Reset successful'
         ], 201);
 
+    }
+
+    public function googleLogin(Request $request) {
+        $googleToken = $request->input('token');
+
+        try {
+            // Verify Google ID token using Google API
+            $client = new Client();
+            $response = $client->get('https://oauth2.googleapis.com/tokeninfo?id_token=' . $googleToken);
+            $googleUser = json_decode($response->getBody(), true);
+
+            if (isset($googleUser['error'])) {
+                return response()->json([
+                    'status' => false,
+                    'error' => 'Invalid Google token'
+                ], 401);
+            }
+
+            // Find or create the user in your database
+            $user = User::updateOrCreate(
+                ['email' => $googleUser['email']],
+                [
+                    'fullname' => $googleUser['name'],
+                    'google_id' => $googleUser['sub'],
+                    //'avatar' => $googleUser['picture'],
+                    'password' => bcrypt('random_password'),
+                ]
+            );
+
+            // Create a Laravel Passport token for the user
+            $token = $user->createToken('MyApp')->accessToken;
+
+            return response()->json([
+                'status' => true,
+                'access_token' => $token,
+                'userDetails' => [
+                    'user' => $user,
+                ]
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'error' => 'Failed to authenticate with Google'
+            ], 500);
+        }
     }
 }
