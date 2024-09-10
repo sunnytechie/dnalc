@@ -52,7 +52,7 @@
                     </div>
                     <div class="services-desc">
                         <h4 class="services-title">CeFARAI</h4>
-                        <p>Center for Advanced Research <br>& Innovation</p>
+                        <p>Center for Advanced Research & Innovation</p>
                     </div>
                 </div>
                 </a>
