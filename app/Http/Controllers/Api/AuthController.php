@@ -205,15 +205,10 @@ class AuthController extends Controller
                 'error' => $validator->errors()], 401);
         }
 
-        return response()->json([
-            'status' => true,
-            'error' => $request->token,
-        ], 200);
-
         try {
             // Verify Google ID token using Google API
             $client = new Client();
-            $response = $client->get('https://oauth2.googleapis.com/tokeninfo?id_token=' . $googleToken);
+            $response = $client->get('https://oauth2.googleapis.com/tokeninfo?id_token=' . $request->token,);
             $googleUser = json_decode($response->getBody(), true);
 
             if (isset($googleUser['error'])) {
@@ -223,23 +218,23 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            return response()->json([
-                'status' => false,
-                'error' => $googleUser['email'],
-            ], 500);
+            $randomPassword = Str::random(16);
 
-            // Find or create the user in your database
             $user = User::updateOrCreate(
                 ['email' => $googleUser['email']],
                 [
-                    'fullname' => $googleUser['name'],
+                    'name' => $googleUser['name'],
                     'google_id' => $googleUser['sub'],
-                    //'avatar' => $googleUser['picture'],
-                    'password' => bcrypt('random_password'),
+                    'email_verified_at' => now(),
                 ]
             );
 
-            // Create a Laravel Passport token for the user
+
+            if ($user->wasRecentlyCreated) {
+                $user->password = Hash::make($randomPassword);
+                $user->save();
+            }
+
             $token = $user->createToken('MyApp')->accessToken;
 
             return response()->json([
