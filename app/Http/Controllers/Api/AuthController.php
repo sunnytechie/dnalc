@@ -197,6 +197,8 @@ class AuthController extends Controller
     public function googleLogin(Request $request) {
         $validator = Validator::make($request->all(), [
             'token' => 'required',
+            'name' => 'required',
+            'email' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -207,32 +209,32 @@ class AuthController extends Controller
 
         try {
             // Verify Google ID token using Google API
-            $client = new Client();
-            $response = $client->get('https://oauth2.googleapis.com/tokeninfo?id_token=' . $request->token,);
+            //$client = new Client();
+            //$response = $client->get('https://oauth2.googleapis.com/tokeninfo?id_token=' . $request->token,);
             //$response = $client->get('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' . $request->token,);
             //$response = $client->get('https://www.googleapis.com/oauth2/v3/tokeninfo', [
             //    'query' => ['id_token' => $request->token]
             //]);
             //https://oauth2.googleapis.com/tokeninfo?id_token=XYZ123
 
-            $googleUser = json_decode($response->getBody(), true);
+            //$googleUser = json_decode($response->getBody(), true);
 
-            return $googleUser;
+            //return $googleUser;
 
-            if (isset($googleUser['error'])) {
-                return response()->json([
-                    'status' => false,
-                    'error' => 'Invalid Google token'
-                ], 401);
-            }
+            //if (isset($googleUser['error'])) {
+            //    return response()->json([
+            //        'status' => false,
+            //        'error' => 'Invalid Google token'
+            //    ], 401);
+            //}
 
             $randomPassword = Str::random(16);
 
             $user = User::updateOrCreate(
-                ['email' => $googleUser['email']],
+                ['email' => $request->email],
                 [
-                    'name' => $googleUser['name'],
-                    'google_id' => $googleUser['sub'],
+                    'name' => $request->name,
+                    'google_id' => $request->token,
                     'email_verified_at' => now(),
                 ]
             );
@@ -254,7 +256,6 @@ class AuthController extends Controller
             ], 200);
 
         } catch (\Exception $e) {
-            return $e;
             return response()->json([
                 'status' => false,
                 'error' => 'Failed to authenticate with Google'
