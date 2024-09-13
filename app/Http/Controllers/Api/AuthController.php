@@ -248,6 +248,7 @@ class AuthController extends Controller
             ], 200);
 
         } catch (\Exception $e) {
+            return $e;
             return response()->json([
                 'status' => false,
                 'error' => 'Failed to authenticate with Google'
