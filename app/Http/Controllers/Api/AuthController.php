@@ -211,6 +211,8 @@ class AuthController extends Controller
             $response = $client->get('https://oauth2.googleapis.com/tokeninfo?id_token=' . $request->token,);
             $googleUser = json_decode($response->getBody(), true);
 
+            return $googleUser;
+
             if (isset($googleUser['error'])) {
                 return response()->json([
                     'status' => false,
