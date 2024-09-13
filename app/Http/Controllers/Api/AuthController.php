@@ -208,7 +208,10 @@ class AuthController extends Controller
         try {
             // Verify Google ID token using Google API
             $client = new Client();
-            $response = $client->get('https://oauth2.googleapis.com/tokeninfo?id_token=' . $request->token,);
+            //$response = $client->get('https://oauth2.googleapis.com/tokeninfo?id_token=' . $request->token,);
+            $response = $client->get('https://www.googleapis.com/oauth2/v3/tokeninfo', [
+                'query' => ['id_token' => $request->token]
+            ]);
             $googleUser = json_decode($response->getBody(), true);
 
             return $googleUser;
