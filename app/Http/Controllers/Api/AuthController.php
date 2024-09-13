@@ -210,6 +210,11 @@ class AuthController extends Controller
                 ], 401);
             }
 
+            return response()->json([
+                'status' => false,
+                'error' => $googleUser['email'],
+            ], 500);
+
             // Find or create the user in your database
             $user = User::updateOrCreate(
                 ['email' => $googleUser['email']],
