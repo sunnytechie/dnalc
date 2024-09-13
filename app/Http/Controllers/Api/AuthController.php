@@ -195,11 +195,19 @@ class AuthController extends Controller
     }
 
     public function googleLogin(Request $request) {
-        $googleToken = $request->input('token');
+        $validator = Validator::make($request->all(), [
+            'token' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'error' => $validator->errors()], 401);
+        }
 
         return response()->json([
             'status' => true,
-            'error' => $googleToken
+            'error' => $request->token,
         ], 200);
 
         try {
