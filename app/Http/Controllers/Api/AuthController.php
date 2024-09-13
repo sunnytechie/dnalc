@@ -197,6 +197,11 @@ class AuthController extends Controller
     public function googleLogin(Request $request) {
         $googleToken = $request->input('token');
 
+        return response()->json([
+            'status' => true,
+            'error' => $googleToken
+        ], 200);
+
         try {
             // Verify Google ID token using Google API
             $client = new Client();
